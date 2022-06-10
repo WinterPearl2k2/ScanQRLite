@@ -11,4 +11,6 @@
     <color name="normal_btn">#FFFFFF</color>
     <color name="background_fragment">#F5F5F5</color>
     <color name="color_btn">#CECECE</color>
+    <color name="color_1">#A9A9A9</color>
+    <color name="color_2">#7D7D7D</color>
 </resources>
