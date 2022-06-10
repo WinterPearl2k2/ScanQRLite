@@ -3,10 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Lap trinh/ScanQRLite2/app/src/main/res/drawable/cus_checked_bottom.xml" value="0.121" />
+        <entry key="..\:/Lap trinh/ScanQRLite2/app/src/main/res/drawable/cus_ic_scan.xml" value="0.121" />
         <entry key="..\:/Lap trinh/ScanQRLite2/app/src/main/res/drawable/ic.xml" value="0.1935" />
+        <entry key="..\:/Lap trinh/ScanQRLite2/app/src/main/res/drawable/ic_history_no.xml" value="0.1935" />
         <entry key="..\:/Lap trinh/ScanQRLite2/app/src/main/res/drawable/ic_qr.xml" value="0.128" />
+        <entry key="..\:/Lap trinh/ScanQRLite2/app/src/main/res/drawable/ic_qr_no.xml" value="0.121" />
         <entry key="..\:/Lap trinh/ScanQRLite2/app/src/main/res/drawable/ic_setting.xml" value="0.1935" />
-        <entry key="..\:/Lap trinh/ScanQRLite2/app/src/main/res/layout/activity_main.xml" value="0.527047913446677" />
+        <entry key="..\:/Lap trinh/ScanQRLite2/app/src/main/res/layout/activity_main.xml" value="0.2376126126126126" />
+        <entry key="..\:/Lap trinh/ScanQRLite2/app/src/main/res/layout/fragment_create.xml" value="0.10989583333333333" />
+        <entry key="..\:/Lap trinh/ScanQRLite2/app/src/main/res/layout/fragment_history.xml" value="0.1" />
+        <entry key="..\:/Lap trinh/ScanQRLite2/app/src/main/res/layout/fragment_scan.xml" value="0.10989583333333333" />
+        <entry key="..\:/Lap trinh/ScanQRLite2/app/src/main/res/layout/fragment_setting.xml" value="0.10989583333333333" />
         <entry key="..\:/Lap trinh/ScanQRLite2/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.25" />
       </map>
     </option>

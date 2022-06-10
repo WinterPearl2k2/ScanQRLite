@@ -3,13 +3,13 @@
     <item android:id="@+id/Scan"
         android:title="Scan"
         android:icon="@drawable/ic_qr"/>
-    <item android:id="@+id/Scan2"
-        android:title="Scan"
+    <item android:id="@+id/Create"
+        android:title="Create"
         android:icon="@drawable/ic_create"/>
-    <item android:id="@+id/Scan3"
-        android:title="Scan"
+    <item android:id="@+id/History"
+        android:title="History"
         android:icon="@drawable/ic_history"/>
-    <item android:id="@+id/Scan4"
-        android:title="Scan"
+    <item android:id="@+id/Setting"
+        android:title="Setting"
         android:icon="@drawable/ic_setting"/>
 </menu>
