@@ -1,14 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".scan.Scan">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Scan" />
+        android:layout_centerInParent="true">
+        <androidx.camera.view.PreviewView
+            android:id="@+id/cameraPreviewView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-</FrameLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/frame_top"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/frame_mid"
+                android:background="#80000000"/>
+
+            <TextView
+                android:id="@+id/frame_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/frame_mid"
+                android:background="#80000000" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@id/frame_mid"
+                android:layout_above="@id/frame_bottom"
+                android:layout_below="@id/frame_top"
+                android:background="#80000000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@id/frame_mid"
+                android:layout_above="@id/frame_bottom"
+                android:layout_below="@id/frame_top"
+                android:background="#80000000"/>
+
+            <TextView
+                android:id="@+id/frame_mid"
+                android:layout_width="279dp"
+                android:layout_height="279dp"
+                android:background="@null"
+                android:layout_centerInParent="true"/>
+
+            <ImageView
+                android:id="@+id/img_csan_frame"
+                android:layout_width="284dp"
+                android:layout_height="284dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_img_scan_frame"/>
+        </RelativeLayout>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_ads_test"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="20dp">
+
+            <ImageButton
+                android:id="@+id/btn_gallery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="44dp"
+                android:layout_marginRight="192dp"
+                android:background="@null"
+                android:src="@drawable/ic_btn_gallery" />
+
+            <ImageButton
+                android:id="@+id/btn_flash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="192dp"
+                android:layout_marginRight="44dp"
+                android:background="@null"
+                android:src="@drawable/btn_flah_off" />
+        </RelativeLayout>
+    </FrameLayout>
+
+</RelativeLayout>
