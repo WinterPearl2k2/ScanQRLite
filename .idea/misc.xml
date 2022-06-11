@@ -3,8 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/background_img.xml" value="0.1935" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/btn_flah_off.xml" value="0.205" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/btn_flah_on.xml" value="0.205" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_checked_bottom.xml" value="0.121" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_ic_qr.xml" value="0.12" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_ic_scan.xml" value="0.121" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/ic_btn_gallery.xml" value="0.205" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/ic_img_mask.xml" value="0.205" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/activity_main.xml" value="0.10989583333333333" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/activity_permission.xml" value="0.176" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/activity_result_scan.xml" value="0.25" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_create.xml" value="0.10989583333333333" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_scan.xml" value="0.264" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.10989583333333333" />
         <entry key="..\:/Lap trinh/ScanQRLite2/app/src/main/res/drawable/ic.xml" value="0.1935" />
         <entry key="..\:/Lap trinh/ScanQRLite2/app/src/main/res/drawable/ic_qr.xml" value="0.128" />
         <entry key="..\:/Lap trinh/ScanQRLite2/app/src/main/res/drawable/ic_setting.xml" value="0.1935" />

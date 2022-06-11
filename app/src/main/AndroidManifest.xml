@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ScanQRLite"
         tools:targetApi="31">
+        <activity
+            android:name=".Permission"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"

@@ -107,10 +107,10 @@ public class Scan extends Fragment {
                 try {
                     if(ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                         ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.CAMERA}, 101);
-                    }else {
-                        ProcessCameraProvider processCameraProvider = (ProcessCameraProvider) cameraProviderFuture.get();
-                        bindpreview(processCameraProvider);
                     }
+                    ProcessCameraProvider processCameraProvider = (ProcessCameraProvider) cameraProviderFuture.get();
+                    bindpreview(processCameraProvider);
+
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
@@ -214,5 +214,19 @@ public class Scan extends Fragment {
                     break;
             }
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ProcessCameraProvider processCameraProvider = null;
+        try {
+            processCameraProvider = (ProcessCameraProvider) cameraProviderFuture.get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        bindpreview(processCameraProvider);
     }
 }

@@ -5,27 +5,74 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vPager"
+    <RelativeLayout
+        android:id="@+id/layout_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/btnNavigation"/>
+        android:visibility="gone">
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/btnNavigation"/>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/btnNavigation"
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/btnNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp"
+            app:backgroundTint="#FFD71A"
+            app:itemBackground="@drawable/cus_checked_bottom"
+            app:itemIconTint="@color/cus_text"
+            app:itemTextColor="@color/cus_text"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/menu_bottom_navigation"
+            app:itemIconSize="22dp"
+            app:itemTextAppearanceInactive="@style/BottomNavigationText"
+            app:itemTextAppearanceActive="@style/BottomNavigationText.Selected"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_permission"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp"
-        app:backgroundTint="#FFD71A"
-        app:itemBackground="@drawable/cus_checked_bottom"
-        app:itemIconTint="@color/cus_text"
-        app:itemTextColor="@color/cus_text"
-        app:labelVisibilityMode="labeled"
-        app:menu="@menu/menu_bottom_navigation"
-        app:itemIconSize="22dp"
-        app:itemTextAppearanceInactive="@style/BottomNavigationText"
-        app:itemTextAppearanceActive="@style/BottomNavigationText.Selected"/>
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/txt_need_per"
+            android:gravity="center"
+            android:text="Warring!"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_need_per"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/img_permisson"
+            android:layout_marginBottom="118dp"
+            android:gravity="center"
+            android:text="Scan barcode need permission Camera" />
+
+        <ImageView
+            android:id="@+id/img_permisson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/img_permission" />
+
+        <ImageButton
+            android:id="@+id/btn_permisson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="147dp"
+            android:background="@null"
+            android:src="@drawable/ic_btn_permission"/>
+    </RelativeLayout>
 </RelativeLayout>
