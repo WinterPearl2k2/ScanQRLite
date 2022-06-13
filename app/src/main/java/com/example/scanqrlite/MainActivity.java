@@ -19,6 +19,7 @@ import android.provider.Settings;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private static ViewPager2 viewPager2;
     MenuAdapter menuAdapter;
     RelativeLayout layout_menu, layout_permisson;
-    ImageButton btn_permisson;
+    Button btn_permisson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

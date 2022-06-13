@@ -4,7 +4,9 @@
     package="com.example.scanqrlite">
 
     <uses-permission android:name="android.permission.CAMERA" />
-
+    <uses-permission android:name="android.permission.READ_PROFILE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    
     <uses-feature android:name="android.hardware.camera.level.full" />
 
     <application

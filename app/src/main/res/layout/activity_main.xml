@@ -65,14 +65,20 @@
             android:layout_centerInParent="true"
             android:src="@drawable/img_permission" />
 
-        <ImageButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_permisson"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_width="320dp"
+            android:layout_height="48dp"
+            android:text="Allow Permission"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:fontFamily="@font/agencyb"
+            android:letterSpacing="0.1"
             android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginBottom="147dp"
-            android:background="@null"
-            android:src="@drawable/ic_btn_permission"/>
+            android:background="@drawable/cus_btn_permission"
+            android:stateListAnimator="@null"/>
     </RelativeLayout>
 </RelativeLayout>

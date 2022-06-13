@@ -59,7 +59,7 @@
                 android:layout_height="284dp"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
-                android:background="@drawable/ic_img_scan_frame"/>
+                android:background="@drawable/ic_img_scan_frame" />
         </RelativeLayout>
 
 

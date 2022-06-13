@@ -58,7 +58,7 @@ public class Scan extends Fragment {
     private PreviewView previewView;
     private View view;
     private ImageAnalysis.Analyzer analyzer;
-    private ImageButton btnFlash;
+    private ImageButton btnFlash, btnGallery;
     private boolean mFlash = false;
 
     @Override
@@ -67,7 +67,19 @@ public class Scan extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_scan, container, false);
         ORM(); //Ánh xạ
+        ScanByGallery();
         return view;
+    }
+
+    private void ScanByGallery() {
+        btnGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gallery = new Intent(Intent.ACTION_PICK);
+                gallery.setType("image/*");
+                startActivityForResult(gallery, 102);
+            }
+        });
     }
 
     private void FlashSwitch(Camera camera) {
@@ -86,6 +98,7 @@ public class Scan extends Fragment {
             }
         });
     }
+
 
     private void ORM() {
         previewView = view.findViewById(R.id.cameraPreviewView);
@@ -120,6 +133,7 @@ public class Scan extends Fragment {
         }, ContextCompat.getMainExecutor(requireActivity()));
 
         btnFlash = view.findViewById(R.id.btn_flash);
+        btnGallery = view.findViewById(R.id.btn_gallery);
     }
 
     @Override
