@@ -12,10 +12,10 @@ import com.example.scanqrlite.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Create_Url#newInstance} factory method to
+ * Use the {@link Create_wifi#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Create_Url extends Fragment {
+public class Create_wifi extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class Create_Url extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Create_Url() {
+    public Create_wifi() {
         // Required empty public constructor
     }
 
@@ -36,11 +36,11 @@ public class Create_Url extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Create_Url.
+     * @return A new instance of fragment Create_wifi.
      */
     // TODO: Rename and change types and number of parameters
-    public static Create_Url newInstance(String param1, String param2) {
-        Create_Url fragment = new Create_Url();
+    public static Create_wifi newInstance(String param1, String param2) {
+        Create_wifi fragment = new Create_wifi();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

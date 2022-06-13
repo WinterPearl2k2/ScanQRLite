@@ -6,7 +6,6 @@
     android:background="@color/background_fragment"
     tools:context=".create.create_item.Create_Text">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,6 +17,7 @@
         android:textSize="35sp"
         android:textStyle="bold" />
 
+    <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:id="@+id/layout_input"
         android:layout_width="355dp"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="12dp"
             android:paddingTop="12dp"
-            android:text="URL:"
+            android:text="Network name:"
             android:textColor="@color/color_2"
             android:textSize="20sp" />
 
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:gravity="top"
-            android:hint="Enter URL here"
+            android:hint="Enter network name here"
             android:maxHeight="250dp"
             android:minHeight="136dp"
             android:paddingLeft="12dp"
@@ -54,15 +54,94 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/layout_password"
+        android:layout_width="355dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/layout_input"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/background_button_edit_text_while"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="12dp"
+            android:paddingTop="12dp"
+            android:text="Password:"
+            android:textColor="@color/color_2"
+            android:textSize="20sp" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/text_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="Enter password here"
+            android:maxHeight="250dp"
+            android:minHeight="136dp"
+            android:paddingLeft="12dp"
+            android:paddingTop="0dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="12dp"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:layout_marginStart="32dp"
+        android:fontFamily="@font/agencyr"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:text="Security"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_security_WPA"
+        android:layout_width="104dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="325dp"
+        android:textSize="20sp"
+        android:text="WPA/WPA2"
+        android:background="@drawable/background_button_conner_yellow"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_security_wep"
+        android:layout_width="64dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="186dp"
+        android:layout_marginTop="325dp"
+        android:textSize="20sp"
+        android:text="WEP"
+        android:background="@drawable/background_button_conner_while"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_no_security"
+        android:layout_width="106dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="280dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="325dp"
+        android:textSize="20sp"
+        android:text="Nothing"
+        android:background="@drawable/background_button_conner_while"/>
+
     <ImageButton
         android:id="@+id/btn_create"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/layout_input"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="185dp"
         android:background="@null"
         android:src="@drawable/ic_button" />
+
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -101,7 +180,7 @@
             android:layout_marginTop="20dp"
             android:background="@null"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_create_url_yellow" />
+            android:src="@drawable/ic_create_url_while" />
 
 
         <ImageButton
@@ -114,7 +193,7 @@
             android:layout_marginEnd="18dp"
             android:background="@null"
             android:scaleType="fitXY"
-            android:src="@drawable/ic_create_wifi_while" />
+            android:src="@drawable/ic_create_wifi_yellow" />
 
 
     </RelativeLayout>
