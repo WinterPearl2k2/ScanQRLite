@@ -48,11 +48,20 @@ public class MainActivity extends AppCompatActivity {
         ORM(); // Ánh xạ
         SetUpViewPager();
         EventButtonNavigation();
+        PermissionCheck();
+    }
+
+    private void PermissionCheck() {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                    != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.CAMERA}, 101);
+            }
+        }
         btn_permisson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Permission();
-
             }
         });
     }
