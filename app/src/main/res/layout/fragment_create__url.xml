@@ -27,26 +27,27 @@
             <EditText
                 android:id="@+id/editText"
                 android:layout_width="360dp"
-                android:layout_height="155dp"
+                android:layout_height="80dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/background_button_while"
                 android:textSize="20dp" />
+
             <TextView
                 android:id="@+id/text_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="32dp"
+                android:layout_marginTop="10dp"
                 android:text="Content: "
-                android:textSize="20dp"
-                android:textColor="@color/color_2"/>
+                android:textColor="@color/color_2"
+                android:textSize="20dp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text_content"
                 android:layout_marginStart="32dp"
-                android:text="Enter text here"
+                android:text="Enter URL here"
                 android:textSize="20dp"
                 android:textColor="@color/color_1"/>
             <ImageButton
