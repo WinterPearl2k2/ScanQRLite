@@ -18,47 +18,42 @@
         android:textStyle="bold" />
 
     <!-- TODO: Update blank fragment layout -->
-    <ScrollView
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="18dp">
-        <RelativeLayout
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp">
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="360dp"
+            android:layout_height="155dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/background_button_while"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/text_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="40dp"
+            android:text="Content: "
+            android:textColor="@color/color_2"
+            android:textSize="20dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_content"
+            android:layout_marginLeft="15dp"
+            android:text="Enter text here"
+            android:textSize="20dp"
+            android:textColor="@color/color_1"/>
 
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="360dp"
-                android:layout_height="155dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="20dp"
-                android:background="@color/normal_btn"
-                android:textSize="20dp" />
-            <TextView
-                android:id="@+id/text_content"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="40dp"
-                android:layout_marginLeft="15dp"
-                android:text="Content: "
-                android:textSize="20dp"
-                android:textColor="@color/color_2"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/text_content"
-                android:layout_marginLeft="15dp"
-                android:text="Enter text here"
-                android:textSize="20dp"
-                android:textColor="@color/color_1"/>
-
-
-        </RelativeLayout>
-    </ScrollView>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -90,7 +85,7 @@
             android:layout_height="68dp"
             android:layout_below="@id/img_ads"
             android:layout_marginTop="20dp"
-            android:background="@drawable/background_button_yellow" />
+             />
 
         <ImageView
             android:layout_width="wrap_content"
