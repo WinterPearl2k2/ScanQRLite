@@ -56,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
                     != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{Manifest.permission.CAMERA}, 101);
+            } else {
+                layout_menu.setVisibility(View.VISIBLE);
+                layout_permisson.setVisibility(View.GONE);
             }
         }
         btn_permisson.setOnClickListener(new View.OnClickListener() {
