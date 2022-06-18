@@ -105,7 +105,6 @@ public class Scan extends Fragment {
 //        getActivity().getWindow().getDecorView().setSystemUiVisibility(
 //                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
 //                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-
         cameraExecutor = Executors.newSingleThreadExecutor();
         cameraProviderFuture = ProcessCameraProvider.getInstance(requireActivity());
         analyzer = new ImageAnalysis.Analyzer() {
