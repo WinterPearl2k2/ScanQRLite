@@ -107,9 +107,9 @@
         android:layout_height="40dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="325dp"
-        android:textSize="20sp"
+        android:background="@drawable/background_conner_yellow"
         android:text="WPA/WPA2"
-        android:background="@drawable/background_button_conner_yellow"/>
+        android:textSize="20sp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_security_wep"
@@ -119,7 +119,7 @@
         android:layout_marginTop="325dp"
         android:textSize="20sp"
         android:text="WEP"
-        android:background="@drawable/background_button_conner_while"/>
+        android:background="@drawable/background_conner_while"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_no_security"
@@ -130,7 +130,8 @@
         android:layout_marginTop="325dp"
         android:textSize="20sp"
         android:text="Nothing"
-        android:background="@drawable/background_button_conner_while"/>
+        android:background="@drawable/background_conner_while"/>
+
 
     <ImageButton
         android:id="@+id/btn_create"
@@ -138,17 +139,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/layout_input"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="185dp"
+        android:layout_marginTop="187dp"
         android:background="@null"
         android:src="@drawable/ic_button" />
-
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="255dp"
         android:layout_marginBottom="20dp">
 
         <ImageView

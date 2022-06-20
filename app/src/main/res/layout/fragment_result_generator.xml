@@ -173,7 +173,7 @@
             android:id="@+id/btn_save"
             android:layout_width="120dp"
             android:layout_height="48dp"
-            android:background="@drawable/background_button_conner_yellow"
+            android:background="@drawable/background_conner_yellow"
             android:elevation="4dp"
             android:gravity="center">
 
@@ -199,7 +199,7 @@
             android:layout_width="120dp"
             android:layout_height="48dp"
             android:layout_marginLeft="30dp"
-            android:background="@drawable/background_button_conner_yellow"
+            android:background="@drawable/background_conner_yellow"
             android:elevation="4dp"
             android:gravity="center">
 
@@ -217,7 +217,7 @@
             android:layout_width="120dp"
             android:layout_height="48dp"
             android:layout_marginLeft="30dp"
-            android:background="@drawable/background_button_conner_yellow"
+            android:background="@drawable/background_conner_yellow"
             android:elevation="4dp"
             android:gravity="center">
 
@@ -235,7 +235,7 @@
             android:layout_width="120dp"
             android:layout_height="48dp"
             android:layout_marginLeft="30dp"
-            android:background="@drawable/background_button_conner_yellow"
+            android:background="@drawable/background_conner_yellow"
             android:elevation="4dp"
             android:gravity="center">
 
@@ -260,11 +260,10 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="190dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout"
-        >
+        app:layout_constraintTop_toBottomOf="@id/linearLayout">
 
         <ImageView
             android:layout_width="370dp"

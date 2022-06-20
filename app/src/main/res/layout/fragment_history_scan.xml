@@ -85,5 +85,9 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/img_ads_test" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 
 </RelativeLayout>

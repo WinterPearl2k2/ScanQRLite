@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checkable="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/tutorial"/>
+            <corners
+                android:topRightRadius="20dp"
+                android:topLeftRadius="240dp"
+
+                />
+        </shape>
+    </item>
+
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/tutorial"/>
+            <corners
+                android:topRightRadius="24dp"
+                android:topLeftRadius="24dp"
+
+                />
+        </shape>
+    </item>
+</selector>

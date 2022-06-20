@@ -2,12 +2,22 @@ package com.example.scanqrlite.scan;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Size;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,6 +34,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.provider.MediaStore;
 import android.util.Size;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,19 +57,22 @@ import com.google.mlkit.vision.barcode.BarcodeScanning;
 import com.google.mlkit.vision.barcode.common.Barcode;
 import com.google.mlkit.vision.common.InputImage;
 
-import java.lang.reflect.Executable;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Scan extends Fragment {
-    private ListenableFuture cameraProviderFuture;
+    public static final int GET_FROM_GALLERY =3;
+    private ListenableFuture <ProcessCameraProvider> cameraProviderFuture;
     private ExecutorService cameraExecutor;
     private PreviewView previewView;
     private View view;
     private ImageAnalysis.Analyzer analyzer;
-    private ImageButton btnFlash;
+    private ImageButton btnFlash, btnPhoto_Library;
     private boolean mFlash = false;
 
     @Override
@@ -66,6 +80,17 @@ public class Scan extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_scan, container, false);
+        previewView=view.findViewById(R.id.cameraPreviewView);
+
+
+        btnFlash=view.findViewById(R.id.btn_flash);
+        btnPhoto_Library=view.findViewById(R.id.btn_gallery);
+        //btnPhoto_Library.setOnClickListener(view1 -> startIntentSenderForResult(new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.INTERNAL_CONTENT_URI),GET_FROM_GALLERY));
+        cameraExecutor=Executors.newSingleThreadExecutor();
+        cameraProviderFuture=ProcessCameraProvider.getInstance(requireActivity());
+
+        //noinspection deprecation
+        analyzer = new ImageAnalysis.Analyzer();
         ORM(); //Ánh xạ
         return view;
     }
