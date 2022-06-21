@@ -35,10 +35,10 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:numStars="5"
-        app:srb_rating="3"
-        app:srb_minimumStars="1"
         app:srb_drawableEmpty="@drawable/ic_star_off"
-        app:srb_drawableFilled="@drawable/ic_star_on"/>
+        app:srb_drawableFilled="@drawable/ic_star_on"
+        app:srb_minimumStars="1"
+        app:srb_rating="3" />
 
     <LinearLayout
         android:layout_width="match_parent"

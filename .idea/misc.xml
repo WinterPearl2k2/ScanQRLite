@@ -9,6 +9,7 @@
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_btn_create.xml" value="0.1705" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_btn_permission.xml" value="0.22" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_btn_qa.xml" value="0.1615" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_btn_security.xml" value="0.1695" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_checked_bottom.xml" value="0.121" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_create_btn.xml" value="0.1705" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_dialog.xml" value="0.12" />
@@ -50,10 +51,12 @@
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_create__text.xml" value="0.16145833333333334" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_create_text.xml" value="0.16145833333333334" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_create_url.xml" value="0.16145833333333334" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_create_wifi.xml" value="0.46332046332046334" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_hihi.xml" value="0.16145833333333334" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_history.xml" value="0.16145833333333334" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_q_a.xml" value="0.25" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_question_and_answer.xml" value="0.264" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_result_generator.xml" value="0.264" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_scan.xml" value="0.264" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_setting.xml" value="0.26243781094527363" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.10989583333333333" />

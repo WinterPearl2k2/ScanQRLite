@@ -16,6 +16,8 @@ import android.widget.RadioButton;
 
 import com.example.scanqrlite.R;
 import com.example.scanqrlite.create.create_item.Create_Text;
+import com.example.scanqrlite.create.create_item.Create_Url;
+import com.example.scanqrlite.create.create_item.Create_wifi;
 
 public class Create extends Fragment {
 
@@ -36,16 +38,13 @@ public class Create extends Fragment {
         SharedPreferences preferences = getActivity().getSharedPreferences("actionbtn", Context.MODE_PRIVATE);
         String check = preferences.getString("actionbtn", "0");
         changeBtn(Integer.parseInt(check), preferences);
+        AccessClass(Integer.parseInt(check));
         btnText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(btnText.isChecked()) {
-//                    changeBtn(1, preferences);
-//                    Fragment fragment2 = new Create_Text();
-//                    FragmentManager fragmentManager = getFragmentManager();
-//                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//                    fragmentTransaction.replace(R.id.mainFrame, fragment2);
-//                    fragmentTransaction.commit();
+                    changeBtn(1, preferences);
+                    AccessClass(1);
                 } else {
                     btnText.setBackgroundResource(R.drawable.ic_create_text_while);
                 }
@@ -56,6 +55,7 @@ public class Create extends Fragment {
             public void onClick(View view) {
                 if(btnURL.isChecked()) {
                     changeBtn(2, preferences);
+                    AccessClass(2);
                 } else {
                     btnURL.setBackgroundResource(R.drawable.ic_create_url_while);
                 }
@@ -66,11 +66,30 @@ public class Create extends Fragment {
             public void onClick(View view) {
                 if(btnWifi.isChecked()) {
                     changeBtn(3, preferences);
+                    AccessClass(3);
                 } else {
                     btnWifi.setBackgroundResource(R.drawable.ic_create_wifi_while);
                 }
             }
         });
+    }
+
+    private void AccessClass(int num) {
+        Fragment fragment2;
+        switch (num) {
+            case 1:  fragment2 = new Create_Text();
+                break;
+            case 2:  fragment2 = new Create_Url();
+                break;
+            case 3:  fragment2 = new Create_wifi();
+                break;
+            default: fragment2 = new Create_Text();
+                break;
+        }
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.create_Layout, fragment2);
+        fragmentTransaction.commit();
     }
 
     private void changeBtn(int check, SharedPreferences preferences) {

@@ -1,44 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_fragment"
     tools:context=".create.Create">
-
-    <FrameLayout
-        android:id="@+id/create_Layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
     <RelativeLayout
+        android:id="@+id/layout_btn_create"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp">
+        android:layout_alignParentBottom="true">
+        <FrameLayout
+            android:id="@+id/create_Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/img_ads_3"
+            android:layout_marginBottom="10dp" />
 
         <ImageView
+            android:id="@+id/img_ads_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/img_ads_test"
+            android:layout_above="@+id/container_btn_create"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
-            android:layout_above="@+id/container_btn_create"/>
+            android:src="@drawable/img_ads_test"/>
 
         <RadioGroup
             android:id="@+id/container_btn_create"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true">
+
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
                 <RadioButton
                     android:id="@+id/btn_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@id/btn_url"
                     android:layout_marginRight="35dp"
+                    android:layout_toLeftOf="@id/btn_url"
                     android:background="@drawable/ic_create_text_while"
-                    android:button="@android:color/transparent"/>
+                    android:button="@android:color/transparent" />
 
                 <RadioButton
                     android:id="@+id/btn_url"
@@ -52,12 +58,12 @@
                     android:id="@+id/btn_wifi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/btn_url"
                     android:layout_marginLeft="35dp"
+                    android:layout_toRightOf="@id/btn_url"
                     android:background="@drawable/ic_create_wifi_while"
                     android:button="@android:color/transparent" />
             </RelativeLayout>
         </RadioGroup>
     </RelativeLayout>
 
-</FrameLayout>
+</RelativeLayout>
