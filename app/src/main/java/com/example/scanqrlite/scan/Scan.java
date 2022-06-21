@@ -90,7 +90,7 @@ public class Scan extends Fragment {
         cameraProviderFuture=ProcessCameraProvider.getInstance(requireActivity());
 
         //noinspection deprecation
-        analyzer = new ImageAnalysis.Analyzer();
+//        analyzer = new ImageAnalysis.Analyzer();
         ORM(); //Ánh xạ
         return view;
     }
