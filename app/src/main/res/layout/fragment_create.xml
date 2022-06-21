@@ -5,11 +5,59 @@
     android:layout_height="match_parent"
     tools:context=".create.Create">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <FrameLayout
+        android:id="@+id/create_Layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textStyle="bold"
-        android:text="Create" />
+        android:layout_height="match_parent"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/img_ads_test"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:layout_above="@+id/container_btn_create"/>
+
+        <RadioGroup
+            android:id="@+id/container_btn_create"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:id="@+id/btn_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/btn_url"
+                    android:layout_marginRight="35dp"
+                    android:background="@drawable/ic_create_text_while"
+                    android:button="@android:color/transparent"/>
+
+                <RadioButton
+                    android:id="@+id/btn_url"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/ic_create_url_while"
+                    android:button="@android:color/transparent" />
+
+                <RadioButton
+                    android:id="@+id/btn_wifi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/btn_url"
+                    android:layout_marginLeft="35dp"
+                    android:background="@drawable/ic_create_wifi_while"
+                    android:button="@android:color/transparent" />
+            </RelativeLayout>
+        </RadioGroup>
+    </RelativeLayout>
 
 </FrameLayout>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/frame_show"
+        android:layout_width="wrap_content"
+        android:layout_height="521dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="210dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/background_conner_tutorial"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:id="@+id/question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="50dp"
+            android:text="To scan the code, point your camera at it "
+            android:textColor="@color/normal_btn"
+            android:textSize="35dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_tutorial1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/question"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="34dp"
+            android:fontFamily="@font/agencyr"
+            android:text="1. On the code, avoid reflected light or shadow."
+            android:textAllCaps="false"
+            android:textColor="@color/normal_btn"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txt_tutorial2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_tutorial1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="34dp"
+            android:text="2. Place your phone in such away that it faces the code without tilting"
+            android:textAllCaps="false"
+            android:textColor="@color/normal_btn"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/qrfail"
+            android:layout_width="168dp"
+            android:layout_height="168dp"
+            android:layout_below="@+id/txt_tutorial2"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_qrcode_fail"
+            app:iconPadding="0dp" />
+
+        <ImageView
+            android:id="@+id/qrtrue"
+            android:layout_width="168dp"
+            android:layout_height="168dp"
+            android:layout_below="@+id/txt_tutorial2"
+            android:layout_marginStart="234dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/ic_qrcode_true" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_below="@id/qrfail"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="34dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/background_conner_yellow"
+            android:text="OK"
+            android:textColor="@color/black"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

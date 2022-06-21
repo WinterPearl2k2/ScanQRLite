@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_fragment"
+    tools:context=".create.create_item.Create_Text">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/agencyb"
+        android:text="Create"
+        android:textColor="@color/black"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/layout_input"
+        android:layout_width="355dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/background_button_edit_text_while"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="12dp"
+            android:paddingTop="12dp"
+            android:text="Content:"
+            android:textColor="@color/color_2"
+            android:textSize="20sp" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/text_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:gravity="top"
+            android:hint="Enter text here"
+            android:maxHeight="250dp"
+            android:minHeight="136dp"
+            android:paddingLeft="12dp"
+            android:paddingTop="0dp"
+            android:paddingRight="12dp"
+            android:paddingBottom="12dp"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btn_create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_input"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@null"
+        android:src="@drawable/ic_button" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="255dp"
+        android:layout_marginBottom="20dp">
+
+        <ImageView
+            android:id="@+id/img_ads"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="140dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/img_ads_test" />
+
+        <ImageButton
+            android:id="@+id/btn_text"
+            android:layout_width="100dp"
+            android:layout_height="90dp"
+            android:layout_below="@id/img_ads"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="20dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_create_text_while" />
+
+        <ImageButton
+            android:id="@+id/btn_URL"
+            android:layout_width="100dp"
+            android:layout_height="90dp"
+            android:layout_below="@id/img_ads"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="20dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_create_url_yellow" />
+
+
+        <ImageButton
+            android:id="@+id/btn_wifi"
+            android:layout_width="100dp"
+            android:layout_height="90dp"
+            android:layout_below="@id/img_ads"
+            android:layout_marginStart="273dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="18dp"
+            android:background="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_create_wifi_while" />
+
+
+    </RelativeLayout>
+</RelativeLayout>

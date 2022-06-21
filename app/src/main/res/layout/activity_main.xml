@@ -42,6 +42,7 @@
     <RelativeLayout
         android:id="@+id/layout_permission"
         android:layout_width="match_parent"
+
         android:layout_height="match_parent">
 
         <TextView
@@ -86,4 +87,5 @@
             android:background="@drawable/cus_btn_permission"
             android:stateListAnimator="@null"/>
     </RelativeLayout>
+
 </RelativeLayout>

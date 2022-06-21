@@ -6,9 +6,11 @@
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/background_img.xml" value="0.1935" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/btn_flah_off.xml" value="0.205" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/btn_flah_on.xml" value="0.205" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_btn_create.xml" value="0.1705" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_btn_permission.xml" value="0.22" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_btn_qa.xml" value="0.1615" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_checked_bottom.xml" value="0.121" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_create_btn.xml" value="0.1705" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_dialog.xml" value="0.12" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_ic_qr.xml" value="0.12" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_ic_scan.xml" value="0.121" />
@@ -20,8 +22,13 @@
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_track_switch.xml" value="0.1695" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/dialog_feedback.xml" value="0.121" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/dialog_language.xml" value="0.1615" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/ic_back.xml" value="0.1705" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/ic_btn_gallery.xml" value="0.205" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/ic_btn_permission2.xml" value="0.22" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/ic_create_text_yellow.xml" value="0.1705" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/ic_create_url_while.xml" value="0.1705" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/ic_create_wifi_while.xml" value="0.1705" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/ic_create_wifi_yellow.xml" value="0.1705" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/ic_img_mask.xml" value="0.205" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/ic_img_scan_frame.xml" value="0.121" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/ic_setting.xml" value="0.1705" />
@@ -39,8 +46,10 @@
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/dialog_language.xml" value="0.16145833333333334" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/dialog_rate.xml" value="0.176" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_2.xml" value="0.2359375" />
-        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_create.xml" value="0.10989583333333333" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_create.xml" value="0.2" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_create__text.xml" value="0.16145833333333334" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_create_text.xml" value="0.16145833333333334" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_create_url.xml" value="0.16145833333333334" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_hihi.xml" value="0.16145833333333334" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_history.xml" value="0.16145833333333334" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_q_a.xml" value="0.25" />

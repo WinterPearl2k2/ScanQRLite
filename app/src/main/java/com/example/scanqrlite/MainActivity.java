@@ -1,6 +1,7 @@
 package com.example.scanqrlite;
 
 import androidx.annotation.NonNull;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.camera.lifecycle.ProcessCameraProvider;
@@ -80,22 +81,22 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
     }
 
-    @Override
-    protected void onResume() {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-                    != PackageManager.PERMISSION_GRANTED) {
-//                requestPermissions(new String[]{Manifest.permission.CAMERA}, 101);
-                layout_menu.setVisibility(View.GONE);
-                layout_permisson.setVisibility(View.VISIBLE);
-                onRestart();
-            } else {
-                layout_menu.setVisibility(View.VISIBLE);
-                layout_permisson.setVisibility(View.GONE);
-            }
-        }
-        super.onResume();
-    }
+//    @Override
+//    protected void onResume() {
+//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+//                    != PackageManager.PERMISSION_GRANTED) {
+////                requestPermissions(new String[]{Manifest.permission.CAMERA}, 101);
+//                layout_menu.setVisibility(View.GONE);
+//                layout_permisson.setVisibility(View.VISIBLE);
+//                onRestart();
+//            } else {
+//                layout_menu.setVisibility(View.VISIBLE);
+//                layout_permisson.setVisibility(View.GONE);
+//            }
+//        }
+//        super.onResume();
+//    }
 
     private void Layout() {
         getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, scanFragment).commit();
@@ -267,7 +268,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void ORM() {
         navigationView = findViewById(R.id.btnNavigation);
-//        viewPager2 = findViewById(R.id.vPager);
         layout_menu = findViewById(R.id.layout_menu);
         layout_permisson = findViewById(R.id.layout_permission);
         btn_permisson = findViewById(R.id.btn_permisson);

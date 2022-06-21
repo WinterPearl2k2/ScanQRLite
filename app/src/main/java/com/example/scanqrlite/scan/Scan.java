@@ -24,6 +24,39 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.media.Image;
+import android.net.Uri;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Size;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.camera.core.Camera;
+import androidx.camera.core.CameraSelector;
+import androidx.camera.core.ImageAnalysis;
+import androidx.camera.core.ImageCapture;
+import androidx.camera.core.ImageProxy;
+import androidx.camera.core.Preview;
+import androidx.camera.lifecycle.ProcessCameraProvider;
+import androidx.camera.view.PreviewView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
+import android.provider.MediaStore;
 import android.util.Size;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,17 +81,23 @@ import com.google.mlkit.vision.common.InputImage;
 
 import java.lang.reflect.Executable;
 import java.util.List;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Scan extends Fragment {
-    private ListenableFuture cameraProviderFuture;
+    public static final int GET_FROM_GALLERY =3;
+    private ListenableFuture <ProcessCameraProvider> cameraProviderFuture;
     private ExecutorService cameraExecutor;
     private PreviewView previewView;
     private View view;
     private ImageAnalysis.Analyzer analyzer;
-    private ImageButton btnFlash, btnGallery;
+    private ImageButton  btnGallery;
+    private ImageButton btnFlash, btnPhoto_Library;
     private boolean mFlash = false;
 
     @Override
@@ -80,6 +119,20 @@ public class Scan extends Fragment {
                 startActivityForResult(gallery, 102);
             }
         });
+        previewView=view.findViewById(R.id.cameraPreviewView);
+
+
+        btnFlash=view.findViewById(R.id.btn_flash);
+        btnPhoto_Library=view.findViewById(R.id.btn_gallery);
+        //btnPhoto_Library.setOnClickListener(view1 -> startIntentSenderForResult(new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.INTERNAL_CONTENT_URI),GET_FROM_GALLERY));
+        cameraExecutor=Executors.newSingleThreadExecutor();
+        cameraProviderFuture=ProcessCameraProvider.getInstance(requireActivity());
+
+        //noinspection deprecation
+//        analyzer = new ImageAnalysis.Analyzer();
+//        ORM(); //Ánh xạ
+//        return view;
+//>>>>>>> feature/2_createe
     }
 
     private void FlashSwitch(Camera camera) {
@@ -99,12 +152,12 @@ public class Scan extends Fragment {
         });
     }
 
-
     private void ORM() {
         previewView = view.findViewById(R.id.cameraPreviewView);
 //        getActivity().getWindow().getDecorView().setSystemUiVisibility(
 //                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
 //                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+
         cameraExecutor = Executors.newSingleThreadExecutor();
         cameraProviderFuture = ProcessCameraProvider.getInstance(requireActivity());
         analyzer = new ImageAnalysis.Analyzer() {
@@ -119,10 +172,10 @@ public class Scan extends Fragment {
                 try {
                     if(ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                         ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.CAMERA}, 101);
+                    }else {
+                        ProcessCameraProvider processCameraProvider = (ProcessCameraProvider) cameraProviderFuture.get();
+                        bindpreview(processCameraProvider);
                     }
-                    ProcessCameraProvider processCameraProvider = (ProcessCameraProvider) cameraProviderFuture.get();
-                    bindpreview(processCameraProvider);
-
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
