@@ -1,5 +1,6 @@
 package com.example.scanqrlite.create.create_item;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,60 +8,89 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.example.scanqrlite.R;
+import com.example.scanqrlite.scan.ResultScan;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Create_wifi#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Create_wifi extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public Create_wifi() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Create_wifi.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Create_wifi newInstance(String param1, String param2) {
-        Create_wifi fragment = new Create_wifi();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    EditText edtSSID, edtPass;
+    RadioGroup rdgSecurity;
+    RadioButton rdbWPA, rdbWEP, rdbNO;
+    ImageButton btnCreate;
+    String SSID = "";
+    String password = "";
+    String security = "";
+    String content = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_wifi, container, false);
+        View view = inflater.inflate(R.layout.fragment_create_wifi, container, false);
+        ORM(view);
+        crateWifi();
+        return view;
+    }
+
+    private void crateWifi() {
+        rdbWPA.setChecked(true);
+        btnCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SSID = edtSSID.getText().toString().trim();
+                password = edtPass.getText().toString().trim();
+                security = checkSecurity();
+
+                content = "WIFI:T:" + security + ";S:" + SSID + ";P:" + password + ";H:false;";
+                if(password.length() < 8) {
+                    if(password.length() < 8)
+                        edtPass.setError("Please enter your link");
+                } else {
+                    Intent intent = new Intent(getActivity(), ResultScan.class);
+                    intent.putExtra("create_txt", content);
+                    intent.putExtra("S", SSID);
+                    intent.putExtra("P", password);
+                    intent.putExtra("T", security);
+                    intent.putExtra("create_title", "Wifi");
+                    intent.putExtra("type", "QRcode");
+                    startActivity(intent);
+                }
+            }
+        });
+    }
+
+    String s = "";
+    private String checkSecurity() {
+        rdgSecurity.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i) {
+                    case R.id.btn_wep:
+                        s =  "WEP";
+                        break;
+                    case R.id.btn_wpa:
+                        s = "WPA";
+                        break;
+                    case R.id.btn_nothing:
+                        s = "nopass";
+                        break;
+                }
+            }
+        });
+        return s;
+    }
+
+    private void ORM(View view) {
+        edtSSID = view.findViewById(R.id.text_input);
+        edtPass = view.findViewById(R.id.text_password);
+        rdgSecurity = view.findViewById(R.id.container_btn_create);
+        rdbWEP = view.findViewById(R.id.btn_wep);
+        rdbWPA = view.findViewById(R.id.btn_wpa);
+        rdbNO = view.findViewById(R.id.btn_nothing);
+        btnCreate = view.findViewById(R.id.btn_create);
     }
 }

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.scanqrlite.R;
 import com.example.scanqrlite.scan.ResultScan;
@@ -27,11 +28,16 @@ public class Create_Text extends Fragment {
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), ResultScan.class);
-                intent.putExtra("create_txt", "" + edtInput.getText());
-                intent.putExtra("create_title", "Text");
-                intent.putExtra("type", "QRcode");
-                startActivity(intent);
+                if(edtInput.getText().toString().trim().equals("")) {
+                    edtInput.setError("Please enter your content");
+                    Toast.makeText(getActivity(), "Please enter content", Toast.LENGTH_SHORT);
+                } else {
+                    Intent intent = new Intent(getActivity(), ResultScan.class);
+                    intent.putExtra("create_txt", edtInput.getText().toString().trim());
+                    intent.putExtra("create_title", "Text");
+                    intent.putExtra("type", "QRcode");
+                    startActivity(intent);
+                }
             }
         });
         return view;
