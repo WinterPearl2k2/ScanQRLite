@@ -80,6 +80,56 @@
                     android:textColor="#000000"
                     android:textSize="16sp" />
             </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/container_content_pass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/title_pass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Password:"
+                    android:textColor="#A9A9A9"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/content_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:text="Welcome to ATech Digital"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/container_content_security"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/title_security"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Security:"
+                    android:textColor="#A9A9A9"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/content_security"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:text="Welcome to ATech Digital"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 

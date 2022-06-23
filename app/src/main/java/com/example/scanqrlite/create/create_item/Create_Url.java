@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.scanqrlite.R;
+import com.example.scanqrlite.create.CheckCreate;
 import com.example.scanqrlite.scan.ResultScan;
 
 public class Create_Url extends Fragment {
@@ -25,22 +26,13 @@ public class Create_Url extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_create_url, container, false);
         ORM(view);
-        btnCreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(edtInput.getText().toString().trim().equals("")) {
-                    edtInput.setError("Please enter your link");
-                    Toast.makeText(getActivity(), "Please enter content", Toast.LENGTH_SHORT);
-                } else {
-                    Intent intent = new Intent(getActivity(), ResultScan.class);
-                    intent.putExtra("create_txt", edtInput.getText().toString().trim());
-                    intent.putExtra("create_title", "URL");
-                    intent.putExtra("type", "QRcode");
-                    startActivity(intent);
-                }
-            }
-        });
+        createURL();
         return view;
+    }
+
+    private void createURL() {
+        CheckCreate checkCreate = new CheckCreate(edtInput, btnCreate, "Please enter your url", getActivity(), "URL");
+        checkCreate.create();
     }
 
     private void ORM(View view) {

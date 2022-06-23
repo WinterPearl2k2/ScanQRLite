@@ -8,19 +8,14 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -33,7 +28,6 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Random;
@@ -41,8 +35,10 @@ import java.util.Random;
 public class ResultScan extends AppCompatActivity {
     ImageView btnBack, imgQR;
     Intent intent;
-    TextView txtTitle, txtContent;
+    TextView txtTitleActionbar, txtContent, txtTitle;
+    TextView txtContentPass, txtContentSecurity;
     LinearLayout btnSave, btnURL, btnWifi, btnSaveBarcode;
+    LinearLayout containerPass, containerSecurity;
     CardView btnCopy, btnSearch, btnShare;
     Bitmap bitmap;
     String content;
@@ -164,19 +160,26 @@ public class ResultScan extends AppCompatActivity {
 
     private void CheckLayout(String title) {
         if(title.equals("Text")) {
-            txtTitle.setText("Text");
+            txtTitleActionbar.setText("Text");
             txtContent.setText(content);
+            txtTitle.setText("Note:");
             btnSave.setVisibility(View.VISIBLE);
             createQR(content);
         } else if(title.equals("Wifi")) {
-            txtTitle.setText("Wifi");
-            txtContent.setText(content);
+            txtTitleActionbar.setText("Wifi");
+            txtTitle.setText("Network name:");
             btnSave.setVisibility(View.VISIBLE);
             btnWifi.setVisibility(View.VISIBLE);
+            containerPass.setVisibility(View.VISIBLE);
+            containerSecurity.setVisibility(View.VISIBLE);
+            txtContent.setText(intent.getStringExtra("S"));
+            txtContentPass.setText(intent.getStringExtra("P"));
+            txtContentSecurity.setText(intent.getStringExtra("T"));
             createQR(content);
         } else if(title.equals("URL")) {
-            txtTitle.setText("URL");
+            txtTitleActionbar.setText("URL");
             txtContent.setText(content);
+            txtTitle.setText("URL:");
             btnSave.setVisibility(View.VISIBLE);
             btnURL.setVisibility(View.VISIBLE);
             createQR(content);
@@ -236,7 +239,7 @@ public class ResultScan extends AppCompatActivity {
 
     private void ORM() {
         btnBack = findViewById(R.id.btn_back_layout);
-        txtTitle = findViewById(R.id.type_name_qr);
+        txtTitleActionbar = findViewById(R.id.type_name_qr);
         txtContent = findViewById(R.id.content_5);
         imgQR = findViewById(R.id.image_text);
         btnSave = findViewById(R.id.btn_save);
@@ -246,5 +249,10 @@ public class ResultScan extends AppCompatActivity {
         btnCopy = findViewById(R.id.btn_copy);
         btnSearch = findViewById(R.id.btn_search);
         btnShare = findViewById(R.id.btn_share);
+        txtContentPass = findViewById(R.id.content_pass);
+        txtContentSecurity = findViewById(R.id.content_security);
+        containerPass = findViewById(R.id.container_content_pass);
+        containerSecurity = findViewById(R.id.container_content_security);
+        txtTitle = findViewById(R.id.title_5);
     }
 }
