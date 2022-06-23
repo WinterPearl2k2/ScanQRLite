@@ -43,6 +43,7 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:gravity="top"
+            android:text="ATech Digital"
             android:hint="Enter network name here"
             android:maxHeight="250dp"
             android:minHeight="136dp"
@@ -75,6 +76,7 @@
             android:textSize="20sp" />
 
         <androidx.appcompat.widget.AppCompatEditText
+            android:text="ATD!12345678"
             android:id="@+id/text_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

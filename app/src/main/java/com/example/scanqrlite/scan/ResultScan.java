@@ -1,18 +1,31 @@
 package com.example.scanqrlite.scan;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.BroadcastReceiver;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
+import android.net.NetworkRequest;
 import android.net.Uri;
+import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiManager;
+import android.net.wifi.WifiNetworkSpecifier;
+import android.net.wifi.WifiNetworkSuggestion;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.Settings;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.Window;
@@ -21,6 +34,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.scanqrlite.MainActivity;
 import com.example.scanqrlite.R;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -30,6 +44,8 @@ import com.google.zxing.common.BitMatrix;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class ResultScan extends AppCompatActivity {
@@ -41,7 +57,8 @@ public class ResultScan extends AppCompatActivity {
     LinearLayout containerPass, containerSecurity;
     CardView btnCopy, btnSearch, btnShare;
     Bitmap bitmap;
-    String content;
+    String content, S, P, T;
+    WifiManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +81,68 @@ public class ResultScan extends AppCompatActivity {
         ShareToOthersApp();
         SaveImage();
         GoToURL();
+        ConnectToWifi();
+    }
+
+    private void ConnectToWifi() {
+        Intent wifi = new Intent(Settings.ACTION_WIFI_SETTINGS);
+        manager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
+//        ConnectivityManager.NetworkCallback networkCallback;
+        btnWifi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
+                    WifiConfiguration conf = new WifiConfiguration();
+                    conf.SSID = "\"" + S +"\"";
+                    conf.preSharedKey = "\"" + P + "\"";
+
+                    int netWorkID = manager.addNetwork(conf);
+                    manager.disconnect();
+                    manager.enableNetwork(netWorkID, true);
+                    manager.reconnect();
+                    startActivity(wifi);
+                } else if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
+                    WifiNetworkSuggestion.Builder wifiNetworkSuggestionBuilder1 = new WifiNetworkSuggestion.Builder();
+                    wifiNetworkSuggestionBuilder1.setSsid(S);
+                    wifiNetworkSuggestionBuilder1.setWpa2Passphrase(P);
+                    WifiNetworkSuggestion wifiNetworkSuggestion = wifiNetworkSuggestionBuilder1.build();
+                    List<WifiNetworkSuggestion> list = new ArrayList<>();
+                    list.add(wifiNetworkSuggestion);
+                    manager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+                    manager.removeNetworkSuggestions(new ArrayList<WifiNetworkSuggestion>());
+                    manager.addNetworkSuggestions(list);
+                    startActivity(new Intent("android.settings.panel.action.INTERNET_CONNECTIVITY"));
+                } else {
+                    Toast.makeText(ResultScan.this, "Hihi", Toast.LENGTH_SHORT).show();
+                    final WifiNetworkSpecifier specifier =
+                            new WifiNetworkSpecifier.Builder()
+                                    .setSsid(S)
+                                    .build();
+
+                    final NetworkRequest request =
+                            new NetworkRequest.Builder()
+                                    .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
+                                    .addCapability(NetworkCapabilities.NET_CAPABILITY_NOT_RESTRICTED)
+                                    .setNetworkSpecifier(specifier)
+                                    .build();
+
+
+
+                    ConnectivityManager connectivityManager = (ConnectivityManager)
+                            getSystemService(Context.CONNECTIVITY_SERVICE);
+
+                    ConnectivityManager.NetworkCallback networkCallback = new ConnectivityManager.NetworkCallback() {
+                        @Override
+                        public void onAvailable(@NonNull Network network) {
+                            connectivityManager.bindProcessToNetwork(network);
+                            super.onAvailable(network);
+                        }
+                    };
+                    startActivity(new Intent("android.settings.panel.action.INTERNET_CONNECTIVITY"));
+                }
+
+            }
+        });
     }
 
     private void GoToURL() {
@@ -172,9 +251,12 @@ public class ResultScan extends AppCompatActivity {
             btnWifi.setVisibility(View.VISIBLE);
             containerPass.setVisibility(View.VISIBLE);
             containerSecurity.setVisibility(View.VISIBLE);
-            txtContent.setText(intent.getStringExtra("S"));
-            txtContentPass.setText(intent.getStringExtra("P"));
-            txtContentSecurity.setText(intent.getStringExtra("T"));
+            S = intent.getStringExtra("S");
+            P = intent.getStringExtra("P");
+            T = intent.getStringExtra("T");
+            txtContent.setText(S);
+            txtContentPass.setText(P);
+            txtContentSecurity.setText(T);
             createQR(content);
         } else if(title.equals("URL")) {
             txtTitleActionbar.setText("URL");
