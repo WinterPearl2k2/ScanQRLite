@@ -1,14 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background_fragment"
     tools:context=".history.History">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/title_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/agencyb"
+        android:paddingLeft="30dp"
+        android:paddingTop="40dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        android:text="History"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_history"
+        app:tabIndicatorColor="@color/primary_btn"
+        app:tabTextAppearance="@style/MyCustomTextAppearance"
+        app:tabTextColor="@color/black">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_scan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Scan" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_create"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Create" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <FrameLayout
+        android:id="@+id/history_layout"
+        android:layout_below="@id/img_ads_4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="History" />
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"/>
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/img_ads_4"
+        android:layout_below="@id/tab_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/img_ads_test"/>
+
+</RelativeLayout>

@@ -53,14 +53,17 @@
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_create__text.xml" value="0.16145833333333334" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_create_text.xml" value="0.16145833333333334" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_create_url.xml" value="0.16145833333333334" />
-        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_create_wifi.xml" value="0.46332046332046334" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_create_wifi.xml" value="0.26884422110552764" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_hihi.xml" value="0.16145833333333334" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_history.xml" value="0.16145833333333334" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_history_create.xml" value="0.16145833333333334" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_history_scan.xml" value="0.264" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_q_a.xml" value="0.25" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_question_and_answer.xml" value="0.264" />
-        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_result_generator.xml" value="0.264" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_result_generator.xml" value="0.2" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_scan.xml" value="0.264" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_setting.xml" value="0.26243781094527363" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/recyclerview_layout.xml" value="0.6" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.10989583333333333" />
         <entry key="..\:/Lap trinh/ScanQRLite2/app/src/main/res/drawable/ic.xml" value="0.1935" />
         <entry key="..\:/Lap trinh/ScanQRLite2/app/src/main/res/drawable/ic_qr.xml" value="0.128" />

@@ -1,93 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_fragment"
-    tools:context=".create.create_item.Create_Text">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/histrory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="40dp"
-        android:fontFamily="@font/agencyb"
-        android:text="History"
-        android:textColor="@color/black"
-        android:textSize="35sp"
-        android:textStyle="bold" />
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="105dp"
-        android:orientation="vertical">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_scan"
-            android:layout_width="205dp"
-            android:layout_height="45dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="0dp"
-            android:background="@color/normal_btn" />
-        <ImageView
-            android:layout_width="205dp"
-            android:layout_height="3dp"
-            android:layout_marginTop="35dp"
-            android:src="@drawable/ic_rectangle_16"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_create"
-            android:layout_width="205dp"
-            android:layout_height="45dp"
-            android:layout_marginLeft="205dp"
-            android:background="@color/normal_btn" />
-
-    </RelativeLayout>
-
-    <ImageView
-        android:layout_width="205dp"
-        android:layout_height="3dp"
-        android:layout_marginTop="147dp"
-        android:src="@drawable/ic_rectangle_16"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="85dp"
-        android:layout_marginTop="113dp"
-        android:fontFamily="@font/agencyb"
-        android:text="Scan"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        android:textStyle="bold" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="285dp"
-        android:layout_marginTop="113dp"
-        android:fontFamily="@font/agencyb"
-        android:text="Create"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/img_ads"
-        android:layout_width="380dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="175dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/img_ads_test" />
-
+    android:background="@drawable/cus_btn_qa"
+    tools:context=".history.History_Menu.History_Scan">
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-
-</RelativeLayout>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</ScrollView>
