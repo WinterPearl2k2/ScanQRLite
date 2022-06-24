@@ -5,11 +5,27 @@
     android:layout_height="match_parent"
     android:background="@color/background_fragment"
     tools:context=".create.Create">
+
     <RelativeLayout
         android:id="@+id/layout_btn_create"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
+
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:id="@+id/title_create"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            android:paddingRight="20dp"
+            android:paddingTop="40dp"
+            android:paddingBottom="10dp"
+            android:fontFamily="@font/agencyb"
+            android:text="Create"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/img_ads_3"
@@ -18,7 +34,7 @@
             android:layout_above="@+id/container_btn_create"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
-            android:src="@drawable/img_ads_test"/>
+            android:src="@drawable/img_ads_test" />
 
         <RadioGroup
             android:id="@+id/container_btn_create"
@@ -64,8 +80,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/img_ads_3"
+            android:layout_below="@+id/title_create"
             android:layout_marginBottom="10dp" />
-
     </RelativeLayout>
 
 </RelativeLayout>

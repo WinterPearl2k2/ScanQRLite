@@ -1,6 +1,10 @@
 package com.example.scanqrlite.scan;
 
+import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -8,12 +12,15 @@ import android.content.BroadcastReceiver;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
+import android.net.MacAddress;
 import android.net.Network;
 import android.net.NetworkCapabilities;
+import android.net.NetworkInfo;
 import android.net.NetworkRequest;
 import android.net.Uri;
 import android.net.wifi.WifiConfiguration;
@@ -83,7 +90,8 @@ public class ResultScan extends AppCompatActivity {
         GoToURL();
         ConnectToWifi();
     }
-
+    ConnectivityManager connectivityManager;
+    ConnectivityManager.NetworkCallback networkCallback;
     private void ConnectToWifi() {
         Intent wifi = new Intent(Settings.ACTION_WIFI_SETTINGS);
         manager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
@@ -94,14 +102,51 @@ public class ResultScan extends AppCompatActivity {
                 if(Build.VERSION.SDK_INT < Build.VERSION_CODES.Q) {
                     WifiConfiguration conf = new WifiConfiguration();
                     conf.SSID = "\"" + S +"\"";
-                    conf.preSharedKey = "\"" + P + "\"";
+//                    conf.preSharedKey = "\"" + P + "\"";
+                    conf.status = WifiConfiguration.Status.DISABLED;
+                    conf.priority = 40;
+                    if(T.equals("nopass")) {
+                        conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
+                        conf.allowedProtocols.set(WifiConfiguration.Protocol.RSN);
+                        conf.allowedProtocols.set(WifiConfiguration.Protocol.WPA);
+                        conf.allowedAuthAlgorithms.clear();
+                        conf.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.CCMP);
+                        conf.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.TKIP);
+                        conf.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP40);
+                        conf.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP104);
+                        conf.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);
+                        conf.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP);
+                    } else if (T.equals("WEP")) {
+                        conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
+                        conf.allowedProtocols.set(WifiConfiguration.Protocol.RSN);
+                        conf.allowedProtocols.set(WifiConfiguration.Protocol.WPA);
+                        conf.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.OPEN);
+                        conf.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.SHARED);
+                        conf.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.CCMP);
+                        conf.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.TKIP);
+                        conf.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP40);
+                        conf.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP104);
+                        conf.wepKeys[0] = "\"".concat(P).concat("\"");
+                    } else if (T.equals("WPA")) {
+                        conf.allowedProtocols.set(WifiConfiguration.Protocol.RSN);
+                        conf.allowedProtocols.set(WifiConfiguration.Protocol.WPA);
+                        conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.WPA_PSK);
+                        conf.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.CCMP);
+                        conf.allowedPairwiseCiphers.set(WifiConfiguration.PairwiseCipher.TKIP);
+                        conf.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP40);
+                        conf.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.WEP104);
+                        conf.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);
+                        conf.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP);
+
+                        conf.preSharedKey = "\"" + P + "\"";
+                    }
 
                     int netWorkID = manager.addNetwork(conf);
                     manager.disconnect();
                     manager.enableNetwork(netWorkID, true);
                     manager.reconnect();
                     startActivity(wifi);
-                } else if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.R){
+                } else {
                     WifiNetworkSuggestion.Builder wifiNetworkSuggestionBuilder1 = new WifiNetworkSuggestion.Builder();
                     wifiNetworkSuggestionBuilder1.setSsid(S);
                     wifiNetworkSuggestionBuilder1.setWpa2Passphrase(P);
@@ -111,39 +156,14 @@ public class ResultScan extends AppCompatActivity {
                     manager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
                     manager.removeNetworkSuggestions(new ArrayList<WifiNetworkSuggestion>());
                     manager.addNetworkSuggestions(list);
-                    startActivity(new Intent("android.settings.panel.action.INTERNET_CONNECTIVITY"));
-                } else {
-                    Toast.makeText(ResultScan.this, "Hihi", Toast.LENGTH_SHORT).show();
-                    final WifiNetworkSpecifier specifier =
-                            new WifiNetworkSpecifier.Builder()
-                                    .setSsid(S)
-                                    .build();
-
-                    final NetworkRequest request =
-                            new NetworkRequest.Builder()
-                                    .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
-                                    .addCapability(NetworkCapabilities.NET_CAPABILITY_NOT_RESTRICTED)
-                                    .setNetworkSpecifier(specifier)
-                                    .build();
-
-
-
-                    ConnectivityManager connectivityManager = (ConnectivityManager)
-                            getSystemService(Context.CONNECTIVITY_SERVICE);
-
-                    ConnectivityManager.NetworkCallback networkCallback = new ConnectivityManager.NetworkCallback() {
-                        @Override
-                        public void onAvailable(@NonNull Network network) {
-                            connectivityManager.bindProcessToNetwork(network);
-                            super.onAvailable(network);
-                        }
-                    };
+                    coppy(P);
                     startActivity(new Intent("android.settings.panel.action.INTERNET_CONNECTIVITY"));
                 }
 
             }
         });
     }
+
 
     private void GoToURL() {
         btnURL.setOnClickListener(new View.OnClickListener() {
@@ -229,12 +249,16 @@ public class ResultScan extends AppCompatActivity {
         btnCopy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clipData = ClipData.newPlainText("label", content);
-                clipboardManager.setPrimaryClip(clipData);
-                Toast.makeText(ResultScan.this, "Success", Toast.LENGTH_SHORT).show();
+                coppy(content);
             }
         });
+    }
+
+    private void coppy(String content) {
+        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clipData = ClipData.newPlainText("label", content);
+        clipboardManager.setPrimaryClip(clipData);
+        Toast.makeText(ResultScan.this, "Success", Toast.LENGTH_SHORT).show();
     }
 
     private void CheckLayout(String title) {
