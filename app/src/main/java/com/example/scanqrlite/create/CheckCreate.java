@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.example.scanqrlite.R;
+import com.example.scanqrlite.history.History_Menu.HistoryCreateItem;
+import com.example.scanqrlite.history.History_Menu.database.CreateDatabase;
 import com.example.scanqrlite.scan.ResultScan;
 
 public class CheckCreate {
@@ -58,6 +60,11 @@ public class CheckCreate {
                             intent.putExtra("create_txt", editText.getText().toString().trim());
                             intent.putExtra("create_title", type);
                             intent.putExtra("type", "QRcode");
+                            //
+                            HistoryCreateItem createItem = new HistoryCreateItem(type, editText.getText().toString().trim(), "10/11/2002",
+                                                                                    editText.getText().toString().trim());
+                            CreateDatabase.getInstance(context).createItemDAO().insertItem(createItem);
+                            //
                             context.startActivity(intent);
                         }
                     });

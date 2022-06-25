@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/cus_btn_qa"
     tools:context=".history.History_Menu.History_Scan">
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycle_history_scan"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </ScrollView>

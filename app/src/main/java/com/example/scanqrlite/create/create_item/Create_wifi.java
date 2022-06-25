@@ -1,5 +1,7 @@
 package com.example.scanqrlite.create.create_item;
 
+import static android.view.View.GONE;
+
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -12,11 +14,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.scanqrlite.R;
+import com.example.scanqrlite.history.History_Menu.HistoryCreateItem;
+import com.example.scanqrlite.history.History_Menu.database.CreateDatabase;
 import com.example.scanqrlite.scan.ResultScan;
 
 public class Create_wifi extends Fragment {
@@ -24,6 +29,7 @@ public class Create_wifi extends Fragment {
     RadioGroup rdgSecurity;
     RadioButton rdbWPA, rdbWEP, rdbNO;
     ImageButton btnCreate;
+    LinearLayout layoutPass;
     String SSID;
     String password;
     String security;
@@ -38,11 +44,13 @@ public class Create_wifi extends Fragment {
         return view;
     }
 
+    boolean check = true;
     public void createWifi() {
         rdbWPA.setChecked(true);
         SSID = edtSSID.getText().toString().trim();
+        checkNothing();
         password = edtPass.getText().toString().trim();
-        checkEmpty();
+        checkEmpty(check);
         TextWatcher textWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -52,27 +60,21 @@ public class Create_wifi extends Fragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 SSID = edtSSID.getText().toString().trim();
+                checkNothing();
                 password = edtPass.getText().toString().trim();
-                security = checkSecurity(rdbWPA, rdbWEP, rdbNO);
-                checkEmpty();
+                checkEmpty(check);
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
                 content = "WIFI:T:" + security + ";S:" + SSID + ";P:" + password + ";H:false;";
-                if (edtSSID.getText().toString().trim().length() > 0 && edtPass.getText().toString().trim().length() > 7) {
+                if (edtSSID.getText().toString().trim().length() > 0 && check == true ? edtPass.getText().toString().trim().length() > 7 : edtPass.getText().toString().trim().length() == 0) {
                     btnCreate.setImageResource(R.drawable.ic_btn_create_true);
                     btnCreate.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(getActivity(), ResultScan.class);
-                            intent.putExtra("create_txt", content);
-                            intent.putExtra("S", SSID);
-                            intent.putExtra("P", password);
-                            intent.putExtra("T", security);
-                            intent.putExtra("create_title", "Wifi");
-                            intent.putExtra("type", "QRcode");
-                            startActivity(intent);
+                            security = checkSecurity(rdbWPA, rdbWEP, rdbNO);
+                            sendData();
                         }
                     });
                 } else {
@@ -94,17 +96,62 @@ public class Create_wifi extends Fragment {
 
     }
 
-    private void checkEmpty() {
-        if (password.length() < 8 || SSID.length() < 1) {
-            btnCreate.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (SSID.length() < 1)
-                        edtSSID.setError("Account not be blank");
-                    if (password.length() < 8)
-                        edtPass.setError("Password please enter more than 8 characters");
+    private void checkNothing() {
+        rdgSecurity.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i) {
+                    case R.id.btn_nothing:
+                        layoutPass.setVisibility(GONE);
+                        check = false;
+                        edtPass.setText("");
+                        break;
+                    case R.id.btn_wep:
+                    case R.id.btn_wpa:
+                        layoutPass.setVisibility(View.VISIBLE);
+                        check = true;
+                        break;
                 }
-            });
+            }
+        });
+    }
+
+    private void sendData() {
+        Intent intent = new Intent(getActivity(), ResultScan.class);
+        intent.putExtra("create_txt", content);
+        intent.putExtra("S", SSID);
+        intent.putExtra("P", password);
+        intent.putExtra("T", security);
+        intent.putExtra("create_title", "Wifi");
+        intent.putExtra("type", "QRcode");
+        HistoryCreateItem createItem = new HistoryCreateItem("Wifi",SSID, "10/11/2002", content);
+        CreateDatabase.getInstance(getActivity()).createItemDAO().insertItem(createItem);
+        startActivity(intent);
+    }
+
+    private void checkEmpty(boolean check) {
+        if(check == true) {
+            if (password.length() < 8 || SSID.length() < 1) {
+                btnCreate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (SSID.length() < 1)
+                            edtSSID.setError("Account not be blank");
+                        if (password.length() < 8)
+                            edtPass.setError("Password please enter more than 8 characters");
+                    }
+                });
+            }
+        } else {
+            if (SSID.length() < 1) {
+                btnCreate.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (SSID.length() < 1)
+                            edtSSID.setError("Account not be blank");
+                    }
+                });
+            }
         }
     }
 
@@ -127,5 +174,6 @@ public class Create_wifi extends Fragment {
         rdbWPA = view.findViewById(R.id.btn_wpa);
         rdbNO = view.findViewById(R.id.btn_nothing);
         btnCreate = view.findViewById(R.id.btn_create);
+        layoutPass = view.findViewById(R.id.layout_password);
     }
 }

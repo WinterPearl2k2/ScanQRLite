@@ -12,7 +12,7 @@
 
         <LinearLayout
             android:id="@+id/layout_input"
-            android:layout_width="355dp"
+            android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginStart="28dp"
             android:layout_marginTop="10dp"
@@ -36,14 +36,14 @@
                 android:background="@null"
                 android:gravity="top"
                 android:hint="Enter URL here"
+                android:inputType="textUri"
                 android:maxHeight="250dp"
                 android:minHeight="136dp"
                 android:paddingLeft="12dp"
                 android:paddingTop="0dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="12dp"
-                android:textSize="20sp"
-                android:inputType="textUri"/>
+                android:textSize="20sp" />
 
         </LinearLayout>
 

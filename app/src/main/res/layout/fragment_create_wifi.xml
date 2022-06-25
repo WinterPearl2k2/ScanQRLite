@@ -13,7 +13,7 @@
         <!-- TODO: Update blank fragment layout -->
         <LinearLayout
             android:id="@+id/layout_input"
-            android:layout_width="355dp"
+            android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginStart="28dp"
             android:layout_marginTop="10dp"
@@ -36,7 +36,6 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:gravity="top"
-                android:text="ATech Digital"
                 android:hint="Enter network name here"
                 android:maxHeight="250dp"
                 android:minHeight="136dp"
@@ -50,7 +49,7 @@
 
         <LinearLayout
             android:id="@+id/layout_password"
-            android:layout_width="355dp"
+            android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_below="@+id/layout_input"
             android:layout_marginStart="28dp"
@@ -69,7 +68,6 @@
                 android:textSize="20sp" />
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:text="ATD!12345678"
                 android:id="@+id/text_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

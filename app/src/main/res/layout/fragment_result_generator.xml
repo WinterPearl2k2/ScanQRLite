@@ -83,7 +83,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="2dp"
-                            android:text="Welcome to ATech Digital"
                             android:textColor="#000000"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -108,7 +107,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="2dp"
-                            android:text="Welcome to ATech Digital"
                             android:textColor="#000000"
                             android:textSize="16sp" />
                     </LinearLayout>
@@ -133,7 +131,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="2dp"
-                            android:text="Welcome to ATech Digital"
                             android:textColor="#000000"
                             android:textSize="16sp" />
                     </LinearLayout>

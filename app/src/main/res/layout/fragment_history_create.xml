@@ -3,13 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/cus_btn_qa"
     tools:context=".history.History_Menu.History_Create">
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"/>-->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycle_history_create"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Haha"/>
+        android:layout_height="match_parent"/>
 </ScrollView>

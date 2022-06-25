@@ -43,6 +43,10 @@ import android.widget.Toast;
 
 import com.example.scanqrlite.MainActivity;
 import com.example.scanqrlite.R;
+import com.example.scanqrlite.adapter.HistoryCreateAdapter;
+import com.example.scanqrlite.history.History_Menu.HistoryCreateItem;
+import com.example.scanqrlite.history.History_Menu.History_Create;
+import com.example.scanqrlite.history.History_Menu.database.CreateDatabase;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -66,6 +70,8 @@ public class ResultScan extends AppCompatActivity {
     Bitmap bitmap;
     String content, S, P, T;
     WifiManager manager;
+    HistoryCreateAdapter adapter;
+    List<HistoryCreateItem> createItemList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -273,13 +279,15 @@ public class ResultScan extends AppCompatActivity {
             txtTitle.setText("Network name:");
             btnSave.setVisibility(View.VISIBLE);
             btnWifi.setVisibility(View.VISIBLE);
-            containerPass.setVisibility(View.VISIBLE);
+            if(intent.getStringExtra("P").length() != 0) {
+                containerPass.setVisibility(View.VISIBLE);
+                P = intent.getStringExtra("P");
+                txtContentPass.setText(P);
+            }
             containerSecurity.setVisibility(View.VISIBLE);
             S = intent.getStringExtra("S");
-            P = intent.getStringExtra("P");
             T = intent.getStringExtra("T");
             txtContent.setText(S);
-            txtContentPass.setText(P);
             txtContentSecurity.setText(T);
             createQR(content);
         } else if(title.equals("URL")) {
@@ -331,6 +339,11 @@ public class ResultScan extends AppCompatActivity {
         }
         bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         bitmap.setPixels(pixel, 0, width, 0 , 0, width, height);
+//        //
+//        HistoryCreateItem createItem = new HistoryCreateItem(txtTitle.toString(), txtContent.toString(), "10/11/2002", R.drawable.ic_qr_code );
+//        CreateDatabase.getInstance(this).createItemDAO().insertItem(createItem);
+//        //
+
         return bitmap;
     }
 

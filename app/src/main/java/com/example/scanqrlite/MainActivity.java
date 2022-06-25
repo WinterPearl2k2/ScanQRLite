@@ -30,6 +30,8 @@ import android.widget.RelativeLayout;
 import com.example.scanqrlite.adapter.MenuAdapter;
 import com.example.scanqrlite.create.Create;
 import com.example.scanqrlite.history.History;
+import com.example.scanqrlite.history.History_Menu.HistoryCreateItem;
+import com.example.scanqrlite.history.History_Menu.database.CreateDatabase;
 import com.example.scanqrlite.scan.Scan;
 import com.example.scanqrlite.setting.Setting;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
