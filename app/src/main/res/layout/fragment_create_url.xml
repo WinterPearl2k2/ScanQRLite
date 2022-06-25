@@ -43,7 +43,8 @@
                 android:paddingTop="0dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="12dp"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:maxLines="1"/>
 
         </LinearLayout>
 

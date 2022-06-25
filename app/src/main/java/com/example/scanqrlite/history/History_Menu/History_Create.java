@@ -2,12 +2,14 @@ package com.example.scanqrlite.history.History_Menu;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -31,7 +33,7 @@ public class History_Create extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_history_create, container, false);
         ORM(view);
-        adapter = new HistoryCreateAdapter();
+        adapter = new HistoryCreateAdapter(getActivity());
 
         createItemList = new ArrayList<>();
 

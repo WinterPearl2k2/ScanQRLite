@@ -48,6 +48,7 @@ import com.example.scanqrlite.history.History_Menu.HistoryCreateItem;
 import com.example.scanqrlite.history.History_Menu.History_Create;
 import com.example.scanqrlite.history.History_Menu.database.CreateDatabase;
 import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
@@ -56,7 +57,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class ResultScan extends AppCompatActivity {
@@ -70,8 +73,6 @@ public class ResultScan extends AppCompatActivity {
     Bitmap bitmap;
     String content, S, P, T;
     WifiManager manager;
-    HistoryCreateAdapter adapter;
-    List<HistoryCreateItem> createItemList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,8 +97,7 @@ public class ResultScan extends AppCompatActivity {
         GoToURL();
         ConnectToWifi();
     }
-    ConnectivityManager connectivityManager;
-    ConnectivityManager.NetworkCallback networkCallback;
+
     private void ConnectToWifi() {
         Intent wifi = new Intent(Settings.ACTION_WIFI_SETTINGS);
         manager = (WifiManager) getApplicationContext().getSystemService(WIFI_SERVICE);
@@ -313,13 +313,17 @@ public class ResultScan extends AppCompatActivity {
 
 
     private Bitmap CreateImage(String content) throws WriterException {
-        int sizeWidth = 660;
+        int sizeWidth = 600;
         int sizeHeight = 264;
+
+        Map hints = new HashMap();
+        hints.put(EncodeHintType.MARGIN, 1);
+
         BitMatrix matrix = null;
         String type = intent.getStringExtra("type");
         switch (type) {
             case "QRcode":
-                matrix = new MultiFormatWriter().encode(content, BarcodeFormat.QR_CODE, sizeWidth, sizeWidth);
+                matrix = new MultiFormatWriter().encode(content, BarcodeFormat.QR_CODE, sizeWidth, sizeWidth, hints);
                 break;
 //            default:
 //                matrix = new MultiFormatWriter().encode(content, BarcodeFormat.QR_CODE, sizeWidth, sizeWidth);

@@ -19,10 +19,14 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.scanqrlite.DateTime;
 import com.example.scanqrlite.R;
 import com.example.scanqrlite.history.History_Menu.HistoryCreateItem;
 import com.example.scanqrlite.history.History_Menu.database.CreateDatabase;
 import com.example.scanqrlite.scan.ResultScan;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class Create_wifi extends Fragment {
     EditText edtSSID, edtPass;
@@ -124,7 +128,10 @@ public class Create_wifi extends Fragment {
         intent.putExtra("T", security);
         intent.putExtra("create_title", "Wifi");
         intent.putExtra("type", "QRcode");
-        HistoryCreateItem createItem = new HistoryCreateItem("Wifi",SSID, "10/11/2002", content);
+        DateTime dateTime = new DateTime();
+        HistoryCreateItem createItem = new HistoryCreateItem("Wifi",SSID, dateTime.getDateTime(), content);
+        createItem.setPassword(password);
+        createItem.setSecurity(security);
         CreateDatabase.getInstance(getActivity()).createItemDAO().insertItem(createItem);
         startActivity(intent);
     }

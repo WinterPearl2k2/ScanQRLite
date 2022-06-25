@@ -16,12 +16,32 @@ public class HistoryCreateItem {
     String date;
     @ColumnInfo(name = "result_create")
     String result;
+    @ColumnInfo(name = "security_create")
+    String security;
+    @ColumnInfo(name = "password_create")
+    String password;
 
     public HistoryCreateItem(String title, String content, String date, String result) {
         this.title = title;
         this.content = content;
         this.date = date;
         this.result = result;
+    }
+
+    public String getSecurity() {
+        return security;
+    }
+
+    public void setSecurity(String security) {
+        this.security = security;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getResult() {
