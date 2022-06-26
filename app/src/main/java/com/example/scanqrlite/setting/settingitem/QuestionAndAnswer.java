@@ -3,6 +3,8 @@ package com.example.scanqrlite.setting.settingitem;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -10,13 +12,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.scanqrlite.R;
+import com.example.scanqrlite.setting.Setting;
 
 public class QuestionAndAnswer extends Fragment {
+    ImageButton back;
     TextView txtQA1, txtQA2, txtQA3;
     LinearLayout btnQA1, btnQA2, btnQA3;
     ImageView imgQA1, imgQA2, imgQA3;
@@ -26,6 +32,14 @@ public class QuestionAndAnswer extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_question_and_answer, container, false);
+        back = (ImageButton) view.findViewById(R.id.btn_back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.popBackStackImmediate();
+            }
+        });
         ORM(view);
         HandlerClickQA1();
         HandlerClickQA2();

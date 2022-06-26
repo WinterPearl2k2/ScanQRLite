@@ -2,15 +2,20 @@ package com.example.scanqrlite.scan;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.media.AudioManager;
 import android.media.Image;
+import android.media.ToneGenerator;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.camera.core.Camera;
 import androidx.camera.core.CameraSelector;
 import androidx.camera.core.ImageAnalysis;
@@ -22,52 +27,18 @@ import androidx.camera.view.PreviewView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.media.Image;
-import android.net.Uri;
-import android.os.Bundle;
+import android.os.Vibrator;
 import android.provider.MediaStore;
 import android.util.Size;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.camera.core.Camera;
-import androidx.camera.core.CameraSelector;
-import androidx.camera.core.ImageAnalysis;
-import androidx.camera.core.ImageCapture;
-import androidx.camera.core.ImageProxy;
-import androidx.camera.core.Preview;
-import androidx.camera.lifecycle.ProcessCameraProvider;
-import androidx.camera.view.PreviewView;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-
-import android.provider.MediaStore;
-import android.util.Size;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.scanqrlite.R;
-import com.google.android.gms.common.internal.IAccountAccessor;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -79,18 +50,14 @@ import com.google.mlkit.vision.barcode.BarcodeScanning;
 import com.google.mlkit.vision.barcode.common.Barcode;
 import com.google.mlkit.vision.common.InputImage;
 
-import java.lang.reflect.Executable;
 import java.util.List;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class Scan extends Fragment {
     public static final int GET_FROM_GALLERY =3;
+    public boolean beep = true , vibrate = true;
     private ListenableFuture <ProcessCameraProvider> cameraProviderFuture;
     private ExecutorService cameraExecutor;
     private PreviewView previewView;
@@ -107,6 +74,9 @@ public class Scan extends Fragment {
         view = inflater.inflate(R.layout.fragment_scan, container, false);
         ORM(); //Ánh xạ
         ScanByGallery();
+        Beep();
+        Vibrate();
+        //CopyToClipboard();
         return view;
     }
 
@@ -124,15 +94,9 @@ public class Scan extends Fragment {
 
         btnFlash=view.findViewById(R.id.btn_flash);
         btnPhoto_Library=view.findViewById(R.id.btn_gallery);
-        //btnPhoto_Library.setOnClickListener(view1 -> startIntentSenderForResult(new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.INTERNAL_CONTENT_URI),GET_FROM_GALLERY));
+        btnPhoto_Library.setOnClickListener(view1 -> startActivityForResult(new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI), GET_FROM_GALLERY));
         cameraExecutor=Executors.newSingleThreadExecutor();
         cameraProviderFuture=ProcessCameraProvider.getInstance(requireActivity());
-
-        //noinspection deprecation
-//        analyzer = new ImageAnalysis.Analyzer();
-//        ORM(); //Ánh xạ
-//        return view;
-//>>>>>>> feature/2_createe
     }
 
     private void FlashSwitch(Camera camera) {
@@ -215,22 +179,28 @@ public class Scan extends Fragment {
         ImageCapture imageCapture = new ImageCapture.Builder().build();
 
         ImageAnalysis imageAnalysis = new ImageAnalysis.Builder()
-                        .setTargetResolution(new Size(1280, 720))
-                        .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
-                        .build();
+                .setTargetResolution(new Size(1280, 720))
+                .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+                .build();
         imageAnalysis.setAnalyzer(cameraExecutor, analyzer);
 
         Camera camera = processCameraProvider.bindToLifecycle(getActivity(), cameraSelector, preview, imageCapture, imageAnalysis);
         FlashSwitch(camera);
     }
-
+    public void analyze(@NonNull ImageProxy image) {
+        scanbarcode(image);
+    }
     private void scanbarcode(ImageProxy image) {
         @SuppressLint("UnsafeOptInUsageError") Image image1 = image.getImage();
         assert image1 != null;
         InputImage inputImage = InputImage.fromMediaImage(image1, image.getImageInfo().getRotationDegrees());
         BarcodeScannerOptions options = new BarcodeScannerOptions.Builder()
                 .setBarcodeFormats(Barcode.FORMAT_QR_CODE,
-                        Barcode.FORMAT_AZTEC)
+                        Barcode.FORMAT_AZTEC,
+                        Barcode.FORMAT_CODE_128,
+                        Barcode.FORMAT_CODE_93,Barcode.FORMAT_EAN_8,Barcode.FORMAT_EAN_13
+                        ,Barcode.FORMAT_CODE_39,Barcode.FORMAT_ALL_FORMATS
+                        ,Barcode.FORMAT_CODABAR,Barcode.FORMAT_ITF,Barcode.FORMAT_UPC_A,Barcode.FORMAT_UPC_E)
                 .build();
         BarcodeScanner scanner = BarcodeScanning.getClient(options);
         Task<List<Barcode>> result = scanner.process(inputImage)
@@ -255,7 +225,6 @@ public class Scan extends Fragment {
                         image.close();
                     }
                 });
-
     }
 
     private void readerBarcodeData(List<Barcode> barcodes) {
@@ -266,20 +235,72 @@ public class Scan extends Fragment {
             String rawValue = barcode.getRawValue();
 
             int valueType = barcode.getValueType();
+            int bar = barcode.getFormat();
             // See API reference for complete list of supported types
-            switch (valueType) {
-                case Barcode.TYPE_WIFI:
-                    String ssid = barcode.getWifi().getSsid();
-                    String password = barcode.getWifi().getPassword();
-                    int type = barcode.getWifi().getEncryptionType();
-                    Toast.makeText(getActivity(), ssid + "\n" + password + "\n", Toast.LENGTH_SHORT);
-                    break;
-                case Barcode.TYPE_URL:
-                    String title = barcode.getUrl().getTitle();
-                    String url = barcode.getUrl().getUrl();
-                    break;
+            if (bar != 256) {
+                String id = barcode.getDisplayValue();
+                Toast.makeText(getActivity(), id + "\n", Toast.LENGTH_SHORT);
+            } else {
+                switch (valueType) {
+                    case Barcode.TYPE_WIFI:
+                        String ssid = barcode.getWifi().getSsid();
+                        String password = barcode.getWifi().getPassword();
+                        int type = barcode.getWifi().getEncryptionType();
+                        String security;
+                        if(type == 1) security = "No Thing";
+                        else if(type == 2) security ="WPA/WPA2";
+                        else security = "WEP";
+                        Toast.makeText(getActivity(), ssid + "\n" + password + "\n"+ security,  Toast.LENGTH_SHORT);
+                        break;
+                    case Barcode.TYPE_URL:
+                        String url = barcode.getUrl().getUrl();
+                        Toast.makeText(getActivity(),"URL: "+ url + "\n", Toast.LENGTH_SHORT);
+                        break;
+                    case Barcode.TYPE_TEXT:
+                        String text = barcode.getDisplayValue();
+                        Toast.makeText(getActivity(), "Note: " + text +"\n" , Toast.LENGTH_SHORT ).show();
+                        break;
+                }
             }
         }
+    }
+    public void Beep()
+    {
+        SharedPreferences beep;
+        beep = getContext().getSharedPreferences("beep",0);
+        boolean check = beep.getBoolean("beep", false);
+        if(check == true){
+            final ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_NOTIFICATION,100);
+            tg.startTone(ToneGenerator.TONE_PROP_BEEP);
+        }
+    }
+    public void Vibrate(){
+        SharedPreferences vibrate;
+        vibrate = getContext().getSharedPreferences("vibrate",0);
+        boolean check = vibrate.getBoolean("vibrate", false);
+        if(check == true){
+            Viber(getContext(),"on");
+        }
+        else
+            Viber(getContext(),"off");
+    }
+    public void Viber(Context ct, String value){
+        if(value.equals("no")) {
+            Vibrator v = (Vibrator) ct.getSystemService(Context.VIBRATOR_SERVICE);
+            v.vibrate(300);
+        }
+
+    }
+
+    public void onPause() {
+        super.onPause();
+        ProcessCameraProvider processCameraProvider = null;
+        try {
+            processCameraProvider = cameraProviderFuture.get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+        processCameraProvider.unbindAll();
     }
 
     @Override

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.os.Vibrator;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,14 +40,15 @@ public class Setting extends Fragment {
     private TextView txtContentFeedback, btnFeedbackYes, btnFeedbackNo;
     private ImageView imgRating;
     View view;
+    private Vibrator vibrator;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_setting, container, false);
         ORM();
-        SoundBeep();
-        Vibrite();
+        Beep();
+        Vibrate();
         CopyToClipboard();
         ChangeLanguage();
         QA();
@@ -320,7 +322,7 @@ public class Setting extends Fragment {
         });
     }
 
-    private void Vibrite() {
+    public void Vibrate() {
         SharedPreferences vibrite = getActivity().getSharedPreferences("vibrite", Context.MODE_PRIVATE);
         boolean check = vibrite.getBoolean("vibrite", false);
         if(check) {
@@ -342,7 +344,9 @@ public class Setting extends Fragment {
         });
     }
 
-    private void SoundBeep() {
+
+
+    public void Beep() {
         SharedPreferences beep = getActivity().getSharedPreferences("beep", Context.MODE_PRIVATE);
         boolean check = beep.getBoolean("beep", false);
         if(check) {
@@ -353,11 +357,6 @@ public class Setting extends Fragment {
         btnBeep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                if(swBeep.isChecked()) {
-//                    swBeep.setChecked(false);
-//                } else if(!swBeep.isChecked()) {
-//                    swBeep.setChecked(true);
-//                }
                 CheckSwitch(swBeep, beep, "beep");
             }
         });
@@ -394,5 +393,6 @@ public class Setting extends Fragment {
         txtLanguage = view.findViewById(R.id.txt_language);
         btnFeedback = view.findViewById(R.id.btn_feedback);
         btnRate = view.findViewById(R.id.btn_rate);
+
     }
 }
