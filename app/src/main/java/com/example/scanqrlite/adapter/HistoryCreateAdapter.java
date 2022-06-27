@@ -70,7 +70,7 @@ public class HistoryCreateAdapter extends RecyclerView.Adapter<HistoryCreateAdap
             public void onClick(View view) {
                 Intent intent = new Intent(context, ResultScan.class);
                 intent.putExtra("create_title", historyCreateItem.getTitle());
-                intent.putExtra("create_txt", historyCreateItem.getContent());
+                intent.putExtra("create_txt", historyCreateItem.getResult());
                 if(historyCreateItem.getTitle().equals("Wifi")) {
                     intent.putExtra("S", historyCreateItem.getContent());
                     intent.putExtra("P", historyCreateItem.getPassword());
@@ -129,7 +129,7 @@ public class HistoryCreateAdapter extends RecyclerView.Adapter<HistoryCreateAdap
 
     public class CreateViewHolder extends RecyclerView.ViewHolder {
         private LinearLayout layoutItem;
-        private TextView txtTitle, txtContent, txtDate, txtPass, txtSecurity;
+        private TextView txtTitle, txtContent, txtDate;
         private ImageView imgQr;
 
         public CreateViewHolder(@NonNull View itemView) {

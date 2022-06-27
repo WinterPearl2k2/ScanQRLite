@@ -14,16 +14,22 @@
         android:orientation="horizontal"
         android:weightSum="10"
         android:background="@color/background_fragment">
-        <ImageButton
-            android:id="@+id/btn_back"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:scaleType="fitXY"
-            android:layout_marginTop="45dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="20dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_back"/>
+        <LinearLayout
+            android:id="@+id/btn_layout_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="35dp"
+            android:layout_marginLeft="10dp"
+            android:padding="10dp">
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:scaleType="fitXY"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_back"/>
+        </LinearLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -17,11 +17,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.scanqrlite.R;
 import com.example.scanqrlite.setting.Setting;
 
 public class QuestionAndAnswer extends Fragment {
+    LinearLayout layoutBack;
     ImageButton back;
     TextView txtQA1, txtQA2, txtQA3;
     LinearLayout btnQA1, btnQA2, btnQA3;
@@ -32,19 +34,37 @@ public class QuestionAndAnswer extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_question_and_answer, container, false);
-        back = (ImageButton) view.findViewById(R.id.btn_back);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.popBackStackImmediate();
-            }
-        });
         ORM(view);
+        onBack();
         HandlerClickQA1();
         HandlerClickQA2();
         HandlerClickA3();
         return view;
+    }
+
+    private void onBack() {
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment2 = new Setting();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.mainFrame, fragment2);
+                fragmentTransaction.commit();
+                onDestroy();
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment fragment2 = new Setting();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.mainFrame, fragment2);
+                fragmentTransaction.commit();
+                onDestroy();
+            }
+        });
     }
 
     private void HandlerClickA3() {
@@ -151,5 +171,8 @@ public class QuestionAndAnswer extends Fragment {
         imgQA1 = view.findViewById(R.id.img_QA1);
         imgQA2 = view.findViewById(R.id.img_QA2);
         imgQA3 = view.findViewById(R.id.img_QA3);
+
+        back = view.findViewById(R.id.btn_back);
+        layoutBack = view.findViewById(R.id.btn_back_layout);
     }
 }

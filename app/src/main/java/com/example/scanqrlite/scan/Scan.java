@@ -241,26 +241,45 @@ public class Scan extends Fragment {
                 String id = barcode.getDisplayValue();
                 Toast.makeText(getActivity(), id + "\n", Toast.LENGTH_SHORT);
             } else {
+                Intent intent = new Intent(getActivity(), ResultScan.class);
                 switch (valueType) {
                     case Barcode.TYPE_WIFI:
-                        String ssid = barcode.getWifi().getSsid();
+                        String SSID = barcode.getWifi().getSsid();
                         String password = barcode.getWifi().getPassword();
                         int type = barcode.getWifi().getEncryptionType();
                         String security;
-                        if(type == 1) security = "No Thing";
-                        else if(type == 2) security ="WPA/WPA2";
+                        if(type == 1) security = "nopass";
+                        else if(type == 2) security ="WPA";
                         else security = "WEP";
-                        Toast.makeText(getActivity(), ssid + "\n" + password + "\n"+ security,  Toast.LENGTH_SHORT);
+
+                        String content = "WIFI:T:" + security + ";S:" + SSID + ";P:" + password + ";H:false;";
+                        intent.putExtra("create_txt", content);
+                        intent.putExtra("S", SSID);
+                        intent.putExtra("P", password);
+                        intent.putExtra("T", security);
+                        intent.putExtra("create_title", "Wifi");
+                        intent.putExtra("type", "QRcode");
+                        
                         break;
                     case Barcode.TYPE_URL:
                         String url = barcode.getUrl().getUrl();
                         Toast.makeText(getActivity(),"URL: "+ url + "\n", Toast.LENGTH_SHORT);
+                        intent.putExtra("create_txt", url);
+                        intent.putExtra("create_title", "URL");
+                        intent.putExtra("type", "QRcode");
                         break;
                     case Barcode.TYPE_TEXT:
                         String text = barcode.getDisplayValue();
-                        Toast.makeText(getActivity(), "Note: " + text +"\n" , Toast.LENGTH_SHORT ).show();
+                        intent.putExtra("create_txt", text);
+                        intent.putExtra("create_title", "Text");
+                        intent.putExtra("type", "QRcode");
                         break;
                 }
+
+                onPause();
+                startActivity(intent);
+
+                break;
             }
         }
     }
