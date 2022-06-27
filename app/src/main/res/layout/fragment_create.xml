@@ -54,7 +54,8 @@
                     android:layout_marginRight="35dp"
                     android:layout_toLeftOf="@id/btn_url"
                     android:background="@drawable/ic_create_text_while"
-                    android:button="@android:color/transparent" />
+                    android:button="@android:color/transparent"
+                    android:elevation="2dp"/>
 
                 <RadioButton
                     android:id="@+id/btn_url"

@@ -323,8 +323,8 @@ public class Setting extends Fragment {
     }
 
     public void Vibrate() {
-        SharedPreferences vibrite = getActivity().getSharedPreferences("vibrite", Context.MODE_PRIVATE);
-        boolean check = vibrite.getBoolean("vibrite", false);
+        SharedPreferences vibrite = getActivity().getSharedPreferences("vibrate", Context.MODE_PRIVATE);
+        boolean check = vibrite.getBoolean("vibrate", false);
         if(check) {
             swVibrite.setChecked(true);
         } else {
@@ -333,13 +333,13 @@ public class Setting extends Fragment {
         btnVibrite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CheckSwitch(swVibrite, vibrite, "vibrite");
+                CheckSwitch(swVibrite, vibrite, "vibrate");
             }
         });
         swVibrite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CheckSwitch(swVibrite, vibrite, "vibrite");
+                CheckSwitch(swVibrite, vibrite, "vibrate");
             }
         });
     }

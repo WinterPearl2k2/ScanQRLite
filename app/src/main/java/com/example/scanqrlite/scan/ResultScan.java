@@ -87,8 +87,9 @@ public class ResultScan extends AppCompatActivity {
         intent = getIntent();
         String title = intent.getStringExtra("create_title");
         content = intent.getStringExtra("create_txt");
+        String type = intent.getStringExtra("type");
         ORM();
-        CheckLayout(title);
+        CheckLayout(title, type);
         BackLayout();
         CoppyToClipBoard();
         SearchGoogle();
@@ -267,37 +268,82 @@ public class ResultScan extends AppCompatActivity {
         Toast.makeText(ResultScan.this, "Success", Toast.LENGTH_SHORT).show();
     }
 
-    private void CheckLayout(String title) {
-        if(title.equals("Text")) {
-            txtTitleActionbar.setText("Text");
-            txtContent.setText(content);
-            txtTitle.setText("Note:");
-            btnSave.setVisibility(View.VISIBLE);
-            createQR(content);
-        } else if(title.equals("Wifi")) {
-            txtTitleActionbar.setText("Wifi");
-            txtTitle.setText("Network name:");
-            btnSave.setVisibility(View.VISIBLE);
-            btnWifi.setVisibility(View.VISIBLE);
-            if(intent.getStringExtra("P").length() != 0) {
-                containerPass.setVisibility(View.VISIBLE);
-                P = intent.getStringExtra("P");
-                txtContentPass.setText(P);
+    private void CheckLayout(String title, String type) {
+        if(type.equals("QRcode")) {
+            switch (title) {
+                case "Text":
+                    txtTitleActionbar.setText("Text");
+                    txtContent.setText(content);
+                    txtTitle.setText("Note:");
+                    btnSave.setVisibility(View.VISIBLE);
+                    createQR(content);
+                    break;
+                case "Wifi":
+                    txtTitleActionbar.setText("Wifi");
+                    txtTitle.setText("Network name:");
+                    btnSave.setVisibility(View.VISIBLE);
+                    btnWifi.setVisibility(View.VISIBLE);
+                    if(intent.getStringExtra("P").length() != 0) {
+                        containerPass.setVisibility(View.VISIBLE);
+                        P = intent.getStringExtra("P");
+                        txtContentPass.setText(P);
+                    }
+                    containerSecurity.setVisibility(View.VISIBLE);
+                    S = intent.getStringExtra("S");
+                    T = intent.getStringExtra("T");
+                    txtContent.setText(S);
+                    txtContentSecurity.setText(T);
+                    createQR(content);
+                    break;
+                case "URL":
+                    txtTitleActionbar.setText("URL");
+                    txtContent.setText(content);
+                    txtTitle.setText("URL:");
+                    btnSave.setVisibility(View.VISIBLE);
+                    btnURL.setVisibility(View.VISIBLE);
+                    createQR(content);
+                    break;
+                default:
+                    txtTitleActionbar.setText("Text");
+                    txtContent.setText(content);
+                    txtTitle.setText("Note:");
+                    btnSave.setVisibility(View.VISIBLE);
+                    createQR(content);
+                    break;
             }
-            containerSecurity.setVisibility(View.VISIBLE);
-            S = intent.getStringExtra("S");
-            T = intent.getStringExtra("T");
-            txtContent.setText(S);
-            txtContentSecurity.setText(T);
-            createQR(content);
-        } else if(title.equals("URL")) {
-            txtTitleActionbar.setText("URL");
-            txtContent.setText(content);
-            txtTitle.setText("URL:");
-            btnSave.setVisibility(View.VISIBLE);
-            btnURL.setVisibility(View.VISIBLE);
-            createQR(content);
+        } else if(type.equals("Barcode")){
+
         }
+//        if(title.equals("Text")) {
+//            txtTitleActionbar.setText("Text");
+//            txtContent.setText(content);
+//            txtTitle.setText("Note:");
+//            btnSave.setVisibility(View.VISIBLE);
+//            createQR(content);
+//        } else if(title.equals("Wifi")) {
+//            txtTitleActionbar.setText("Wifi");
+//            txtTitle.setText("Network name:");
+//            btnSave.setVisibility(View.VISIBLE);
+//            btnWifi.setVisibility(View.VISIBLE);
+//            if(intent.getStringExtra("P").length() != 0) {
+//                containerPass.setVisibility(View.VISIBLE);
+//                P = intent.getStringExtra("P");
+//                txtContentPass.setText(P);
+//            }
+//            containerSecurity.setVisibility(View.VISIBLE);
+//            S = intent.getStringExtra("S");
+//            T = intent.getStringExtra("T");
+//            txtContent.setText(S);
+//            txtContentSecurity.setText(T);
+//            createQR(content);
+//        } else if(title.equals("URL")) {
+//            txtTitleActionbar.setText("URL");
+//            txtContent.setText(content);
+//            txtTitle.setText("URL:");
+//            btnSave.setVisibility(View.VISIBLE);
+//            btnURL.setVisibility(View.VISIBLE);
+//            createQR(content);
+//        }
     }
 
     private void createQR(String content) {

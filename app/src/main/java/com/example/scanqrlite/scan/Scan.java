@@ -34,6 +34,7 @@ import android.util.Size;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.JavascriptInterface;
 import android.widget.Toast;
 
 import android.widget.ImageButton;
@@ -74,8 +75,6 @@ public class Scan extends Fragment {
         view = inflater.inflate(R.layout.fragment_scan, container, false);
         ORM(); //Ánh xạ
         ScanByGallery();
-        Beep();
-        Vibrate();
         //CopyToClipboard();
         return view;
     }
@@ -237,19 +236,17 @@ public class Scan extends Fragment {
             int valueType = barcode.getValueType();
             int bar = barcode.getFormat();
             // See API reference for complete list of supported types
-            if (bar != 256) {
-                String id = barcode.getDisplayValue();
-                Toast.makeText(getActivity(), id + "\n", Toast.LENGTH_SHORT);
-            } else {
-                Intent intent = new Intent(getActivity(), ResultScan.class);
+
+            Intent intent = new Intent(getActivity(), ResultScan.class);
+            if(bar == 256) {
                 switch (valueType) {
                     case Barcode.TYPE_WIFI:
                         String SSID = barcode.getWifi().getSsid();
                         String password = barcode.getWifi().getPassword();
                         int type = barcode.getWifi().getEncryptionType();
                         String security;
-                        if(type == 1) security = "nopass";
-                        else if(type == 2) security ="WPA";
+                        if (type == 1) security = "nopass";
+                        else if (type == 2) security = "WPA";
                         else security = "WEP";
 
                         String content = "WIFI:T:" + security + ";S:" + SSID + ";P:" + password + ";H:false;";
@@ -258,29 +255,36 @@ public class Scan extends Fragment {
                         intent.putExtra("P", password);
                         intent.putExtra("T", security);
                         intent.putExtra("create_title", "Wifi");
-                        intent.putExtra("type", "QRcode");
-                        
+
                         break;
                     case Barcode.TYPE_URL:
                         String url = barcode.getUrl().getUrl();
-                        Toast.makeText(getActivity(),"URL: "+ url + "\n", Toast.LENGTH_SHORT);
                         intent.putExtra("create_txt", url);
                         intent.putExtra("create_title", "URL");
-                        intent.putExtra("type", "QRcode");
                         break;
                     case Barcode.TYPE_TEXT:
                         String text = barcode.getDisplayValue();
                         intent.putExtra("create_txt", text);
                         intent.putExtra("create_title", "Text");
-                        intent.putExtra("type", "QRcode");
                         break;
                 }
-
-                onPause();
-                startActivity(intent);
-
-                break;
+                intent.putExtra("type", "QRcode");
+            } else {
+                switch (bar) {
+                    case 32:
+                    case 64:
+                    case 512:
+                    case 1024:
+                        intent.putExtra("create_txt", rawValue);
+                        intent.putExtra("create_title", "Product");
+                        intent.putExtra("type", "Barcode");
+                        break;
+                }
             }
+            Vibrate();
+            Beep();
+            onPause();
+            startActivity(intent);
         }
     }
     public void Beep()
@@ -303,8 +307,10 @@ public class Scan extends Fragment {
         else
             Viber(getContext(),"off");
     }
+
+    @JavascriptInterface
     public void Viber(Context ct, String value){
-        if(value.equals("no")) {
+        if(value.equals("on")) {
             Vibrator v = (Vibrator) ct.getSystemService(Context.VIBRATOR_SERVICE);
             v.vibrate(300);
         }

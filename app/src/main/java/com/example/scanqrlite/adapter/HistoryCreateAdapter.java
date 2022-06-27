@@ -1,28 +1,52 @@
 package com.example.scanqrlite.adapter;
 
+import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import androidx.appcompat.widget.PopupMenu;
+
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.appcompat.view.menu.MenuPopupHelper;
+import androidx.core.content.ContextCompat;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.scanqrlite.R;
 
 import com.example.scanqrlite.Test;
 import com.example.scanqrlite.history.History_Menu.HistoryCreateItem;
+import com.example.scanqrlite.history.IconMenuAdapter;
+import com.example.scanqrlite.history.IconPowerMenuItem;
 import com.example.scanqrlite.scan.ResultScan;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
+import com.skydoves.powermenu.CircularEffect;
+import com.skydoves.powermenu.CustomPowerMenu;
+import com.skydoves.powermenu.MenuAnimation;
+import com.skydoves.powermenu.OnMenuItemClickListener;
+import com.skydoves.powermenu.PowerMenu;
+import com.skydoves.powermenu.PowerMenuItem;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +56,8 @@ public class HistoryCreateAdapter extends RecyclerView.Adapter<HistoryCreateAdap
     List<HistoryCreateItem> createItemList;
     Bitmap bitmap;
     Context context;
+    CustomPowerMenu iconMenu;
+    LifecycleOwner lifecycleOwner;
 
     public HistoryCreateAdapter(Context context) {
         this.context = context;
@@ -81,6 +107,72 @@ public class HistoryCreateAdapter extends RecyclerView.Adapter<HistoryCreateAdap
             }
         });
 
+        holder.imgMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PowerMenu powerMenu = new PowerMenu.Builder(context)
+                        .addItem(new PowerMenuItem("Copy Text", R.drawable.ic_copy))
+                        .addItem(new PowerMenuItem("Search", R.drawable.ic_search))
+                        .addItem(new PowerMenuItem("Share", R.drawable.ic_share))
+                        .setAutoDismiss(true)
+                        .setLifecycleOwner(lifecycleOwner)
+                        .setMenuShadow(10f)
+                        .setMenuRadius(10f)
+                        .setIconSize(18)
+                        .setCircularEffect(CircularEffect.INNER)
+                        .setTextSize(18)
+                        .setSelectedMenuColor(ContextCompat.getColor(context, R.color.primary_btn))
+                        .setOnMenuItemClickListener(new OnMenuItemClickListener<PowerMenuItem>() {
+                            @Override
+                            public void onItemClick(int position, PowerMenuItem item) {
+
+                            }
+                        })
+                        .setOnMenuItemClickListener(new OnMenuItemClickListener<PowerMenuItem>() {
+                            @Override
+                            public void onItemClick(int position, PowerMenuItem item) {
+                                switch (position) {
+                                    case 0:
+                                        coppy(historyCreateItem.getResult());
+                                        break;
+                                    case 1:
+                                        search(historyCreateItem.getResult());
+                                        break;
+                                    case 2:
+                                        share(historyCreateItem.getResult());
+                                        break;
+                                    default: break;
+                                }
+                            }
+                        })
+                        .setInitializeRule(Lifecycle.Event.ON_CREATE, 0)
+                        .build();
+                    powerMenu.showAsDropDown(view, -450,-100);
+            }
+        });
+
+    }
+
+    private void share(String content) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, content);
+        context.startActivity(Intent.createChooser(intent, "Share via"));
+    }
+
+    private void search(String content) {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("https://www.google.com/search?q=" +
+                content));
+        context.startActivity(intent);
+    }
+
+    private void coppy(String content) {
+        ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clipData = ClipData.newPlainText("label", content);
+        clipboardManager.setPrimaryClip(clipData);
+        Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
     }
 
     private Bitmap CreateImage(String content) throws WriterException {
@@ -128,9 +220,9 @@ public class HistoryCreateAdapter extends RecyclerView.Adapter<HistoryCreateAdap
     }
 
     public class CreateViewHolder extends RecyclerView.ViewHolder {
-        private LinearLayout layoutItem;
+        private RelativeLayout layoutItem;
         private TextView txtTitle, txtContent, txtDate;
-        private ImageView imgQr;
+        private ImageView imgQr, imgMore;
 
         public CreateViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -139,6 +231,7 @@ public class HistoryCreateAdapter extends RecyclerView.Adapter<HistoryCreateAdap
             txtDate = itemView.findViewById(R.id.date_history_item);
             imgQr = itemView.findViewById(R.id.qr_image_history_item);
             layoutItem = itemView.findViewById(R.id.history_recycleview_item);
+            imgMore = itemView.findViewById(R.id.more_history_item);
         }
     }
 }
