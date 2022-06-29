@@ -369,6 +369,7 @@ public class Scan extends Fragment {
             Beep();
             onPause();
             startActivity(intent);
+            break;
         }
     }
     public void Beep()
