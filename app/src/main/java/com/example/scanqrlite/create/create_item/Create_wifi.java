@@ -197,6 +197,7 @@ public class Create_wifi extends Fragment {
         intent.putExtra("T", security);
         intent.putExtra("create_title", "Wifi");
         intent.putExtra("type", "QRcode");
+        intent.putExtra("type_barcode", "QRcode");
         DateTime dateTime = new DateTime();
         HistoryCreateItem createItem = new HistoryCreateItem("Wifi",SSID, dateTime.getDateTime(), content);
         createItem.setPassword(password);

@@ -65,7 +65,7 @@ import java.util.Random;
 public class ResultScan extends AppCompatActivity {
     ImageView btnBack, imgQR;
     Intent intent;
-    TextView txtTitleActionbar, txtContent, txtTitle;
+    TextView txtTitleActionbar, txtContent, txtTitle, txtBtnSave;
     TextView txtContentPass, txtContentSecurity;
     LinearLayout btnSave, btnURL, btnWifi, btnSaveBarcode;
     LinearLayout containerPass, containerSecurity;
@@ -154,16 +154,18 @@ public class ResultScan extends AppCompatActivity {
                     manager.reconnect();
                     startActivity(wifi);
                 } else {
-                    WifiNetworkSuggestion.Builder wifiNetworkSuggestionBuilder1 = new WifiNetworkSuggestion.Builder();
-                    wifiNetworkSuggestionBuilder1.setSsid(S);
-                    wifiNetworkSuggestionBuilder1.setWpa2Passphrase(P);
-                    WifiNetworkSuggestion wifiNetworkSuggestion = wifiNetworkSuggestionBuilder1.build();
-                    List<WifiNetworkSuggestion> list = new ArrayList<>();
-                    list.add(wifiNetworkSuggestion);
-                    manager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-                    manager.removeNetworkSuggestions(new ArrayList<WifiNetworkSuggestion>());
-                    manager.addNetworkSuggestions(list);
-                    coppy(P);
+                    if(intent.getStringExtra("P").length() != 0) {
+                        WifiNetworkSuggestion.Builder wifiNetworkSuggestionBuilder1 = new WifiNetworkSuggestion.Builder();
+                        wifiNetworkSuggestionBuilder1.setSsid(S);
+                        wifiNetworkSuggestionBuilder1.setWpa2Passphrase(P);
+                        WifiNetworkSuggestion wifiNetworkSuggestion = wifiNetworkSuggestionBuilder1.build();
+                        List<WifiNetworkSuggestion> list = new ArrayList<>();
+                        list.add(wifiNetworkSuggestion);
+                        manager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+                        manager.removeNetworkSuggestions(new ArrayList<WifiNetworkSuggestion>());
+                        manager.addNetworkSuggestions(list);
+                        coppy(P);
+                    }
                     startActivity(new Intent("android.settings.panel.action.INTERNET_CONNECTIVITY"));
                 }
 
@@ -214,14 +216,6 @@ public class ResultScan extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-//                MediaScannerConnection.scanFile(ResultScan.this, new String[]{file.toString()}, null,
-//                        new MediaScannerConnection.OnScanCompletedListener() {
-//                            @Override
-//                            public void onScanCompleted(String path, Uri uri) {
-//                                Log.i("ExternalStorage", "Scanned " + path + ":");
-//                                Log.i("ExternalStorage", "-> uri=" + uri);
-//                            }
-//                        });
                 Toast.makeText(ResultScan.this, "Success", Toast.LENGTH_SHORT).show();
             }
         });
@@ -239,15 +233,19 @@ public class ResultScan extends AppCompatActivity {
         });
     }
 
+    private void Search() {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse("https://www.google.com/search?q=" +
+                content));
+        startActivity(intent);
+    }
+
     private void SearchGoogle() {
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("https://www.google.com/search?q=" +
-                        content));
-                startActivity(intent);
+                Search();
             }
         });
     }
@@ -312,38 +310,21 @@ public class ResultScan extends AppCompatActivity {
                     break;
             }
         } else if(type.equals("Barcode")){
-
+            switch (title) {
+                case "Product":
+                    txtTitleActionbar.setText("Product");
+                    txtTitle.setText("Product:");
+                    break;
+                case "Text":
+                    txtTitleActionbar.setText("Text");
+                    txtTitle.setText("Note:");
+                    break;
+            }
+            txtContent.setText(content);
+            btnSave.setVisibility(View.VISIBLE);
+            createQR(content);
+            txtBtnSave.setText("Save barcode");
         }
-//        if(title.equals("Text")) {
-//            txtTitleActionbar.setText("Text");
-//            txtContent.setText(content);
-//            txtTitle.setText("Note:");
-//            btnSave.setVisibility(View.VISIBLE);
-//            createQR(content);
-//        } else if(title.equals("Wifi")) {
-//            txtTitleActionbar.setText("Wifi");
-//            txtTitle.setText("Network name:");
-//            btnSave.setVisibility(View.VISIBLE);
-//            btnWifi.setVisibility(View.VISIBLE);
-//            if(intent.getStringExtra("P").length() != 0) {
-//                containerPass.setVisibility(View.VISIBLE);
-//                P = intent.getStringExtra("P");
-//                txtContentPass.setText(P);
-//            }
-//            containerSecurity.setVisibility(View.VISIBLE);
-//            S = intent.getStringExtra("S");
-//            T = intent.getStringExtra("T");
-//            txtContent.setText(S);
-//            txtContentSecurity.setText(T);
-//            createQR(content);
-//        } else if(title.equals("URL")) {
-//            txtTitleActionbar.setText("URL");
-//            txtContent.setText(content);
-//            txtTitle.setText("URL:");
-//            btnSave.setVisibility(View.VISIBLE);
-//            btnURL.setVisibility(View.VISIBLE);
-//            createQR(content);
-//        }
     }
 
     private void createQR(String content) {
@@ -363,17 +344,35 @@ public class ResultScan extends AppCompatActivity {
         int sizeHeight = 264;
 
         Map hints = new HashMap();
-        hints.put(EncodeHintType.MARGIN, 1);
+        hints.put(EncodeHintType.MARGIN, 0);
 
         BitMatrix matrix = null;
-        String type = intent.getStringExtra("type");
+        String type = intent.getStringExtra("type_barcode");
         switch (type) {
             case "QRcode":
                 matrix = new MultiFormatWriter().encode(content, BarcodeFormat.QR_CODE, sizeWidth, sizeWidth, hints);
                 break;
-//            default:
-//                matrix = new MultiFormatWriter().encode(content, BarcodeFormat.QR_CODE, sizeWidth, sizeWidth);
-//                break;
+            case "EAN_13":
+                matrix = new MultiFormatWriter().encode(content, BarcodeFormat.EAN_13, sizeWidth, sizeHeight, hints);
+                break;
+            case "EAN_8":
+                matrix = new MultiFormatWriter().encode(content, BarcodeFormat.EAN_8, sizeWidth, sizeHeight, hints);
+                break;
+            case "UPC_A":
+                matrix = new MultiFormatWriter().encode(content, BarcodeFormat.UPC_A, sizeWidth, sizeHeight, hints);
+                break;
+            case "UPC_E":
+                matrix = new MultiFormatWriter().encode(content, BarcodeFormat.UPC_E, sizeWidth, sizeHeight, hints);
+                break;
+            case "Code_128":
+                matrix = new MultiFormatWriter().encode(content, BarcodeFormat.CODE_128, sizeWidth, sizeHeight, hints);
+                break;
+            case "Code_2of5":
+                matrix = new MultiFormatWriter().encode(content, BarcodeFormat.ITF, sizeWidth, sizeHeight, hints);
+                break;
+            case "Code_39":
+                matrix = new MultiFormatWriter().encode(content, BarcodeFormat.CODE_39, sizeWidth, sizeHeight, hints);
+                break;
         }
 
         int width = matrix.getWidth();
@@ -423,5 +422,6 @@ public class ResultScan extends AppCompatActivity {
         containerPass = findViewById(R.id.container_content_pass);
         containerSecurity = findViewById(R.id.container_content_security);
         txtTitle = findViewById(R.id.title_5);
+        txtBtnSave = findViewById(R.id.txt_btn_save);
     }
 }

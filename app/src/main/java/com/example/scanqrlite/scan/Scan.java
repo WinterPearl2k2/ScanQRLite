@@ -2,20 +2,20 @@ package com.example.scanqrlite.scan;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Point;
-import android.graphics.Rect;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.AudioManager;
 import android.media.Image;
 import android.media.ToneGenerator;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.camera.core.Camera;
 import androidx.camera.core.CameraSelector;
 import androidx.camera.core.ImageAnalysis;
@@ -29,17 +29,19 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Vibrator;
-import android.provider.MediaStore;
+import android.util.Log;
 import android.util.Size;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
-import android.widget.Toast;
 
 import android.widget.ImageButton;
 
+import com.example.scanqrlite.DateTime;
 import com.example.scanqrlite.R;
+import com.example.scanqrlite.history.History_Menu.HistoryScanItem;
+import com.example.scanqrlite.history.History_Menu.database.ScanDatabase;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -51,6 +53,8 @@ import com.google.mlkit.vision.barcode.BarcodeScanning;
 import com.google.mlkit.vision.barcode.common.Barcode;
 import com.google.mlkit.vision.common.InputImage;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -67,6 +71,9 @@ public class Scan extends Fragment {
     private ImageButton  btnGallery;
     private ImageButton btnFlash, btnPhoto_Library;
     private boolean mFlash = false;
+    private String title, typeScan, result, content, type;
+    private boolean checkWifi = false;
+    String security, SSID, password;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -88,14 +95,6 @@ public class Scan extends Fragment {
                 startActivityForResult(gallery, 102);
             }
         });
-        previewView=view.findViewById(R.id.cameraPreviewView);
-
-
-        btnFlash=view.findViewById(R.id.btn_flash);
-        btnPhoto_Library=view.findViewById(R.id.btn_gallery);
-        btnPhoto_Library.setOnClickListener(view1 -> startActivityForResult(new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI), GET_FROM_GALLERY));
-        cameraExecutor=Executors.newSingleThreadExecutor();
-        cameraProviderFuture=ProcessCameraProvider.getInstance(requireActivity());
     }
 
     private void FlashSwitch(Camera camera) {
@@ -152,6 +151,31 @@ public class Scan extends Fragment {
     }
 
     @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == 102) {
+            if(data == null || data.getData() == null) {
+                Log.e("TAG", "The uri is null, probably the user cancelled the image selection process using the back button.");
+                return;
+            }
+
+            Uri uri = data.getData();
+
+            InputStream inputStream = null;
+            try {
+                inputStream = getActivity().getContentResolver().openInputStream(uri);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+            InputImage inputImage = InputImage.fromBitmap(bitmap, 0);
+            scanbarcodegalerry(inputImage);
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(requestCode == 101 && grantResults.length > 0) {
@@ -186,9 +210,29 @@ public class Scan extends Fragment {
         Camera camera = processCameraProvider.bindToLifecycle(getActivity(), cameraSelector, preview, imageCapture, imageAnalysis);
         FlashSwitch(camera);
     }
-    public void analyze(@NonNull ImageProxy image) {
-        scanbarcode(image);
+
+    private void scanbarcodegalerry(InputImage image) {
+//        @SuppressLint("UnsafeOptInUsageError") Image image1 = image.getImage();
+//        assert image1 != null;
+//        InputImage inputImage = InputImage.fromMediaImage(image1, image.getImageInfo().getRotationDegrees());
+        BarcodeScannerOptions options = new BarcodeScannerOptions.Builder()
+                .setBarcodeFormats(Barcode.FORMAT_QR_CODE,
+                        Barcode.FORMAT_AZTEC,
+                        Barcode.FORMAT_CODE_128,
+                        Barcode.FORMAT_CODE_93,Barcode.FORMAT_EAN_8,Barcode.FORMAT_EAN_13
+                        ,Barcode.FORMAT_CODE_39,Barcode.FORMAT_ALL_FORMATS
+                        ,Barcode.FORMAT_CODABAR,Barcode.FORMAT_ITF,Barcode.FORMAT_UPC_A,Barcode.FORMAT_UPC_E)
+                .build();
+        BarcodeScanner scanner = BarcodeScanning.getClient(options);
+        Task<List<Barcode>> result = scanner.process(image)
+                .addOnSuccessListener(new OnSuccessListener<List<Barcode>>() {
+                    @Override
+                    public void onSuccess(List<Barcode> barcodes) {
+                        readerBarcodeData(barcodes);
+                    }
+                });
     }
+
     private void scanbarcode(ImageProxy image) {
         @SuppressLint("UnsafeOptInUsageError") Image image1 = image.getImage();
         assert image1 != null;
@@ -228,59 +272,99 @@ public class Scan extends Fragment {
 
     private void readerBarcodeData(List<Barcode> barcodes) {
         for (Barcode barcode: barcodes) {
-            Rect bounds = barcode.getBoundingBox();
-            Point[] corners = barcode.getCornerPoints();
 
             String rawValue = barcode.getRawValue();
 
             int valueType = barcode.getValueType();
             int bar = barcode.getFormat();
-            // See API reference for complete list of supported types
 
             Intent intent = new Intent(getActivity(), ResultScan.class);
             if(bar == 256) {
                 switch (valueType) {
                     case Barcode.TYPE_WIFI:
-                        String SSID = barcode.getWifi().getSsid();
-                        String password = barcode.getWifi().getPassword();
+                        SSID = barcode.getWifi().getSsid();
+                        password = barcode.getWifi().getPassword();
                         int type = barcode.getWifi().getEncryptionType();
-                        String security;
                         if (type == 1) security = "nopass";
                         else if (type == 2) security = "WPA";
                         else security = "WEP";
+                        content = SSID;
+                        result = "WIFI:T:" + security + ";S:" + SSID + ";P:" + password + ";H:false;";
+                        title = "Wifi";
 
-                        String content = "WIFI:T:" + security + ";S:" + SSID + ";P:" + password + ";H:false;";
-                        intent.putExtra("create_txt", content);
                         intent.putExtra("S", SSID);
                         intent.putExtra("P", password);
                         intent.putExtra("T", security);
-                        intent.putExtra("create_title", "Wifi");
+                        checkWifi = true;
 
                         break;
                     case Barcode.TYPE_URL:
                         String url = barcode.getUrl().getUrl();
-                        intent.putExtra("create_txt", url);
-                        intent.putExtra("create_title", "URL");
+                        content = url;
+                        result = url;
+                        title = "URL";
                         break;
                     case Barcode.TYPE_TEXT:
                         String text = barcode.getDisplayValue();
-                        intent.putExtra("create_txt", text);
-                        intent.putExtra("create_title", "Text");
+                        content = text;
+                        result = text;
+                        title = "Text";
                         break;
                 }
-                intent.putExtra("type", "QRcode");
+                type = "QRcode";
+                typeScan = "QRcode";
+                intent.putExtra("type", type);
+                intent.putExtra("type_barcode", typeScan);
+                intent.putExtra("create_title", title);
+                intent.putExtra("create_txt", result);
             } else {
                 switch (bar) {
+                    case Barcode.FORMAT_CODE_128:
+                        typeScan = "Code_128";
+                        title = "Text";
+                        break;
+                    case 2:
+                        typeScan = "Code_39";
+                        title = "Text";
+                        break;
                     case 32:
+                        typeScan = "EAN_13";
+                        title = "Product";
+                        break;
                     case 64:
+                        typeScan = "EAN_8";
+                        title = "Product";
+                        break;
+                    case 128:
+                        typeScan = "Code_2of5";
+                        title = "Product";
+                        break;
                     case 512:
+                        typeScan = "UPC_A";
+                        title = "Product";
+                        break;
                     case 1024:
-                        intent.putExtra("create_txt", rawValue);
-                        intent.putExtra("create_title", "Product");
-                        intent.putExtra("type", "Barcode");
+                        typeScan = "UPC_E";
+                        title = "Product";
                         break;
                 }
+                type = "Barcode";
+                intent.putExtra("type", type);
+                intent.putExtra("type_barcode", typeScan);
+                intent.putExtra("create_title", title);
+                intent.putExtra("create_txt", rawValue);
+                content = rawValue;
+                result = rawValue;
             }
+
+            DateTime dateTime = new DateTime();
+            HistoryScanItem historyScanItem = new HistoryScanItem(title, content, dateTime.getDateTime(), result);
+            historyScanItem.setTypeScan(typeScan);
+            if(checkWifi) {
+                historyScanItem.setSecurity(security);
+                historyScanItem.setPassword(password);
+            }
+            ScanDatabase.getInstance(getContext()).scanItemDAO().insertItem(historyScanItem);
             Vibrate();
             Beep();
             onPause();

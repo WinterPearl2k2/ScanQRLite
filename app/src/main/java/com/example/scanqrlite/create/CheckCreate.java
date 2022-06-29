@@ -61,6 +61,7 @@ public class CheckCreate {
                             intent.putExtra("create_txt", editText.getText().toString().trim());
                             intent.putExtra("create_title", type);
                             intent.putExtra("type", "QRcode");
+                            intent.putExtra("type_barcode", "QRcode");
                             //
                             DateTime dateTime = new DateTime();
                             HistoryCreateItem createItem = new HistoryCreateItem(type, editText.getText().toString().trim(), dateTime.getDateTime(),
