@@ -74,8 +74,6 @@ public class Scan extends Fragment {
         view = inflater.inflate(R.layout.fragment_scan, container, false);
         ORM(); //Ánh xạ
         ScanByGallery();
-        Beep();
-        Vibrate();
         //CopyToClipboard();
         return view;
     }
@@ -187,9 +185,6 @@ public class Scan extends Fragment {
         Camera camera = processCameraProvider.bindToLifecycle(getActivity(), cameraSelector, preview, imageCapture, imageAnalysis);
         FlashSwitch(camera);
     }
-    public void analyze(@NonNull ImageProxy image) {
-        scanbarcode(image);
-    }
     private void scanbarcode(ImageProxy image) {
         @SuppressLint("UnsafeOptInUsageError") Image image1 = image.getImage();
         assert image1 != null;
@@ -241,6 +236,8 @@ public class Scan extends Fragment {
                 String id = barcode.getDisplayValue();
                 Toast.makeText(getActivity(), id + "\n", Toast.LENGTH_SHORT);
             } else {
+                Beep();
+                Vibrate();
                 Intent intent = new Intent(getActivity(), ResultScan.class);
                 switch (valueType) {
                     case Barcode.TYPE_WIFI:
@@ -276,6 +273,7 @@ public class Scan extends Fragment {
                         break;
                 }
 
+
                 onPause();
                 startActivity(intent);
 
@@ -283,15 +281,15 @@ public class Scan extends Fragment {
             }
         }
     }
-    public void Beep()
-    {
+    public void Beep(){
         SharedPreferences beep;
         beep = getContext().getSharedPreferences("beep",0);
-        boolean check = beep.getBoolean("beep", false);
-        if(check == true){
-            final ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_NOTIFICATION,100);
+        boolean check = beep.getBoolean("beep",false);
+        if(check ==true){
+            final ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 500);
             tg.startTone(ToneGenerator.TONE_PROP_BEEP);
         }
+
     }
     public void Vibrate(){
         SharedPreferences vibrate;
@@ -303,12 +301,11 @@ public class Scan extends Fragment {
         else
             Viber(getContext(),"off");
     }
-    public void Viber(Context ct, String value){
-        if(value.equals("no")) {
+    public void Viber(Context ct, String value) {
+        if (value.equals("on")) {
             Vibrator v = (Vibrator) ct.getSystemService(Context.VIBRATOR_SERVICE);
             v.vibrate(300);
         }
-
     }
 
     public void onPause() {
