@@ -372,15 +372,15 @@ public class Scan extends Fragment {
             break;
         }
     }
-    public void Beep()
-    {
+    public void Beep(){
         SharedPreferences beep;
         beep = getContext().getSharedPreferences("beep",0);
-        boolean check = beep.getBoolean("beep", false);
-        if(check == true){
-            final ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_NOTIFICATION,100);
+        boolean check = beep.getBoolean("beep",false);
+        if(check ==true){
+            final ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 500);
             tg.startTone(ToneGenerator.TONE_PROP_BEEP);
         }
+
     }
     public void Vibrate(){
         SharedPreferences vibrate;
@@ -399,7 +399,6 @@ public class Scan extends Fragment {
             Vibrator v = (Vibrator) ct.getSystemService(Context.VIBRATOR_SERVICE);
             v.vibrate(300);
         }
-
     }
 
     public void onPause() {

@@ -1,38 +1,23 @@
 package com.example.scanqrlite.scan;
 
-import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import android.content.BroadcastReceiver;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.net.ConnectivityManager;
-import android.net.MacAddress;
-import android.net.Network;
-import android.net.NetworkCapabilities;
-import android.net.NetworkInfo;
-import android.net.NetworkRequest;
 import android.net.Uri;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
-import android.net.wifi.WifiNetworkSpecifier;
 import android.net.wifi.WifiNetworkSuggestion;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.Window;
@@ -41,12 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.scanqrlite.MainActivity;
 import com.example.scanqrlite.R;
-import com.example.scanqrlite.adapter.HistoryCreateAdapter;
-import com.example.scanqrlite.history.History_Menu.HistoryCreateItem;
-import com.example.scanqrlite.history.History_Menu.History_Create;
-import com.example.scanqrlite.history.History_Menu.database.CreateDatabase;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
@@ -91,7 +71,7 @@ public class ResultScan extends AppCompatActivity {
         ORM();
         CheckLayout(title, type);
         BackLayout();
-        CoppyToClipBoard();
+        CoppyQR();
         SearchGoogle();
         ShareToOthersApp();
         SaveImage();
@@ -164,7 +144,7 @@ public class ResultScan extends AppCompatActivity {
                         manager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
                         manager.removeNetworkSuggestions(new ArrayList<WifiNetworkSuggestion>());
                         manager.addNetworkSuggestions(list);
-                        coppy(P);
+                        copyTextToClipboard(P);
                     }
                     startActivity(new Intent("android.settings.panel.action.INTERNET_CONNECTIVITY"));
                 }
@@ -250,20 +230,35 @@ public class ResultScan extends AppCompatActivity {
         });
     }
 
-    private void CoppyToClipBoard() {
+    private void CoppyQR() {
         btnCopy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                coppy(content);
+                copyTextToClipboard(content);
             }
         });
     }
 
-    private void coppy(String content) {
+    private void copyTextToClipboard(String content) {
         ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clipData = ClipData.newPlainText("label", content);
         clipboardManager.setPrimaryClip(clipData);
-        Toast.makeText(ResultScan.this, "Success", Toast.LENGTH_SHORT).show();
+        Toast.makeText(ResultScan.this, " Coppy Success", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        doCopy();
+    }
+
+    public void doCopy(){
+        SharedPreferences coppy ;
+        coppy = getSharedPreferences("clipboard",0 );
+        boolean check = coppy.getBoolean("clipboard",false);
+        if(check==true){
+            copyTextToClipboard(content);
+        }
     }
 
     private void CheckLayout(String title, String type) {

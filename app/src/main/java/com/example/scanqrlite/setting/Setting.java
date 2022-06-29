@@ -2,10 +2,17 @@ package com.example.scanqrlite.setting;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -13,27 +20,35 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Vibrator;
 import android.text.Html;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.scanqrlite.BuildConfig;
 import com.example.scanqrlite.R;
 import com.example.scanqrlite.setting.settingitem.QuestionAndAnswer;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.willy.ratingbar.BaseRatingBar;
 import com.willy.ratingbar.ScaleRatingBar;
 
+import java.util.Locale;
+
 public class Setting extends Fragment {
     private SwitchCompat swBeep, swVibrite, swClipboard;
-    private LinearLayout btnBeep, btnVibrite, btnClipboard, btnQA, btnChangeLanguage, btnFeedback, btnRate;
+    private LinearLayout btnBeep, btnVibrite, btnClipboard, btnQA, btnChangeLanguage, btnFeedback, btnRate, btnVersion;
+    private ImageButton btnClickX;
     private RadioButton itemEnglish, itemFrance, itemChina, itemGermany, itemKorea, itemVietnam;
-    private TextView txtLanguage;
+    private TextView txtLanguage, txtVersion;
     private ScaleRatingBar rtRating;
     private TextView btnRatingClose, btnRatingVote, btnRatingFeedback,
             btnRatingVoteAgain, btnRatingOpenChplay, txtTitleRating;
@@ -53,8 +68,11 @@ public class Setting extends Fragment {
         ChangeLanguage();
         QA();
         FeedBack();
+
         RateOnCHPlay();
+        Version();
         return view;
+
     }
 
     private void RateOnCHPlay() {
@@ -73,6 +91,12 @@ public class Setting extends Fragment {
                         HandleRating(dialog);
                     }
                 });
+                btnClickX.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
                 HandleRating(dialog);
                 dialog.show();
             }
@@ -87,14 +111,6 @@ public class Setting extends Fragment {
                     imgRating.setImageResource(R.drawable.img_love);
                     txtTitleRating.setText("Thank you for voting for the app");
                     btnRatingClose.setVisibility(View.VISIBLE);
-                    btnRatingClose.setText("Close");
-                    btnRatingVoteAgain.setVisibility(View.GONE);
-                    btnRatingClose.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            dialog.dismiss();
-                        }
-                    });
                     btnRatingOpenChplay.setVisibility(View.VISIBLE);
                     btnRatingFeedback.setVisibility(View.GONE);
                     btnRatingVote.setVisibility(View.GONE);
@@ -152,6 +168,7 @@ public class Setting extends Fragment {
         rtRating = dialog.findViewById(R.id.rt_rating);
         imgRating = dialog.findViewById(R.id.img_rating);
         txtTitleRating = dialog.findViewById(R.id.txt_title_rating);
+        btnClickX = dialog.findViewById(R.id.clickX_btn);
     }
 
     private void FeedBack() {
@@ -168,6 +185,11 @@ public class Setting extends Fragment {
                 dialog.show();
             }
         });
+    }
+    private void ORMDialogFeedback(Dialog dialog) {
+        txtContentFeedback = dialog.findViewById(R.id.txt_feedback);
+        btnFeedbackYes = dialog.findViewById(R.id.btn_feedback_yes);
+        btnFeedbackNo = dialog.findViewById(R.id.btn_feedback_no);
     }
 
     private void HandleFeedback(Dialog dialog) {
@@ -186,15 +208,26 @@ public class Setting extends Fragment {
         btnFeedbackYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Writing something
+                submitFeedback();
             }
         });
     }
 
-    private void ORMDialogFeedback(Dialog dialog) {
-        txtContentFeedback = dialog.findViewById(R.id.txt_feedback);
-        btnFeedbackYes = dialog.findViewById(R.id.btn_feedback_yes);
-        btnFeedbackNo = dialog.findViewById(R.id.btn_feedback_no);
+    public void submitFeedback(){
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+//        emailIntent.setType("text/email");
+        String EmailList = "nnhuquynh2603@gmail.com";
+
+        String feedback_title = " Scan QR Lite Feedback ";
+        emailIntent.setData(Uri.parse("mailto:" + EmailList + "?subject=" + feedback_title));
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, EmailList);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, feedback_title);
+
+        try{
+            startActivity(Intent.createChooser(emailIntent, "Send Email"));
+        } catch (android.content.ActivityNotFoundException ex){
+            Toast.makeText(getActivity(), "Email not installed", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void QA() {
@@ -300,6 +333,8 @@ public class Setting extends Fragment {
         sheetDialog.show();
     }
 
+
+
     private void CopyToClipboard() {
         SharedPreferences clipboard = getActivity().getSharedPreferences("clipboard", Context.MODE_PRIVATE);
         boolean check = clipboard.getBoolean("clipboard", false);
@@ -324,7 +359,7 @@ public class Setting extends Fragment {
 
     public void Vibrate() {
         SharedPreferences vibrite = getActivity().getSharedPreferences("vibrate", Context.MODE_PRIVATE);
-        boolean check = vibrite.getBoolean("vibrate", false);
+        boolean check = vibrite.getBoolean("vabrate", false);
         if(check) {
             swVibrite.setChecked(true);
         } else {
@@ -381,6 +416,10 @@ public class Setting extends Fragment {
         editor.commit();
     }
 
+    private void Version() {
+        txtVersion.setText("Version Lite: " + BuildConfig.VERSION_NAME);
+    }
+
     private void ORM() {
         swBeep = view.findViewById(R.id.sw_beep);
         swVibrite = view.findViewById(R.id.sw_vibrite);
@@ -393,6 +432,7 @@ public class Setting extends Fragment {
         txtLanguage = view.findViewById(R.id.txt_language);
         btnFeedback = view.findViewById(R.id.btn_feedback);
         btnRate = view.findViewById(R.id.btn_rate);
-
+        btnVersion = view.findViewById(R.id.verion);
+        txtVersion = view.findViewById(R.id.txt_version);
     }
 }
