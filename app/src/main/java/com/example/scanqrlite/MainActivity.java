@@ -35,6 +35,7 @@ import com.example.scanqrlite.history.History_Menu.database.CreateDatabase;
 import com.example.scanqrlite.scan.Scan;
 import com.example.scanqrlite.setting.Setting;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.concurrent.ExecutionException;
 
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     MenuAdapter menuAdapter;
     RelativeLayout layout_menu, layout_permisson;
     Button btn_permisson;
+    ImageButton btnCloseTutorial;
     private FrameLayout mainFragment;
 
     Fragment scanFragment = new Scan();
@@ -62,9 +64,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ORM(); // Ánh xạ
         Layout();
-//        SetUpViewPager();
-//        EventButtonNavigation();
         PermissionCheck();
+    }
+
+    private void sendTutorial() {
+        SharedPreferences.Editor preferences = getSharedPreferences("tutorial", MODE_PRIVATE).edit();
+        preferences.putBoolean("tutorial", true);
+        preferences.apply();
     }
 
     @Override
@@ -161,10 +167,12 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 layout_menu.setVisibility(View.VISIBLE);
                 layout_permisson.setVisibility(View.GONE);
+                sendTutorial();
             }
         } else {
             layout_menu.setVisibility(View.VISIBLE);
             layout_permisson.setVisibility(View.GONE);
+            sendTutorial();
         }
     }
 
@@ -174,9 +182,11 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode == 200 && ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
             layout_menu.setVisibility(View.VISIBLE);
             layout_permisson.setVisibility(View.GONE);
+            sendTutorial();
         } else if(requestCode == 101 && ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
             layout_menu.setVisibility(View.VISIBLE);
             layout_permisson.setVisibility(View.GONE);
+            sendTutorial();
         }
     }
 
@@ -199,6 +209,7 @@ public class MainActivity extends AppCompatActivity {
                 if(grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     layout_menu.setVisibility(View.VISIBLE);
                     layout_permisson.setVisibility(View.GONE);
+                    sendTutorial();
                     break;
                 }
                 String permission = permissions[0];
@@ -214,58 +225,6 @@ public class MainActivity extends AppCompatActivity {
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-    }
-
-    private void EventButtonNavigation() {
-        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.Scan:
-                        viewPager2.setCurrentItem(0, false);
-                        break;
-                    case R.id.Create:
-                        viewPager2.setCurrentItem(1, false);
-                        break;
-                    case R.id.History:
-                        viewPager2.setCurrentItem(2, false);
-                        break;
-                    case R.id.Setting:
-                        viewPager2.setCurrentItem(3, false);
-                        break;
-                }
-                return false;
-            }
-        });
-    }
-
-    private void SetUpViewPager() {
-        menuAdapter = new MenuAdapter(this);
-        viewPager2.setAdapter(menuAdapter);
-//        viewPager2.setUserInputEnabled(false);
-        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageSelected(int position) {
-                super.onPageSelected(position);
-                switch (position) {
-                    case 0:
-                        navigationView.getMenu().findItem(R.id.Scan).setChecked(true);
-                        break;
-                    case 1:
-                        navigationView.getMenu().findItem(R.id.Create).setChecked(true);
-                        break;
-                    case 2:
-                        navigationView.getMenu().findItem(R.id.History).setChecked(true);
-                        break;
-                    case 3:
-                        navigationView.getMenu().findItem(R.id.Setting).setChecked(true);
-                        break;
-                    default:
-                        navigationView.getMenu().findItem(R.id.Scan).setChecked(true);
-                        break;
-                }
-            }
-        });
     }
 
     private void ORM() {

@@ -46,6 +46,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.mlkit.vision.barcode.BarcodeScanner;
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions;
@@ -69,7 +71,7 @@ public class Scan extends Fragment {
     private View view;
     private ImageAnalysis.Analyzer analyzer;
     private ImageButton  btnGallery;
-    private ImageButton btnFlash, btnPhoto_Library;
+    private ImageButton btnFlash, btnCloseTutorial;
     private boolean mFlash = false;
     private String title, typeScan, result, content, type;
     private boolean checkWifi = false;
@@ -82,8 +84,31 @@ public class Scan extends Fragment {
         view = inflater.inflate(R.layout.fragment_scan, container, false);
         ORM(); //Ánh xạ
         ScanByGallery();
-        //CopyToClipboard();
+//        Tutorial();
         return view;
+    }
+
+    private void Tutorial() {
+        SharedPreferences preferences = getActivity().getSharedPreferences("tutorial", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        boolean checkTutorial = preferences.getBoolean("tutorial", false);
+        if(checkTutorial) {
+            editor.putBoolean("tutorial", false);
+            editor.apply();
+            BottomSheetDialog sheetDialog = new BottomSheetDialog(getContext(), R.style.BottomSheetDialog);
+            View view = getLayoutInflater().inflate(R.layout.tutorial, null);
+            sheetDialog.setContentView(view);
+            btnCloseTutorial = view.findViewById(R.id.btn_ok_tutorial);
+            onPause();
+            btnCloseTutorial.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    sheetDialog.dismiss();
+                    onResume();
+                }
+            });
+            sheetDialog.show();
+        }
     }
 
     private void ScanByGallery() {
@@ -424,5 +449,6 @@ public class Scan extends Fragment {
             e.printStackTrace();
         }
         bindpreview(processCameraProvider);
+        Tutorial();
     }
 }
