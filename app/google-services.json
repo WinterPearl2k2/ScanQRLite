@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "453380818094",
+    "project_id": "scanqrlite",
+    "storage_bucket": "scanqrlite.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453380818094:android:2cc3157002520514be193f",
+        "android_client_info": {
+          "package_name": "com.example.scanqrlite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453380818094-9oet31kjnhggg77aptbeu1740ua2vi47.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADJ6SRkXjf2D8pEGA2wiWsZKyTsSddKj8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "453380818094-9oet31kjnhggg77aptbeu1740ua2vi47.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

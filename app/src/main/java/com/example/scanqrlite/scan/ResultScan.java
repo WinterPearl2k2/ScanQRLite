@@ -27,6 +27,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.scanqrlite.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
@@ -53,6 +55,8 @@ public class ResultScan extends AppCompatActivity {
     Bitmap bitmap;
     String content, S, P, T;
     WifiManager manager;
+    private AdView adsViewResult;
+    AdRequest adRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +81,33 @@ public class ResultScan extends AppCompatActivity {
         SaveImage();
         GoToURL();
         ConnectToWifi();
+        showAds();
+    }
+
+    private void showAds() {
+        adRequest = new AdRequest.Builder().build();
+        adsViewResult.loadAd(adRequest);
+    }
+
+    @Override
+    public void onPause() {
+        if(adsViewResult != null)
+            adsViewResult.pause();
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(adsViewResult != null)
+            adsViewResult.destroy();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(adsViewResult != null)
+            adsViewResult.resume();
     }
 
     private void ConnectToWifi() {
@@ -418,5 +449,6 @@ public class ResultScan extends AppCompatActivity {
         containerSecurity = findViewById(R.id.container_content_security);
         txtTitle = findViewById(R.id.title_5);
         txtBtnSave = findViewById(R.id.txt_btn_save);
+        adsViewResult = findViewById(R.id.adsViewResult);
     }
 }

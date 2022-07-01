@@ -18,11 +18,15 @@ import com.example.scanqrlite.R;
 import com.example.scanqrlite.create.create_item.Create_Text;
 import com.example.scanqrlite.create.create_item.Create_Url;
 import com.example.scanqrlite.create.create_item.Create_wifi;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 public class Create extends Fragment {
 
     RadioButton btnText, btnURL, btnWifi;
     FrameLayout createLayout;
+    AdView adsViewCreate;
+    AdRequest adRequest;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -31,7 +35,35 @@ public class Create extends Fragment {
         View view = inflater.inflate(R.layout.fragment_create, container, false);
         ORM(view);
         SwitchView();
+        ShowAds();
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        if(adsViewCreate != null)
+            adsViewCreate.pause();
+        super.onStart();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(adsViewCreate != null)
+            adsViewCreate.resume();
+    }
+
+    @Override
+    public void onDestroy() {
+        if (adsViewCreate != null) {
+            adsViewCreate.destroy();
+        }
+        super.onDestroy();
+    }
+
+    private void ShowAds() {
+        adRequest = new AdRequest.Builder().build();
+        adsViewCreate.loadAd(adRequest);
     }
 
     private void SwitchView() {
@@ -132,5 +164,6 @@ public class Create extends Fragment {
         btnURL = view.findViewById(R.id.btn_url);
         btnWifi = view.findViewById(R.id.btn_wifi);
         createLayout = view.findViewById(R.id.create_Layout);
+        adsViewCreate = view.findViewById(R.id.adsView_Create);
     }
 }

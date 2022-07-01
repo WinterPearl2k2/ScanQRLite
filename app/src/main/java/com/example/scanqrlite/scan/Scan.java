@@ -42,6 +42,8 @@ import com.example.scanqrlite.DateTime;
 import com.example.scanqrlite.R;
 import com.example.scanqrlite.history.History_Menu.HistoryScanItem;
 import com.example.scanqrlite.history.History_Menu.database.ScanDatabase;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -76,6 +78,8 @@ public class Scan extends Fragment {
     private String title, typeScan, result, content, type;
     private boolean checkWifi = false;
     String security, SSID, password;
+    private AdView mAdView;
+    AdRequest adRequest;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -85,7 +89,21 @@ public class Scan extends Fragment {
         ORM(); //Ánh xạ
         ScanByGallery();
 //        Tutorial();
+        showAds();
         return view;
+    }
+
+    private void showAds() {
+        adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+    }
+
+    @Override
+    public void onDestroy() {
+        if (mAdView != null) {
+            mAdView.destroy();
+        }
+        super.onDestroy();
     }
 
     private void Tutorial() {
@@ -173,6 +191,7 @@ public class Scan extends Fragment {
 
         btnFlash = view.findViewById(R.id.btn_flash);
         btnGallery = view.findViewById(R.id.btn_gallery);
+        mAdView = view.findViewById(R.id.adsViewScan);
     }
 
     @Override
@@ -427,7 +446,13 @@ public class Scan extends Fragment {
     }
 
     public void onPause() {
+
+        if (mAdView != null) {
+            mAdView.pause();
+        }
+
         super.onPause();
+
         ProcessCameraProvider processCameraProvider = null;
         try {
             processCameraProvider = cameraProviderFuture.get();
@@ -435,11 +460,17 @@ public class Scan extends Fragment {
             e.printStackTrace();
         }
         processCameraProvider.unbindAll();
+        super.onPause();
     }
 
     @Override
     public void onResume() {
         super.onResume();
+
+        if (mAdView != null) {
+            mAdView.resume();
+        }
+
         ProcessCameraProvider processCameraProvider = null;
         try {
             processCameraProvider = (ProcessCameraProvider) cameraProviderFuture.get();

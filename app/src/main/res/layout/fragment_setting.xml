@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -247,18 +248,21 @@
             android:textSize="30sp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/img_ads_2"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
+        <com.google.android.gms.ads.AdView
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:id="@+id/adsViewSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/img_ads_test"/>
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad_unit_id"
+            android:layout_gravity="center_horizontal">
+        </com.google.android.gms.ads.AdView>
     </LinearLayout>
 
 </RelativeLayout>

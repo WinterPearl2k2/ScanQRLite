@@ -16,6 +16,8 @@ import android.widget.TextView;
 import com.example.scanqrlite.R;
 import com.example.scanqrlite.history.History_Menu.History_Create;
 import com.example.scanqrlite.history.History_Menu.History_Scan;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
@@ -24,6 +26,8 @@ public class History extends Fragment {
     TabItem tabScan, tabCreate;
     TabLayout tabContainer;
     TextView title_history;
+    AdView adsViewHistory;
+    AdRequest adRequest;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,8 +37,34 @@ public class History extends Fragment {
         ORM(view);
 
         switchLayout();
-
+        showAds();
         return view;
+    }
+
+    private void showAds() {
+        adRequest = new AdRequest.Builder().build();
+        adsViewHistory.loadAd(adRequest);
+    }
+
+    @Override
+    public void onPause() {
+        if(adsViewHistory != null)
+            adsViewHistory.pause();
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        if(adsViewHistory != null)
+            adsViewHistory.resume();
+        super.onResume();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(adsViewHistory != null)
+            adsViewHistory.destroy();
     }
 
     private void switchLayout() {
@@ -98,5 +128,6 @@ public class History extends Fragment {
         tabCreate = view.findViewById(R.id.tab_create);
         tabContainer = view.findViewById(R.id.tab_container);
         title_history = view.findViewById(R.id.title_history);
+        adsViewHistory = view.findViewById(R.id.adsViewHistory);
     }
 }

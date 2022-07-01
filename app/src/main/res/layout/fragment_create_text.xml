@@ -53,8 +53,8 @@
             android:layout_below="@id/layout_input"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
             android:background="@null"
-            android:src="@drawable/ic_button"
-            android:layout_marginBottom="10dp" />
+            android:src="@drawable/ic_button" />
     </RelativeLayout>
 </ScrollView>

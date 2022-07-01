@@ -37,6 +37,9 @@ import android.widget.Toast;
 import com.example.scanqrlite.BuildConfig;
 import com.example.scanqrlite.R;
 import com.example.scanqrlite.setting.settingitem.QuestionAndAnswer;
+import com.google.android.gms.ads.AdLoader;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.willy.ratingbar.BaseRatingBar;
 import com.willy.ratingbar.ScaleRatingBar;
@@ -55,7 +58,9 @@ public class Setting extends Fragment {
     private TextView txtContentFeedback, btnFeedbackYes, btnFeedbackNo;
     private ImageView imgRating;
     View view;
-    private Vibrator vibrator;
+    AdView adsViewSetting;
+    AdRequest adRequest;
+    AdLoader adLoader;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,11 +73,37 @@ public class Setting extends Fragment {
         ChangeLanguage();
         QA();
         FeedBack();
-
+        showAds();
         RateOnCHPlay();
         Version();
         return view;
 
+    }
+
+    private void showAds() {
+        adRequest = new AdRequest.Builder().build();
+        adsViewSetting.loadAd(adRequest);
+    }
+
+    @Override
+    public void onPause() {
+        if(adsViewSetting != null)
+            adsViewSetting.pause();
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(adsViewSetting != null)
+            adsViewSetting.destroy();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(adsViewSetting != null)
+            adsViewSetting.resume();
     }
 
     private void RateOnCHPlay() {
@@ -434,5 +465,6 @@ public class Setting extends Fragment {
         btnRate = view.findViewById(R.id.btn_rate);
         btnVersion = view.findViewById(R.id.verion);
         txtVersion = view.findViewById(R.id.txt_version);
+        adsViewSetting = view.findViewById(R.id.adsViewSetting);
     }
 }
