@@ -22,6 +22,7 @@
             android:layout_above="@+id/btnNavigation"/>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:splitMotionEvents="false"
             android:id="@+id/btnNavigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ORM(); // Ánh xạ
+
         Layout();
         PermissionCheck();
     }
@@ -86,49 +88,40 @@ public class MainActivity extends AppCompatActivity {
                 layout_permisson.setVisibility(View.GONE);
             }
         }
+
+//        getSupportFragmentManager().beginTransaction().add(R.id.mainFrame, scanFragment).commit();
+//        navigationView.setSelectedItemId(R.id.Scan);
         super.onStart();
     }
 
-//    @Override
-//    protected void onResume() {
-//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-//                    != PackageManager.PERMISSION_GRANTED) {
-////                requestPermissions(new String[]{Manifest.permission.CAMERA}, 101);
-//                layout_menu.setVisibility(View.GONE);
-//                layout_permisson.setVisibility(View.VISIBLE);
-//                onRestart();
-//            } else {
-//                layout_menu.setVisibility(View.VISIBLE);
-//                layout_permisson.setVisibility(View.GONE);
-//            }
-//        }
-//        super.onResume();
-//    }
+
+    @Override
+    protected void onResume() {
+        navigationView.setSelectedItemId(R.id.Scan);
+        super.onResume();
+    }
 
     private void Layout() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, scanFragment).commit();
-        navigationView.setSelectedItemId(R.id.Scan);
+        getSupportFragmentManager().beginTransaction().add(R.id.mainFrame, scanFragment).commit();
 
         navigationView.setOnItemSelectedListener(item -> {
+            Fragment fragment = null;
             switch (item.getItemId()) {
-
                 case R.id.Scan:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, scanFragment).commit();
-                    return true;
+                    fragment = scanFragment;
+                    break;
                 case R.id.Create:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, createFragment).commit();
-                    return true;
+                    fragment = createFragment;
+                    break;
                 case R.id.History:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, historyFragment).commit();
-                    return true;
+                    fragment = historyFragment;
+                    break;
                 case R.id.Setting:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, settingFragment).commit();
-                    return true;
-                default:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, scanFragment).commit();
-                    return true;
+                    fragment = settingFragment;
+                    break;
             }
+            getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, fragment).commit();
+            return true;
         });
 
     }
