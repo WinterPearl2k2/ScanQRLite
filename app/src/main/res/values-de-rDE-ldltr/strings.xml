@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    // Button nav-->
+    <string name="app_name">ScanQRLite</string>
+    <string name="menu_scan">Scannen</string>
+    <string name="menu_create">Schaffen</string>
+    <string name="menu_history">Geschichte</string>
+    <string name="menu_setting">Einstellung</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+<!--    // Tutorial-->
+    <string name="title_tutorial">Um den Code zu scannen, richten Sie Ihre Kamera darauf</string>
+    <string name="tutorial_first">Vermeiden Sie auf dem Code reflektiertes Licht oder Schatten.</string>
+    <string name="tutorial_second">Platzieren Sie Ihr Telefon so, dass es auf den Code zeigt, ohne es zu neigen</string>
+    <string name="allow_permission">ERLAUBEN </string>
+    <string name="warming">WARNUNG</string>
+    <string name="notification">Das Scannen von Barcodes erfordert eine Kameraerlaubnis</string>
+
+<!--    // Scan-->
+    <string name="focus">QR/Barcode in Bereich fokussieren</string>
+    <string name="gallery">GALERIE</string>
+    <string name="flash">BLITZ</string>
+
+<!--    //Create-->
+    <string name="title_create">Schaffen</string>
+    <string name="create_button">SCHAFFEN</string>
+    <string name="text_button">Text</string>
+    <string name="url_button">URL</string>
+    <string name="wifi_button">W-lan</string>
+    <!--    // Create_Text-->
+        <string name="content">Inhalt</string>
+        <string name="enter_text">Hier Text eingeben</string>
+        <string name="please_enter_your_content">Bitte geben Sie Ihre Inhalte ein</string>
+    <!--    // Create_URL-->
+        <string name="url">URL</string>
+        <string name="enter_url">URL hier eingeben</string>
+        <string name="please_enter_your_url">Bitte geben Sie Ihre URL ein</string>
+    <!--    // Create_Wifi-->
+        <string name="network_name">Netzwerkname</string>
+        <string name="enter_network_name"> Geben Sie hier den Netzwerknamen ein</string>
+        <string name="password_">Passwort</string>
+        <string name="enter_password">Geben Sie hier das Passwort ein</string>
+        <string name="security">Sicherheit</string>
+        <string name="account_not_be_blank">Konto darf nicht leer sein</string>
+        <string name="password_please_enter_more_than_8_character">Passwort bitte mehr als 8 Zeichen eingeben</string>
+
+<!--    //Result-->
+    <string name="copy_success">Erfolg Kopieren</string>
+    <string name="save_QR">QR SPEICHERN</string>
+    <!--    // Result_Text-->
+        <string name="title_text">Text</string>
+        <string name="note">Notiz</string>
+    <!--    //Result_URL-->
+        <string name="title_url">URL</string>
+        <string name="url_name">URL</string>
+        <string name="goto_url">GOTO-URL</string>
+    <!--    // Result_Wifi-->
+        <string name="title_wifi">W-lan</string>
+        <string name="connect">VERBINDEN</string>
+
+<!-- History-->
+    <string name="title_history">Geschichte</string>
+    <string name="title_scan_hs">Scane</string>
+    <string name="title_create_hs">Schaffen</string>
+    <string name="copy_text">Text kopieren</string>
+    <string name="search">Suche</string>
+    <string name="share">Teilen</string>
+
+<!--    //Setting-->
+    <string name="title_settings">Einstellungen</string>
+    <string name="beep">Signalton</string>
+    <string name="vibrate">Vibrieren</string>
+    <string name="auto_copy">Zwischenablage automatisch kopieren</string>
+    <string name="change_language">Sprache ändern</string>
+    <string name="english">Englisch</string>
+    <string name="french">Französisch</string>
+    <string name="german">Deutsch</string>
+    <string name="chinese">Chinesisch</string>
+    <string name="korean">Koreanisch</string>
+    <string name="vietnamese">Vietnamesisch</string>
+    <!--    // Question and answer -->
+        <string name="question_and_answer">Frage und Antwort</string>
+        <string name="question_1">Why is QR code not working?</string>
+        <string name="content_question_1">Sometimes the QR code contains website links. If the website is not working,
+                only the company that owns the website (and may have created the QR code) can fix that. Unfortunately, we can not do anything in this case</string>
+        <string name="question_2">Can I scan the code into a PDF file</string>
+        <string name="content_question_2">There are yes, steps will as this: Open a PDF file and capture the screen using the screen capture function.
+            Then, scan the screen</string>
+        <string name="question_3">Does the app have an API or similar software</string>
+        <string name="content_question_3">Our QR Scanner can be launched from other websites through the interface setup program</string>
+    <!--    // Feedback-->
+        <string name="feedback">Feedback</string>
+        <string name="dialog_question_feedback">Many questions have been answered in "Question &amp; answer".
+                If possible, take or attach a barcode or screenshot</string>
+        <string name="no">No</string>
+        <string name="yes">Yes</string>
+    <!--    // Rate me on CHPlay-->
+        <string name="rate">Bewerte mich auf CH Play</string>
+        <string name="vote">Vote</string>
+        <string name="vote_again">Vote again</string>
+        <string name="feddback_in_rate_me">Feedback</string>
+        <string name="open_chplay">OpenCHPlay</string>
+        <string name="Ratings_to_boost">Ratings to boost your app rankings on the app market</string>
+        <string name="report_bug">Report bugs and let us know what needs improvemnet</string>
+        <string name="thank_you">Thank you for voting for the app</string>
+    <string name="version">Ausführung Lite: 1.0</string>
+</resources>

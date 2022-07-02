@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    // Button nav-->
+    <string name="app_name">ScanQRLite</string>
+    <string name="menu_scan">Quét</string>
+    <string name="menu_create">Tạo</string>
+    <string name="menu_history">Lịch sử</string>
+    <string name="menu_setting">Cài đặt</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">haha</string>
+
+<!--    // Tutorial-->
+    <string name="title_tutorial">Để quét mã, hãy hướng máy ảnh của bạn vào nó</string>
+    <string name="tutorial_first">Trên mã, tránh ánh sáng phản chiếu hoặc bóng tối.</string>
+    <string name="tutorial_second">Đặt điện thoại của bạn hướng thẳng  với mã và không bị nghiêng hoặc lệch</string>
+    <string name="allow_permission">CHO PHÉP </string>
+    <string name="warming">CẢNH BÁO</string>
+    <string name="notification">Quét mã vạch cần máy ảnh cho phép</string>
+
+<!--    // Scan-->
+    <string name="focus">Tập trung QR / mã vạch vào khu vực</string>
+    <string name="gallery">THƯ VIỆN</string>
+    <string name="flash">ĐÈN PIN</string>
+
+<!--    //Create-->
+    <string name="title_create">Tạo</string>
+    <string name="create_button">TẠO</string>
+    <string name="text_button">Văn bản</string>
+    <string name="url_button">Liên kết</string>
+    <string name="wifi_button">Wifi</string>
+    <!--    // Create_Text-->
+        <string name="content">Nội dung</string>
+        <string name="enter_text">Nhập văn bản ở đây</string>
+        <string name="please_enter_your_content">Vui lòng nhập nội dung của bạn</string>
+    <!--    // Create_URL-->
+        <string name="url">Liên kết </string>
+        <string name="enter_url">Nhập liên kết ở đây</string>
+        <string name="please_enter_your_url">Vui lòng nhập liên kết của bạn</string>
+    <!--    // Create_Wifi-->
+        <string name="network_name">Tên mạng</string>
+        <string name="enter_network_name"> Vui lòng nhập tên mạng của bạn</string>
+        <string name="password_">Mật khẩu</string>
+        <string name="enter_password">Nhập mật khẩu ở đây</string>
+        <string name="security">Bảo mật</string>
+        <string name="account_not_be_blank">Tài khoản không được để trống</string>
+        <string name="password_please_enter_more_than_8_character">Mật khẩu vui lòng nhập nhiều hơn 8 ký tự</string>
+
+<!--    //Result-->
+    <string name="copy_success">Sao chép thành công</string>
+    <string name="save_QR">LƯU QR</string>
+    <!--    // Result_Text-->
+    <string name="title_text">Văn bản</string>
+    <string name="note">Ghi chú</string>
+    <!--    //Result_URL-->
+    <string name="title_url">Liên kết</string>
+    <string name="url_name">Liên kết</string>
+    <string name="goto_url">ĐI ĐẾN LIÊN KẾT</string>
+    <!--    // Result_Wifi-->
+    <string name="title_wifi">Wifi</string>
+    <string name="connect">KẾT NỐI</string>
+
+<!-- History-->
+    <string name="title_history">Lịch sử</string>
+    <string name="title_scan_hs">Quét mã</string>
+    <string name="title_create_hs">Tạo mã</string>
+    <string name="copy_text">Sao chép văn bản</string>
+    <string name="search">Tìm kiếm</string>
+    <string name="share">Chia sẻ</string>
+
+<!--    //Setting-->
+    <string name="title_settings">Cài đặt</string>
+    <string name="beep">Tiếng kêu bíp</string>
+    <string name="vibrate">Rung</string>
+    <string name="auto_copy">Tự động sao chép vào bộ nhớ tạm</string>
+    <string name="change_language">Ngôn ngữ</string>
+    <string name="english">Tiếng Anh</string>
+    <string name="french">Tiếng Pháp</string>
+    <string name="german">Tiếng Đức</string>
+    <string name="chinese">Tiếng Trung Quốc</string>
+    <string name="korean">Tiếng Hàn Quốc</string>
+    <string name="vietnamese">Tiếng Việt Nam</string>
+    <!--    // Question and answer -->
+        <string name="question_and_answer">Câu hỏi và trả lời</string>
+        <string name="question_1">Why is QR code not working?</string>
+        <string name="content_question_1">Sometimes the QR code contains website links. If the website is not working,
+                only the company that owns the website (and may have created the QR code) can fix that. Unfortunately, we can not do anything in this case</string>
+        <string name="question_2">Can I scan the code into a PDF file</string>
+        <string name="content_question_2">There are yes, steps will as this: Open a PDF file and capture the screen using the screen capture function.
+        Then, scan the screen</string>
+        <string name="question_3">Does the app have an API or similar software</string>
+        <string name="content_question_3">Our QR Scanner can be launched from other websites through the interface setup program</string>
+    <!--    // Feedback-->
+        <string name="feedback">Phản hồi</string>
+        <string name="dialog_question_feedback">Many questions have been answered in "Question &amp; answer".
+                If possible, take or attach a barcode or screenshot</string>
+        <string name="no">No</string>
+        <string name="yes">Yes</string>
+    <!--    // Rate me on CHPlay-->
+        <string name="rate">Đánh giá trên CHPlay</string>
+        <string name="vote">Vote</string>
+        <string name="vote_again">Vote again</string>
+        <string name="feddback_in_rate_me">Feedback</string>
+        <string name="open_chplay">OpenCHPlay</string>
+        <string name="Ratings_to_boost">Ratings to boost your app rankings on the app market</string>
+        <string name="report_bug">Report bugs and let us know what needs improvemnet</string>
+        <string name="thank_you">Thank you for voting for the app</string>
+
+    <string name="version">Phiên bản: 1.0</string>
+</resources>

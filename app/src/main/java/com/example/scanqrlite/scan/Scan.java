@@ -410,6 +410,7 @@ public class Scan extends Fragment {
             e.printStackTrace();
         }
         processCameraProvider.unbindAll();
+        btnFlash.setImageResource(R.drawable.btn_flah_off);
     }
 
     @Override

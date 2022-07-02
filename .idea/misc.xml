@@ -77,11 +77,16 @@
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/ic_setting.xml" value="0.1" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/ic_union.xml" value="0.2835" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/activity_main.xml" value="0.1259259259259259" />
+        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/activity_result_scan.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/dialog_feedback.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/dialog_language.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/dialog_rate.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_question_and_answer.xml" value="0.23822463768115942" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_result_generator.xml" value="0.67" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_scan.xml" value="0.23596014492753623" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_setting.xml" value="0.23596014492753623" />
+        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/popup_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/tutorial.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>

@@ -53,7 +53,7 @@
             android:layout_marginStart="34dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="34dp"
-            android:text="2. Place your phone in such away that it faces the code without tilting"
+            android:text="2. Place your phone in such a way that it faces the code without tilting"
             android:textAllCaps="false"
             android:textColor="@color/normal_btn"
             android:textSize="20sp" />
