@@ -292,24 +292,24 @@ public class Setting extends Fragment {
                 txtLanguage.setText("English");
                 itemEnglish.setChecked(true);
                 break;
-            case "France":
-                txtLanguage.setText("France");
+            case "French":
+                txtLanguage.setText("French");
                 itemFrance.setChecked(true);
                 break;
-            case "Korea":
-                txtLanguage.setText("Korea");
+            case "Korean":
+                txtLanguage.setText("Korean");
                 itemKorea.setChecked(true);
                 break;
-            case "Vietnam":
-                txtLanguage.setText("Vietnam");
+            case "Vietnamese":
+                txtLanguage.setText("Vietnamese");
                 itemVietnam.setChecked(true);
                 break;
-            case "Germany":
-                txtLanguage.setText("Germany");
+            case "German":
+                txtLanguage.setText("German");
                 itemGermany.setChecked(true);
                 break;
-            case "China":
-                txtLanguage.setText("China");
+            case "Chinese":
+                txtLanguage.setText("Chinese");
                 itemChina.setChecked(true);
                 break;
             default:
@@ -338,23 +338,23 @@ public class Setting extends Fragment {
                         txtLanguage.setText("English");
                         break;
                     case R.id.item_france:
-                        editor.putString("language","France");
+                        editor.putString("language","French");
                         txtLanguage.setText("France");
                         break;
                     case R.id.item_germany:
-                        editor.putString("language","Germany");
+                        editor.putString("language","German");
                         txtLanguage.setText("Germany");
                         break;
                     case R.id.item_china:
-                        editor.putString("language","China");
+                        editor.putString("language","Chinese");
                         txtLanguage.setText("China");
                         break;
                     case R.id.item_korea:
-                        editor.putString("language","Korea");
+                        editor.putString("language","Korean");
                         txtLanguage.setText("Korea");
                         break;
                     case R.id.item_vietnam:
-                        editor.putString("language","Vietnam");
+                        editor.putString("language","Vietnamese");
                         txtLanguage.setText("Vietnam");
                         break;
                 }

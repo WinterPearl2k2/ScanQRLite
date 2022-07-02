@@ -1,31 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 <!--    // Button nav-->
-    <string name="app_name">ScanQRLite</string>
-    <string name="menu_scan">Scan</string>
-    <string name="menu_create">Create</string>
-    <string name="menu_history">History</string>
-    <string name="menu_setting">Setting</string>
+    <string name="app_name">SCanQRLite</string>
+    <string name="menu_scan">주사</string>
+    <string name="menu_create">만들다</string>
+    <string name="menu_history">역사</string>
+    <string name="menu_setting">환경</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <!-- AdMob ad unit IDs -->
-    <string name="banner_home_footer">ca-app-pub-0664570763252260/3326522424</string>
-    <string name="interstitial_full_screen">ca-app-pub-0664570763252260/1769900428</string>
-    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="hello_blank_fragment">안녕하세요 빈 조각</string>
 
 <!--    // Tutorial-->
-    <string name="title_tutorial">To scan the code, point your camera at it.</string>
-    <string name="tutorial_first">On the code, avoid reflected light or shadow.</string>
-    <string name="tutorial_second">Place your phone in such a way that it faces the code without tilting</string>
-    <string name="allow_permission">ALLOW PERMISSION </string>
-    <string name="warming">WARNING!</string>
-    <string name="notification">Scan barcode need permission Camera</string>
+    <string name="title_tutorial">코드를 스캔하려면 카메라로 코드를 가리키세요</string>
+    <string name="tutorial_first">코드에서 반사광이나 그림자를 피하십시오</string>
+    <string name="tutorial_second">휴대전화가 기울어지지 않고 코드를 향하도록 배치하세요</string>
+    <string name="allow_permission">허가 허용 </string>
+    <string name="warming">경고</string>
+    <string name="notification">바코드 스캔 권한 카메라 필요a</string>
 
 <!--    // Scan-->
-    <string name="focus">focus QR / barcode into area</string>
-    <string name="gallery">GALLERY</string>
-    <string name="flash">FLASH</string>
+    <string name="focus">영역에 QR/바코드 초점 맞추기</string>
+    <string name="gallery">갤러리</string>
+    <string name="flash">플래시</string>
 
-<!--    //Create-->
+    <!--    //Create-->
     <string name="title_create">Create</string>
     <string name="create_button">CREATE</string>
     <string name="text_button">Text</string>
@@ -48,20 +45,15 @@
         <string name="account_not_be_blank">Account not be blank</string>
         <string name="password_please_enter_more_than_8_character">Password please enter more than 8 character</string>
 
-    <string-array name="strings_type_internet_dropdown">
-        <item>WPA/ WPA2</item>
-        <item>WEP</item>
-        <item>Nothing</item>
-    </string-array>
-
 <!--    //Result-->
-        <string name="copy_success">Copy Success</string>
-        <string name="save_QR">SAVE QR</string>
+    <string name="copy_success">Copy Success</string>
+    <string name="save_QR">SAVE QR</string>
     <!--    // Result_Text-->
         <string name="title_text">Text</string>
         <string name="note">Note</string>
     <!--    //Result_URL-->
         <string name="title_url">URL</string>
+        <string name="url_name">URL</string>
         <string name="goto_url">GOTO URL</string>
     <!--    // Result_Wifi-->
         <string name="title_wifi">Wifi</string>
@@ -80,19 +72,18 @@
     <string name="beep">Beep</string>
     <string name="vibrate">Vibrate</string>
     <string name="auto_copy">Auto copy clipboard</string>
-    <!--    // Change language-->
-        <string name="change_language">Change Language</string>
-        <string name="english">English</string>
-        <string name="french">French</string>
-        <string name="german">German</string>
-        <string name="chinese">Chinese</string>
-        <string name="korean">Korean</string>
-        <string name="vietnamese">Vietnamese</string>
+    <string name="change_language">Change Language</string>
+    <string name="english">English</string>
+    <string name="french">French</string>
+    <string name="german">German</string>
+    <string name="chinese">Chinese</string>
+    <string name="korean">Korean</string>
+    <string name="vietnamese">Vietnamese</string>
     <!--    // Question and answer -->
         <string name="question_and_answer">Question &amp; answer</string>
         <string name="question_1">Why is QR code not working?</string>
         <string name="content_question_1">Sometimes the QR code contains website links. If the website is not working,
-            only the company that owns the website (and may have created the QR code) can fix that. Unfortunately, we can not do anything in this case</string>
+                only the company that owns the website (and may have created the QR code) can fix that. Unfortunately, we can not do anything in this case</string>
         <string name="question_2">Can I scan the code into a PDF file</string>
         <string name="content_question_2">There are yes, steps will as this: Open a PDF file and capture the screen using the screen capture function.
             Then, scan the screen</string>
@@ -101,7 +92,7 @@
     <!--    // Feedback-->
         <string name="feedback">Feedback</string>
         <string name="dialog_question_feedback">Many questions have been answered in "Question &amp; answer".
-            If possible, take or attach a barcode or screenshot</string>
+                If possible, take or attach a barcode or screenshot</string>
         <string name="no">No</string>
         <string name="yes">Yes</string>
     <!--    // Rate me on CHPlay-->
@@ -111,7 +102,7 @@
         <string name="feddback_in_rate_me">Feedback</string>
         <string name="open_chplay">OpenCHPlay</string>
         <string name="Ratings_to_boost">Ratings to boost your app rankings on the app market</string>
-        <string name="report_bug">Report bugs and let us know what needs improvement</string>
+        <string name="report_bug">Report bugs and let us know what needs improvemnet</string>
         <string name="thank_you">Thank you for voting for the app</string>
 
     <string name="version">Version Lite: 1.0</string>

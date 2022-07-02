@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    // Button nav-->
+    <string name="app_name">扫描二维码精简版</string>
+    <string name="menu_scan">扫描</string>
+    <string name="menu_create">创造</string>
+    <string name="menu_history">历史</string>
+    <string name="menu_setting">环境</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">你好空白片段</string>
+
+<!--    // Tutorial-->
+    <string name="title_tutorial">要扫描代码，请将相机对准它</string>
+    <string name="tutorial_first">在代码上，避免反射光或阴影。</string>
+    <string name="tutorial_second">将手机放置在面向代码而不倾斜的位置</string>
+    <string name="allow_permission">允许权限 </string>
+    <string name="warming">警告</string>
+    <string name="notification">扫描条码需要许可摄像头</string>
+
+<!--    // Scan-->
+    <string name="focus">将 QR/条形码聚焦到区域</string>
+    <string name="gallery">画廊</string>
+    <string name="flash">闪光</string>
+
+<!--    //Create-->
+    <string name="title_create">创造</string>
+    <string name="create_button">创造</string>
+    <string name="text_button">文本</string>
+    <string name="url_button">网址</string>
+    <string name="wifi_button">无线上网</string>
+    <!--    // Create_Text-->
+        <string name="content">内容</string>
+        <string name="enter_text">在此输入文字</string>
+        <string name="please_enter_your_content">请输入您的内容</string>
+    <!--    // Create_URL-->
+        <string name="url">网址</string>
+        <string name="enter_url">在此处输入网址</string>
+        <string name="please_enter_your_url">请输入您的网址</string>
+    <!--    // Create_Wifi-->
+        <string name="network_name">网络名字</string>
+        <string name="enter_network_name"> 在此处输入网络名称</string>
+        <string name="password_">密码</string>
+        <string name="enter_password">在此输入密码</string>
+        <string name="security">安全</string>
+        <string name="account_not_be_blank">帐号不能为空</string>
+        <string name="password_please_enter_more_than_8_character">密码请输入8位以上</string>
+
+
+<!--    //Result-->
+    <string name="copy_success">复制成功</string>
+    <string name="save_QR">保存二维码</string>
+    <!--    // Result_Text-->
+    <string name="title_text">文本</string>
+    <string name="note">笔记</string>
+    <!--    //Result_URL-->
+    <string name="title_url">网址</string>
+    <string name="url_name">网址</string>
+    <string name="goto_url">转到网址</string>
+    <!--    // Result_Wifi-->
+    <string name="title_wifi">无线上网</string>
+    <string name="connect">连接</string>
+
+<!-- History-->
+    <string name="title_history">历史</string>
+    <string name="title_scan_hs">扫描</string>
+    <string name="title_create_hs">创造</string>
+    <string name="copy_text">复制文本</string>
+    <string name="search">搜索</string>
+    <string name="share">分享</string>
+
+<!--    //Setting-->
+    <string name="title_settings">设置</string>
+    <string name="beep">嘟</string>
+    <string name="vibrate">颤动</string>
+    <string name="auto_copy">自动复制剪贴板</string>
+    <string name="change_language">改变语言</string>
+    <string name="english">英语</string>
+    <string name="french">法语</string>
+    <string name="german">德语</string>
+    <string name="chinese">中国人</string>
+    <string name="korean">韩国人</string>
+    <string name="vietnamese">V越南语</string>
+    <!--    // Question and answer -->
+        <string name="question_and_answer">问题和答案</string>
+        <string name="question_1">Why is QR code not working?</string>
+        <string name="content_question_1">Sometimes the QR code contains website links. If the website is not working,
+                only the company that owns the website (and may have created the QR code) can fix that. Unfortunately, we can not do anything in this case</string>
+        <string name="question_2">Can I scan the code into a PDF file</string>
+        <string name="content_question_2">There are yes, steps will as this: Open a PDF file and capture the screen using the screen capture function.
+            Then, scan the screen</string>
+        <string name="question_3">Does the app have an API or similar software</string>
+        <string name="content_question_3">Our QR Scanner can be launched from other websites through the interface setup program</string>
+    <!--    // Feedback-->
+        <string name="feedback">反馈</string>
+        <string name="dialog_question_feedback">Many questions have been answered in "Question &amp; answer".
+                If possible, take or attach a barcode or screenshot</string>
+        <string name="no">No</string>
+        <string name="yes">Yes</string>
+    <!--    // Rate me on CHPlay-->
+        <string name="rate">在 CHPlay 上给我评分</string>
+        <string name="vote">Vote</string>
+        <string name="vote_again">Vote again</string>
+        <string name="feddback_in_rate_me">Feedback</string>
+        <string name="open_chplay">OpenCHPlay</string>
+        <string name="Ratings_to_boost">Ratings to boost your app rankings on the app market</string>
+        <string name="report_bug">Report bugs and let us know what needs improvemnet</string>
+        <string name="thank_you">Thank you for voting for the app</string>
+
+    <string name="version">精简版：1.0</string>
+</resources>
