@@ -36,13 +36,13 @@
                 android:background="@null"
                 android:gravity="top"
                 android:hint="Enter text here"
+                android:inputType="none"
                 android:maxHeight="250dp"
                 android:minHeight="136dp"
                 android:paddingLeft="12dp"
                 android:paddingTop="0dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="12dp"
-                android:imeOptions="actionDone|actionPrevious"
                 android:textSize="20sp"/>
 
         </LinearLayout>

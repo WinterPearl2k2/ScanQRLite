@@ -29,17 +29,16 @@
             android:textStyle="bold" />
 
         <com.google.android.gms.ads.AdView
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:descendantFocusability="blocksDescendants"
             android:id="@+id/adsView_Create"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/container_btn_create"
             android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="20dp"
             ads:adSize="BANNER"
-            ads:adUnitId="@string/banner_ad_unit_id"
-            android:layout_gravity="center_horizontal">
-        </com.google.android.gms.ads.AdView>
+            ads:adUnitId="@string/banner_ad_unit_id"/>
 
         <RadioGroup
             android:id="@+id/container_btn_create"

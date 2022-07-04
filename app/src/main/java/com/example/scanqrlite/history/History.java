@@ -115,7 +115,7 @@ public class History extends Fragment {
                 fragment = new History_Scan();
                 break;
         }
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.history_layout, fragment);
         fragmentTransaction.commit();

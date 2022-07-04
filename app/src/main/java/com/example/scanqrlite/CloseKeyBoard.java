@@ -18,14 +18,14 @@ public class CloseKeyBoard implements View.OnTouchListener {
     public void closeKB(Activity activity) {
         InputMethodManager im = (InputMethodManager)
                 activity.getSystemService(INPUT_METHOD_SERVICE);
-        im.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(),
-                0);
+        if (im.isAcceptingText())
+            im.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
     }
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         if (view instanceof ViewGroup) {
-            closeKB(mActivity); 
+            closeKB(mActivity);
             return true;
         }
         return false;

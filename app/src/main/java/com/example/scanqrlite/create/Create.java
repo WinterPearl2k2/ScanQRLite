@@ -118,7 +118,7 @@ public class Create extends Fragment {
             default: fragment2 = new Create_Text();
                 break;
         }
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.create_Layout, fragment2);
         fragmentTransaction.commit();

@@ -10,14 +10,17 @@ import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.scanqrlite.CloseKeyBoard;
@@ -48,7 +51,6 @@ public class Create_wifi extends Fragment {
         View view = inflater.inflate(R.layout.fragment_create_wifi, container, false);
         ORM(view);
         view.setOnTouchListener(new CloseKeyBoard(getActivity()));
-
         create();
         return view;
     }
