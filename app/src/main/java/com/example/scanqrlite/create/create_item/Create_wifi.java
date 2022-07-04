@@ -20,11 +20,13 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.scanqrlite.CloseKeyBoard;
 import com.example.scanqrlite.DateTime;
 import com.example.scanqrlite.R;
 import com.example.scanqrlite.history.History_Menu.HistoryCreateItem;
 import com.example.scanqrlite.history.History_Menu.database.CreateDatabase;
 import com.example.scanqrlite.scan.ResultScan;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -45,7 +47,8 @@ public class Create_wifi extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_create_wifi, container, false);
         ORM(view);
-//        createWifi();
+        view.setOnTouchListener(new CloseKeyBoard(getActivity()));
+
         create();
         return view;
     }

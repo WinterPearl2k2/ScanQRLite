@@ -40,6 +40,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -369,8 +370,9 @@ public class ResultScan extends AppCompatActivity {
         int sizeWidth = 600;
         int sizeHeight = 264;
 
-        Map hints = new HashMap();
+        Hashtable hints = new Hashtable();
         hints.put(EncodeHintType.MARGIN, 0);
+        hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
 
         BitMatrix matrix = null;
         String type = intent.getStringExtra("type_barcode");

@@ -37,6 +37,7 @@ import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.scanqrlite.DateTime;
 import com.example.scanqrlite.R;
@@ -354,6 +355,8 @@ public class Scan extends Fragment {
                         result = text;
                         title = "Text";
                         break;
+                    default:
+                        return;
                 }
                 type = "QRcode";
                 typeScan = "QRcode";
@@ -391,6 +394,8 @@ public class Scan extends Fragment {
                         typeScan = "UPC_E";
                         title = "Product";
                         break;
+                    default:
+                        return;
                 }
                 type = "Barcode";
                 intent.putExtra("type", type);

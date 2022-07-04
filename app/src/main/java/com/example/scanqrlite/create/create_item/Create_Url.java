@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.scanqrlite.CloseKeyBoard;
 import com.example.scanqrlite.R;
 import com.example.scanqrlite.create.CheckCreate;
 import com.example.scanqrlite.scan.ResultScan;
@@ -26,6 +27,8 @@ public class Create_Url extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_create_url, container, false);
         ORM(view);
+        view.setOnTouchListener(new CloseKeyBoard(getActivity()));
+
         createURL();
         return view;
     }

@@ -10,16 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="gone">
-<!--        <androidx.viewpager2.widget.ViewPager2-->
-<!--            android:id="@+id/vPager"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_above="@id/btnNavigation"/>-->
-        <FrameLayout
-            android:id="@+id/mainFrame"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/btnNavigation"/>
+            android:layout_above="@id/btnNavigation"/>
+<!--        <FrameLayout-->
+<!--            android:id="@+id/mainFrame"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_above="@+id/btnNavigation"/>-->
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:splitMotionEvents="false"

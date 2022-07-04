@@ -36,6 +36,7 @@ import com.skydoves.powermenu.PowerMenu;
 import com.skydoves.powermenu.PowerMenuItem;
 
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
@@ -186,8 +187,9 @@ public class HistorySCanAdapter extends RecyclerView.Adapter<HistorySCanAdapter.
         int sizeWidth = 660;
         int sizeHeight = 264;
 
-        Map hints = new HashMap();
+        Hashtable hints = new Hashtable();
         hints.put(EncodeHintType.MARGIN, 1);
+        hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
 
         BitMatrix matrix = null;
         String type = content;

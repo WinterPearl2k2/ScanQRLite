@@ -50,34 +50,52 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="10dp">
 
-                <RadioButton
-                    android:id="@+id/btn_text"
+                <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="35dp"
-                    android:layout_toLeftOf="@id/btn_url"
-                    android:background="@drawable/ic_create_text_while"
-                    android:button="@android:color/transparent"
-                    android:elevation="2dp"/>
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_toLeftOf="@id/rdb_mid">
+                    <RadioButton
+                        android:id="@+id/btn_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_create_text_while"
+                        android:button="@android:color/transparent"/>
+                </androidx.cardview.widget.CardView>
 
-                <RadioButton
-                    android:id="@+id/btn_url"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/rdb_mid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/ic_create_url_while"
-                    android:button="@android:color/transparent" />
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_centerHorizontal="true">
+                    <RadioButton
+                        android:id="@+id/btn_url"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_create_url_while"
+                        android:button="@android:color/transparent" />
+                </androidx.cardview.widget.CardView>
 
-                <RadioButton
-                    android:id="@+id/btn_wifi"
+                <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_marginLeft="35dp"
-                    android:layout_toRightOf="@id/btn_url"
-                    android:background="@drawable/ic_create_wifi_while"
-                    android:button="@android:color/transparent" />
+                    android:layout_toRightOf="@id/rdb_mid">
+                    <RadioButton
+                        android:id="@+id/btn_wifi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_create_wifi_while"
+                        android:button="@android:color/transparent" />
+                </androidx.cardview.widget.CardView>
             </RelativeLayout>
         </RadioGroup>
 

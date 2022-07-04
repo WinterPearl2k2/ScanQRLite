@@ -41,9 +41,9 @@
     </LinearLayout>
 
     <ScrollView
+        android:id="@+id/ahaha"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/img_ads_5"
         android:layout_below="@id/btn_back">
 
         <RelativeLayout
@@ -138,11 +138,24 @@
                 </LinearLayout>
             </ScrollView>
 
+            <com.google.android.gms.ads.AdView
+                android:name="com.google.android.gms.ads.APPLICATION_ID"
+                android:id="@+id/adsViewResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/frame_content_result"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"
+                ads:adSize="BANNER"
+                ads:adUnitId="@string/banner_ad_unit_id"
+                android:layout_gravity="center_horizontal">
+            </com.google.android.gms.ads.AdView>
+
             <LinearLayout
                 android:id="@+id/frame_btn_feature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/frame_content_result"
+                android:layout_below="@+id/adsViewResult"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -321,28 +334,5 @@
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>
-
-    <LinearLayout
-        android:id="@+id/img_ads_5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/background_fragment"
-        android:gravity="center_horizontal"
-        android:paddingTop="10dp"
-        android:paddingBottom="20dp">
-
-        <com.google.android.gms.ads.AdView
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:id="@+id/adsViewResult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerHorizontal="true"
-            ads:adSize="BANNER"
-            ads:adUnitId="@string/banner_ad_unit_id"
-            android:layout_gravity="center_horizontal">
-        </com.google.android.gms.ads.AdView>
-    </LinearLayout>
 
 </RelativeLayout>

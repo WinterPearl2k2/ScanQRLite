@@ -1,28 +1,18 @@
 package com.example.scanqrlite.setting.settingitem;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
-import android.os.Handler;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.scanqrlite.R;
-import com.example.scanqrlite.setting.Setting;
 
-public class QuestionAndAnswer extends Fragment {
+public class QuestionAnswer extends AppCompatActivity {
     LinearLayout layoutBack;
     ImageButton back;
     TextView txtQA1, txtQA2, txtQA3;
@@ -31,38 +21,33 @@ public class QuestionAndAnswer extends Fragment {
     boolean check1 = true, check2 = true, check3 = true;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_question_and_answer, container, false);
-        ORM(view);
+    protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_question_and_answer);
+        ORM();
         onBack();
         HandlerClickQA1();
         HandlerClickQA2();
         HandlerClickA3();
-        return view;
     }
 
     private void onBack() {
-        back.setOnClickListener(new View.OnClickListener() {
+        layoutBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment fragment2 = new Setting();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.mainFrame, fragment2);
-                fragmentTransaction.commit();
-                onDestroy();
+                finish();
             }
         });
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment fragment2 = new Setting();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.mainFrame, fragment2);
-                fragmentTransaction.commit();
-                onDestroy();
+                finish();
             }
         });
     }
@@ -73,11 +58,11 @@ public class QuestionAndAnswer extends Fragment {
             public void onClick(View view) {
                 if(check3) {
                     txtQA3.setVisibility(View.VISIBLE);
-                    imgQA3.setImageResource(R.drawable.ic_top);
+                    imgQA3.setImageResource(R.drawable.ic_down);
                     check3 = false;
                 } else {
                     txtQA3.setVisibility(View.GONE);
-                    imgQA3.setImageResource(R.drawable.ic_down);
+                    imgQA3.setImageResource(R.drawable.ic_top);
                     check3 = true;
                 }
             }
@@ -87,11 +72,11 @@ public class QuestionAndAnswer extends Fragment {
             public void onClick(View view) {
                 if(check3) {
                     txtQA3.setVisibility(View.VISIBLE);
-                    imgQA3.setImageResource(R.drawable.ic_top);
+                    imgQA3.setImageResource(R.drawable.ic_down);
                     check3 = false;
                 } else {
                     txtQA3.setVisibility(View.GONE);
-                    imgQA3.setImageResource(R.drawable.ic_down);
+                    imgQA3.setImageResource(R.drawable.ic_top);
                     check3 = true;
                 }
             }
@@ -104,11 +89,11 @@ public class QuestionAndAnswer extends Fragment {
             public void onClick(View view) {
                 if(check2) {
                     txtQA2.setVisibility(View.VISIBLE);
-                    imgQA2.setImageResource(R.drawable.ic_top);
+                    imgQA2.setImageResource(R.drawable.ic_down);
                     check2 = false;
                 } else {
                     txtQA2.setVisibility(View.GONE);
-                    imgQA2.setImageResource(R.drawable.ic_down);
+                    imgQA2.setImageResource(R.drawable.ic_top);
                     check2 = true;
                 }
             }
@@ -119,11 +104,11 @@ public class QuestionAndAnswer extends Fragment {
 
                 if(check2) {
                     txtQA2.setVisibility(View.VISIBLE);
-                    imgQA2.setImageResource(R.drawable.ic_top);
+                    imgQA2.setImageResource(R.drawable.ic_down);
                     check2 = false;
                 } else {
                     txtQA2.setVisibility(View.GONE);
-                    imgQA2.setImageResource(R.drawable.ic_down);
+                    imgQA2.setImageResource(R.drawable.ic_top);
                     check2 = true;
                 }
             }
@@ -136,11 +121,11 @@ public class QuestionAndAnswer extends Fragment {
             public void onClick(View view) {
                 if(check1) {
                     txtQA1.setVisibility(View.VISIBLE);
-                    imgQA1.setImageResource(R.drawable.ic_top);
+                    imgQA1.setImageResource(R.drawable.ic_down);
                     check1 = false;
                 } else {
                     txtQA1.setVisibility(View.GONE);
-                    imgQA1.setImageResource(R.drawable.ic_down);
+                    imgQA1.setImageResource(R.drawable.ic_top);
                     check1 = true;
                 }
             }
@@ -150,29 +135,30 @@ public class QuestionAndAnswer extends Fragment {
             public void onClick(View view) {
                 if(check1) {
                     txtQA1.setVisibility(View.VISIBLE);
-                    imgQA1.setImageResource(R.drawable.ic_top);
+                    imgQA1.setImageResource(R.drawable.ic_down);
                     check1 = false;
                 } else {
                     txtQA1.setVisibility(View.GONE);
-                    imgQA1.setImageResource(R.drawable.ic_down);
+                    imgQA1.setImageResource(R.drawable.ic_top);
                     check1 = true;
                 }
             }
         });
     }
 
-    private void ORM(View view) {
-        txtQA1 = view.findViewById(R.id.txt_QA1);
-        txtQA2 = view.findViewById(R.id.txt_QA2);
-        txtQA3 = view.findViewById(R.id.txt_QA3);
-        btnQA1 = view.findViewById(R.id.btn_QA1);
-        btnQA2 = view.findViewById(R.id.btn_QA2);
-        btnQA3 = view.findViewById(R.id.btn_QA3);
-        imgQA1 = view.findViewById(R.id.img_QA1);
-        imgQA2 = view.findViewById(R.id.img_QA2);
-        imgQA3 = view.findViewById(R.id.img_QA3);
 
-        back = view.findViewById(R.id.btn_back);
-        layoutBack = view.findViewById(R.id.btn_back_layout);
+    private void ORM() {
+        txtQA1 = findViewById(R.id.txt_QA1);
+        txtQA2 = findViewById(R.id.txt_QA2);
+        txtQA3 = findViewById(R.id.txt_QA3);
+        btnQA1 = findViewById(R.id.btn_QA1);
+        btnQA2 = findViewById(R.id.btn_QA2);
+        btnQA3 = findViewById(R.id.btn_QA3);
+        imgQA1 = findViewById(R.id.img_QA1);
+        imgQA2 = findViewById(R.id.img_QA2);
+        imgQA3 = findViewById(R.id.img_QA3);
+
+        back = findViewById(R.id.btn_back);
+        layoutBack = findViewById(R.id.btn_layout_back);
     }
 }

@@ -42,6 +42,7 @@
                 android:paddingTop="0dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="12dp"
+                android:imeOptions="actionDone|actionPrevious"
                 android:textSize="20sp"/>
 
         </LinearLayout>

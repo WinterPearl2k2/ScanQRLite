@@ -50,14 +50,6 @@ public class MainActivity extends AppCompatActivity {
     MenuAdapter menuAdapter;
     RelativeLayout layout_menu, layout_permisson;
     Button btn_permisson;
-    ImageButton btnCloseTutorial;
-    private FrameLayout mainFragment;
-
-    Fragment scanFragment = new Scan();
-    Fragment createFragment = new Create();
-    Fragment historyFragment = new History();
-    Fragment settingFragment = new Setting();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -68,10 +60,62 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ORM(); // Ánh xạ
-
-        Layout();
+        SetUpViewPager();
+        EventButtonNavigation();
         PermissionCheck();
     }
+
+    private void EventButtonNavigation() {
+        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.Scan:
+                        viewPager2.setCurrentItem(0, false);
+                        break;
+                    case R.id.Create:
+                        viewPager2.setCurrentItem(1, false);
+                        break;
+                    case R.id.History:
+                        viewPager2.setCurrentItem(2, false);
+                        break;
+                    case R.id.Setting:
+                        viewPager2.setCurrentItem(3, false);
+                        break;
+                }
+                return false;
+            }
+        });
+    }
+
+    private void SetUpViewPager() {
+        menuAdapter = new MenuAdapter(this);
+        viewPager2.setAdapter(menuAdapter);
+        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                switch (position) {
+                    case 0:
+                        navigationView.getMenu().findItem(R.id.Scan).setChecked(true);
+                        break;
+                    case 1:
+                        navigationView.getMenu().findItem(R.id.Create).setChecked(true);
+                        break;
+                    case 2:
+                        navigationView.getMenu().findItem(R.id.History).setChecked(true);
+                        break;
+                    case 3:
+                        navigationView.getMenu().findItem(R.id.Setting).setChecked(true);
+                        break;
+                    default:
+                        navigationView.getMenu().findItem(R.id.Scan).setChecked(true);
+                        break;
+                }
+            }
+        });
+    }
+
 
     private void sendTutorial() {
         SharedPreferences.Editor preferences = getSharedPreferences("tutorial", MODE_PRIVATE).edit();
@@ -93,41 +137,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-//        getSupportFragmentManager().beginTransaction().add(R.id.mainFrame, scanFragment).commit();
-//        navigationView.setSelectedItemId(R.id.Scan);
         super.onStart();
-    }
-
-
-    @Override
-    protected void onResume() {
-        navigationView.setSelectedItemId(R.id.Scan);
-        super.onResume();
-    }
-
-    private void Layout() {
-        getSupportFragmentManager().beginTransaction().add(R.id.mainFrame, scanFragment).commit();
-
-        navigationView.setOnItemSelectedListener(item -> {
-            Fragment fragment = null;
-            switch (item.getItemId()) {
-                case R.id.Scan:
-                    fragment = scanFragment;
-                    break;
-                case R.id.Create:
-                    fragment = createFragment;
-                    break;
-                case R.id.History:
-                    fragment = historyFragment;
-                    break;
-                case R.id.Setting:
-                    fragment = settingFragment;
-                    break;
-            }
-            getSupportFragmentManager().beginTransaction().replace(R.id.mainFrame, fragment).commit();
-            return true;
-        });
-
     }
 
     private void PermissionCheck() {
@@ -226,6 +236,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void ORM() {
         navigationView = findViewById(R.id.btnNavigation);
+        viewPager2 = findViewById(R.id.vPager);
         layout_menu = findViewById(R.id.layout_menu);
         layout_permisson = findViewById(R.id.layout_permission);
         btn_permisson = findViewById(R.id.btn_permisson);
