@@ -69,16 +69,16 @@ public class Create extends Fragment {
     private void SwitchView() {
         SharedPreferences preferences = getActivity().getSharedPreferences("actionbtn", Context.MODE_PRIVATE);
         String check = preferences.getString("actionbtn", "0");
-        changeBtn(Integer.parseInt(check), preferences);
+////        changeBtn(Integer.parseInt(check), preferences);
         AccessClass(Integer.parseInt(check));
         btnText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(btnText.isChecked()) {
-                    changeBtn(1, preferences);
+//                    changeBtn(1, preferences);
                     AccessClass(1);
                 } else {
-                    btnText.setBackgroundResource(R.drawable.ic_create_text_while);
+//                    btnText.setBackgroundResource(R.drawable.ic_create_text_while);
                 }
             }
         });
@@ -86,10 +86,10 @@ public class Create extends Fragment {
             @Override
             public void onClick(View view) {
                 if(btnURL.isChecked()) {
-                    changeBtn(2, preferences);
+//                    changeBtn(2, preferences);
                     AccessClass(2);
                 } else {
-                    btnURL.setBackgroundResource(R.drawable.ic_create_url_while);
+//                    btnURL.setBackgroundResource(R.drawable.ic_create_url_while);
                 }
             }
         });
@@ -97,10 +97,10 @@ public class Create extends Fragment {
             @Override
             public void onClick(View view) {
                 if(btnWifi.isChecked()) {
-                    changeBtn(3, preferences);
+//                    changeBtn(3, preferences);
                     AccessClass(3);
                 } else {
-                    btnWifi.setBackgroundResource(R.drawable.ic_create_wifi_while);
+//                    btnWifi.setBackgroundResource(R.drawable.ic_create_wifi_while);
                 }
             }
         });
