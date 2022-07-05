@@ -6,6 +6,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="black20">#33000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="primary_btn">#FFD71A</color>
     <color name="primary_btn_20">#33FFD71A</color>
@@ -14,6 +15,7 @@
     <color name="color_btn">#CECECE11</color>
     <color name="color_1">#A9A9A9</color>
     <color name="color_2">#7D7D7D</color>
+    <color name="grey">#CECECE</color>
     <color name="switch_light">#F3F3F3</color>
     <color name="tutorial">#6D5B18</color>
 </resources>

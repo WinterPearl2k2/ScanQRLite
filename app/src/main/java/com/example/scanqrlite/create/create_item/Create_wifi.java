@@ -1,6 +1,6 @@
 package com.example.scanqrlite.create.create_item;
 
-import static android.view.View.GONE;
+import static android.content.Context.INPUT_METHOD_SERVICE;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,17 +10,16 @@ import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.example.scanqrlite.CloseKeyBoard;
@@ -29,27 +28,25 @@ import com.example.scanqrlite.R;
 import com.example.scanqrlite.history.History_Menu.HistoryCreateItem;
 import com.example.scanqrlite.history.History_Menu.database.CreateDatabase;
 import com.example.scanqrlite.scan.ResultScan;
-import com.google.android.material.textfield.TextInputEditText;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 public class Create_wifi extends Fragment {
     EditText edtSSID, edtPass;
     RadioGroup rdgSecurity;
     RadioButton rdbWPA, rdbWEP, rdbNO;
-    ImageButton btnCreate;
+    Button btnCreate;
     LinearLayout layoutPass;
     String SSID;
     String password;
     String security;
     String content;
+    ScrollView hihi;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_create_wifi, container, false);
         ORM(view);
+        hihi = view.findViewById(R.id.hihi9);
         view.setOnTouchListener(new CloseKeyBoard(getActivity()));
         create();
         return view;
@@ -67,20 +64,24 @@ public class Create_wifi extends Fragment {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 switch (i) {
                     case R.id.btn_wep: security = "WEP";
-                        layoutPass.setVisibility(View.VISIBLE);
                         nothing = false;
+                        edtPass.setEnabled(true);
+                        layoutPass.setVisibility(View.VISIBLE);
                         break;
                     case R.id.btn_wpa: security = "WPA";
-                        layoutPass.setVisibility(View.VISIBLE);
                         nothing = false;
+                        edtPass.setEnabled(true);
+                        layoutPass.setVisibility(View.VISIBLE);
                         break;
                     case R.id.btn_nothing: security = "nopass";
-                        edtPass.setText(null);
-                        layoutPass.setVisibility(View.GONE);
                         nothing = true;
+                        layoutPass.setVisibility(View.GONE);
+                        edtPass.setEnabled(false);
+                        hihi.setFocusable(true);
+                        hihi.requestFocusFromTouch();
                         break;
                 }
-                clickNothing();
+                clickNothing(nothing);
             }
         });
 
@@ -94,16 +95,16 @@ public class Create_wifi extends Fragment {
         });
 
         TextWatcher textWatcher = getTextWatcher();
-
         edtSSID.addTextChangedListener(textWatcher);
         edtPass.addTextChangedListener(textWatcher);
     }
 
-    private void clickNothing() {
-        content = "WIFI:T:" + security + ";S:" + SSID + ";P:" + password + ";H:false;";
-        if (nothing == true) {
+    private void clickNothing(boolean nothing) {
+        if (nothing) {
+            content = "WIFI:T:" + security + ";S:" + SSID + ";P:" + ";H:false;";
             if(edtSSID.getText().toString().trim().length() < 1) {
-                btnCreate.setImageResource(R.drawable.ic_button);
+                btnCreate.setTextColor(getResources().getColor(R.color.black20));
+                btnCreate.setBackgroundResource(R.drawable.cus_btn_create);
                 btnCreate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -111,7 +112,8 @@ public class Create_wifi extends Fragment {
                     }
                 });
             } else {
-                btnCreate.setImageResource(R.drawable.ic_btn_create_true);
+                btnCreate.setTextColor(getResources().getColor(R.color.black));
+                btnCreate.setBackgroundResource(R.drawable.cus_btn_create_alow);
                 btnCreate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -120,8 +122,10 @@ public class Create_wifi extends Fragment {
                 });
             }
         } else {
+            content = "WIFI:T:" + security + ";S:" + SSID + ";P:" + password + ";H:false;";
             if (checkIsEmpty() != 0) {
-                btnCreate.setImageResource(R.drawable.ic_button);
+                btnCreate.setTextColor(getResources().getColor(R.color.black20));
+                btnCreate.setBackgroundResource(R.drawable.cus_btn_create);
                 btnCreate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -129,7 +133,8 @@ public class Create_wifi extends Fragment {
                     }
                 });
             } else {
-                btnCreate.setImageResource(R.drawable.ic_btn_create_true);
+                btnCreate.setTextColor(getResources().getColor(R.color.black));
+                btnCreate.setBackgroundResource(R.drawable.cus_btn_create_alow);
                 btnCreate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -159,7 +164,7 @@ public class Create_wifi extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                clickNothing();
+                clickNothing(nothing);
             }
         };
         return textWatcher;
@@ -198,7 +203,7 @@ public class Create_wifi extends Fragment {
         Intent intent = new Intent(getActivity(), ResultScan.class);
         intent.putExtra("create_txt", content);
         intent.putExtra("S", SSID);
-        intent.putExtra("P", password);
+        intent.putExtra("P", nothing ? "" : password);
         intent.putExtra("T", security);
         intent.putExtra("create_title", "Wifi");
         intent.putExtra("type", "QRcode");

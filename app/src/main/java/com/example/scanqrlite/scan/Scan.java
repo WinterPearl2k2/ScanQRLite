@@ -3,6 +3,7 @@ package com.example.scanqrlite.scan;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -37,6 +38,9 @@ import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.scanqrlite.DateTime;
@@ -73,14 +77,17 @@ public class Scan extends Fragment {
     private PreviewView previewView;
     private View view;
     private ImageAnalysis.Analyzer analyzer;
-    private ImageButton  btnGallery;
-    private ImageButton btnFlash, btnCloseTutorial;
+    private LinearLayout btnGallery, btnFlash;
+    private ImageButton btnCloseTutorial;
     private boolean mFlash = false;
     private String title, typeScan, result, content, type;
     private boolean checkWifi = false;
     String security, SSID, password;
     private AdView mAdView;
     AdRequest adRequest;
+    ImageView imgBtnGallery;
+    TextView txtBtnGallery;
+    boolean checkTutorial = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -110,7 +117,7 @@ public class Scan extends Fragment {
     private void Tutorial() {
         SharedPreferences preferences = getActivity().getSharedPreferences("tutorial", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        boolean checkTutorial = preferences.getBoolean("tutorial", false);
+        checkTutorial = preferences.getBoolean("tutorial", false);
         if(checkTutorial) {
             editor.putBoolean("tutorial", false);
             editor.apply();
@@ -118,15 +125,21 @@ public class Scan extends Fragment {
             View view = getLayoutInflater().inflate(R.layout.tutorial, null);
             sheetDialog.setContentView(view);
             btnCloseTutorial = view.findViewById(R.id.btn_ok_tutorial);
-            onPause();
             btnCloseTutorial.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     sheetDialog.dismiss();
-                    onResume();
+                    checkTutorial = false;
                 }
             });
             sheetDialog.show();
+
+            sheetDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialogInterface) {
+                    checkTutorial = false;
+                }
+            });
         }
     }
 
@@ -136,6 +149,7 @@ public class Scan extends Fragment {
             public void onClick(View view) {
                 Intent gallery = new Intent(Intent.ACTION_PICK);
                 gallery.setType("image/*");
+                btnGallery.setEnabled(false);
                 startActivityForResult(gallery, 102);
             }
         });
@@ -148,14 +162,20 @@ public class Scan extends Fragment {
                 if(mFlash == false) {
                     camera.getCameraControl().enableTorch(!mFlash);
                     mFlash = true;
-                    btnFlash.setImageResource(R.drawable.btn_flah_on);
+                    flashOptions(R.drawable.cus_btn_scan_checked, R.color.black, R.drawable.ic_flash_on);
                 } else if(mFlash == true) {
                     camera.getCameraControl().enableTorch(!mFlash);
                     mFlash = false;
-                    btnFlash.setImageResource(R.drawable.btn_flah_off);
+                    flashOptions(R.drawable.cus_btn_scan, R.color.white, R.drawable.ic_flash_off);
                 }
             }
         });
+    }
+
+    private void flashOptions(int p, int p2, int p3) {
+        btnFlash.setBackgroundResource(p);
+        txtBtnGallery.setTextColor(getResources().getColor(p2));
+        imgBtnGallery.setImageResource(p3);
     }
 
     private void ORM() {
@@ -193,11 +213,14 @@ public class Scan extends Fragment {
         btnFlash = view.findViewById(R.id.btn_flash);
         btnGallery = view.findViewById(R.id.btn_gallery);
         mAdView = view.findViewById(R.id.adsViewScan);
+        imgBtnGallery = view.findViewById(R.id.img_btn_gallery);
+        txtBtnGallery = view.findViewById(R.id.txt_btn_gallery);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(requestCode == 102) {
+            btnGallery.setEnabled(true);
             if(data == null || data.getData() == null) {
                 Log.e("TAG", "The uri is null, probably the user cancelled the image selection process using the back button.");
                 return;
@@ -295,7 +318,8 @@ public class Scan extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<List<Barcode>>() {
                     @Override
                     public void onSuccess(List<Barcode> barcodes) {
-                        readerBarcodeData(barcodes);
+                        if(!checkTutorial)
+                            readerBarcodeData(barcodes);
                         // Task completed successfully
                         // ...
                     }
@@ -465,7 +489,7 @@ public class Scan extends Fragment {
             e.printStackTrace();
         }
         processCameraProvider.unbindAll();
-        btnFlash.setImageResource(R.drawable.btn_flah_off);
+        flashOptions(R.drawable.cus_btn_scan, R.color.white, R.drawable.ic_flash_off);
     }
 
     @Override

@@ -4,22 +4,27 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.scanqrlite.R;
+import com.example.scanqrlite.adapter.HistoryAdapter;
 import com.example.scanqrlite.history.History_Menu.History_Create;
 import com.example.scanqrlite.history.History_Menu.History_Scan;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 
 public class History extends Fragment {
@@ -28,6 +33,10 @@ public class History extends Fragment {
     TextView title_history;
     AdView adsViewHistory;
     AdRequest adRequest;
+    ViewPager2 viewPager2;
+    HistoryAdapter adapter;
+    int check;
+    SharedPreferences preferences;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,59 +77,19 @@ public class History extends Fragment {
     }
 
     private void switchLayout() {
-        SharedPreferences preferences = getActivity().getSharedPreferences("action_tab", Context.MODE_PRIVATE);
-        int check = preferences.getInt("action_tab", 0);
-
-        accessLayout(check, preferences);
-
-        tabContainer.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        adapter = new HistoryAdapter(getActivity());
+        viewPager2.setAdapter(adapter);
+        new TabLayoutMediator(tabContainer, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                switch (tab.getPosition()) {
-                    case 0:
-                        accessLayout(0, preferences);
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                switch (position) {
+                    case 0: tab.setText("Scan");
                         break;
-                    case 1:
-                        accessLayout(1, preferences);
+                    case 1: tab.setText("Create");
                         break;
                 }
             }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-    }
-
-    private void accessLayout(int num, SharedPreferences preferences) {
-        SharedPreferences.Editor editor = preferences.edit();
-        Fragment fragment;
-        switch (num) {
-            case 0:
-                tabContainer.selectTab(tabContainer.getTabAt(0));
-                fragment = new History_Scan();
-                break;
-            case 1:
-                tabContainer.selectTab(tabContainer.getTabAt(1));
-                fragment = new History_Create();
-                break;
-            default:
-                tabContainer.selectTab(tabContainer.getTabAt(0));
-                fragment = new History_Scan();
-                break;
-        }
-        FragmentManager fragmentManager = getChildFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.history_layout, fragment);
-        fragmentTransaction.commit();
-        editor.putInt("action_tab", num);
-        editor.commit();
+        }).attach();
     }
 
     private void ORM(View view) {
@@ -129,5 +98,6 @@ public class History extends Fragment {
         tabContainer = view.findViewById(R.id.tab_container);
         title_history = view.findViewById(R.id.title_history);
         adsViewHistory = view.findViewById(R.id.adsViewHistory);
+        viewPager2 = view.findViewById(R.id.history_layout);
     }
 }

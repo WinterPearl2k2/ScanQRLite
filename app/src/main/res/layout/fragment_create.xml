@@ -50,7 +50,7 @@
             android:paddingBottom="10dp">
             <RadioButton
                 android:id="@+id/btn_text"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="35dp"
@@ -65,11 +65,11 @@
                 android:paddingRight="25dp"
                 android:paddingBottom="10dp"
                 android:text="Text"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
             <RadioButton
                 android:id="@+id/btn_url"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
@@ -82,12 +82,12 @@
                 android:paddingRight="25dp"
                 android:paddingBottom="10dp"
                 android:text="URL"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:elevation="2dp"/>
 
             <RadioButton
                 android:id="@+id/btn_wifi"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
@@ -101,7 +101,7 @@
                 android:paddingRight="25dp"
                 android:paddingBottom="10dp"
                 android:text="Wifi"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:elevation="2dp"/>
         </RadioGroup>
 

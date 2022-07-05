@@ -69,25 +69,73 @@
                 android:layout_gravity="bottom"
                 android:layout_above="@+id/adsViewScan">
 
-                <ImageButton
+                <LinearLayout
                     android:id="@+id/btn_gallery"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:minWidth="130dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/cus_btn_scan"
+                    android:orientation="horizontal"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="50dp"
-                    android:layout_marginRight="192dp"
-                    android:background="@null"
-                    android:src="@drawable/ic_btn_gallery" />
+                    android:layout_marginRight="192dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_gallery"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_gravity="center_vertical"/>
 
-                <ImageButton
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textAllCaps="true"
+                        android:text="Gallery"
+                        android:textSize="20sp"
+                        android:textFontWeight="700"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center_vertical"/>
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/btn_flash"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:minWidth="130dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/cus_btn_scan"
+                    android:orientation="horizontal"
                     android:layout_alignParentRight="true"
                     android:layout_marginLeft="192dp"
-                    android:layout_marginRight="50dp"
-                    android:background="@null"
-                    android:src="@drawable/btn_flah_off" />
+                    android:layout_marginRight="50dp">
+                    <ImageView
+                        android:id="@+id/img_btn_gallery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_flash_off"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_gravity="center_vertical"/>
+
+                    <TextView
+                        android:id="@+id/txt_btn_gallery"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textAllCaps="true"
+                        android:text="Flash"
+                        android:textSize="20sp"
+                        android:textFontWeight="700"
+                        android:textColor="@color/white"
+                        android:gravity="center"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_gravity="center_vertical"/>
+                </LinearLayout>
             </RelativeLayout>
 
             <com.google.android.gms.ads.AdView

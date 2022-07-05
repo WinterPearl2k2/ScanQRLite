@@ -11,6 +11,8 @@ import android.view.ContentInfo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -64,6 +66,9 @@ public class HistorySCanAdapter extends RecyclerView.Adapter<HistorySCanAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ScanViewHolder holder, int position) {
+
+        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.anim_scale);
+        holder.itemView.startAnimation(animation);
 
         HistoryScanItem historyScanItem = scanItemList.get(position);
         if(historyScanItem == null) {

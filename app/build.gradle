@@ -65,4 +65,5 @@ dependencies {
     implementation "androidx.room:room-runtime:2.4.2"
     annotationProcessor "androidx.room:room-compiler:2.4.2"
     implementation "com.github.skydoves:powermenu:2.2.0"
+    implementation 'com.github.donkingliang:ConsecutiveScroller:4.6.1'
 }

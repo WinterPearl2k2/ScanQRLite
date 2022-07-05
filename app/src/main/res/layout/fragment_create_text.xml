@@ -47,7 +47,7 @@
 
         </LinearLayout>
 
-        <ImageButton
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_create_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,7 +55,14 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            android:background="@null"
-            android:src="@drawable/ic_button" />
+            android:background="@drawable/cus_btn_create"
+            android:elevation="0dp"
+            android:letterSpacing="0.05"
+            android:minWidth="160dp"
+            android:text="Create"
+            android:textColor="@color/black20"
+            android:stateListAnimator="@null"
+            android:textFontWeight="900"
+            android:textSize="18sp" />
     </RelativeLayout>
 </ScrollView>

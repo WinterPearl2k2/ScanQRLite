@@ -68,17 +68,15 @@ public class Create extends Fragment {
 
     private void SwitchView() {
         SharedPreferences preferences = getActivity().getSharedPreferences("actionbtn", Context.MODE_PRIVATE);
-        String check = preferences.getString("actionbtn", "0");
-////        changeBtn(Integer.parseInt(check), preferences);
-        AccessClass(Integer.parseInt(check));
+        int check = preferences.getInt("actionbtn", 0);
+        changeBtn(check, preferences);
+        AccessClass(check);
         btnText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(btnText.isChecked()) {
-//                    changeBtn(1, preferences);
+                    changeBtn(1, preferences);
                     AccessClass(1);
-                } else {
-//                    btnText.setBackgroundResource(R.drawable.ic_create_text_while);
                 }
             }
         });
@@ -86,10 +84,8 @@ public class Create extends Fragment {
             @Override
             public void onClick(View view) {
                 if(btnURL.isChecked()) {
-//                    changeBtn(2, preferences);
+                    changeBtn(2, preferences);
                     AccessClass(2);
-                } else {
-//                    btnURL.setBackgroundResource(R.drawable.ic_create_url_while);
                 }
             }
         });
@@ -97,10 +93,8 @@ public class Create extends Fragment {
             @Override
             public void onClick(View view) {
                 if(btnWifi.isChecked()) {
-//                    changeBtn(3, preferences);
+                    changeBtn(3, preferences);
                     AccessClass(3);
-                } else {
-//                    btnWifi.setBackgroundResource(R.drawable.ic_create_wifi_while);
                 }
             }
         });
@@ -128,32 +122,20 @@ public class Create extends Fragment {
         SharedPreferences.Editor editor = preferences.edit();
         switch (check) {
             case 1:
-                btnText.setBackgroundResource(R.drawable.ic_create_text_yellow);
                 btnText.setChecked(true);
-                btnURL.setBackgroundResource(R.drawable.ic_create_url_while);
-                btnWifi.setBackgroundResource(R.drawable.ic_create_wifi_while);
-                editor.putString("actionbtn", "1");
+                editor.putInt("actionbtn", 1);
                 break;
             case 2:
-                btnURL.setBackgroundResource(R.drawable.ic_create_url_yellow);
-                btnText.setChecked(true);
-                btnText.setBackgroundResource(R.drawable.ic_create_text_while);
-                btnWifi.setBackgroundResource(R.drawable.ic_create_wifi_while);
-                editor.putString("actionbtn", "2");
+                btnURL.setChecked(true);
+                editor.putInt("actionbtn", 2);
                 break;
             case 3:
-                btnWifi.setBackgroundResource(R.drawable.ic_create_wifi_yellow);
-                btnText.setChecked(true);
-                btnText.setBackgroundResource(R.drawable.ic_create_text_while);
-                btnURL.setBackgroundResource(R.drawable.ic_create_url_while);
-                editor.putString("actionbtn", "3");
+                btnWifi.setChecked(true);
+                editor.putInt("actionbtn", 3);
                 break;
             default:
-                btnText.setBackgroundResource(R.drawable.ic_create_text_yellow);
                 btnText.setChecked(true);
-                btnURL.setBackgroundResource(R.drawable.ic_create_url_while);
-                btnWifi.setBackgroundResource(R.drawable.ic_create_wifi_while);
-                editor.putString("actionbtn", "1");
+                editor.putInt("actionbtn", 1);
                 break;
         }
         editor.commit();

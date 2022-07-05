@@ -9,6 +9,8 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import android.widget.RelativeLayout;
@@ -63,6 +65,10 @@ public class HistoryCreateAdapter extends RecyclerView.Adapter<HistoryCreateAdap
 
     @Override
     public void onBindViewHolder(@NonNull CreateViewHolder holder, int position) {
+
+        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(), R.anim.anim_scale);
+        holder.itemView.startAnimation(animation);
+
         HistoryCreateItem historyCreateItem = createItemList.get(position);
         if(historyCreateItem == null) {
             return;

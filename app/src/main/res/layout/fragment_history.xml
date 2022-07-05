@@ -45,7 +45,7 @@
             android:text="Create" />
     </com.google.android.material.tabs.TabLayout>
 
-    <FrameLayout
+    <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/history_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void SetUpViewPager() {
         menuAdapter = new MenuAdapter(this);
+        viewPager2.setUserInputEnabled(false);
         viewPager2.setAdapter(menuAdapter);
         viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
