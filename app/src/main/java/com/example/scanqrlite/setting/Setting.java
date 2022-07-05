@@ -4,14 +4,19 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 
 import android.text.Html;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,11 +26,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.scanqrlite.BuildConfig;
 import com.example.scanqrlite.R;
+
 import com.example.scanqrlite.setting.settingitem.QuestionAnswer;
 import com.google.android.gms.ads.AdLoader;
 import com.google.android.gms.ads.AdRequest;
@@ -34,11 +41,16 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.willy.ratingbar.BaseRatingBar;
 import com.willy.ratingbar.ScaleRatingBar;
 
+import java.util.Locale;
+
+
 public class Setting extends Fragment {
+    private final int REQUEST_CODE =12;
     private SwitchCompat swBeep, swVibrite, swClipboard;
-    private LinearLayout btnBeep, btnVibrite, btnClipboard, btnQA, btnChangeLanguage, btnFeedback, btnRate, btnVersion;
+    RelativeLayout btnChangeLanguage;
+    private LinearLayout btnBeep, btnVibrite, btnClipboard, btnQA, btnFeedback, btnRate, btnVersion;
     private ImageButton btnClickX;
-    private RadioButton itemEnglish, itemFrance, itemChina, itemGermany, itemKorea, itemVietnam;
+    private RadioButton itemEnglish, itemChina, itemGermany, itemKorea, itemVietnam;
     private TextView txtLanguage, txtVersion;
     private ScaleRatingBar rtRating;
     private TextView btnRatingClose, btnRatingVote, btnRatingFeedback,
@@ -48,12 +60,17 @@ public class Setting extends Fragment {
     View view;
     AdView adsViewSetting;
     AdRequest adRequest;
+    Locale locale;
     AdLoader adLoader;
+
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_setting, container, false);
+
         ORM();
         Beep();
         Vibrate();
@@ -67,6 +84,7 @@ public class Setting extends Fragment {
         return view;
 
     }
+
 
     private void showAds() {
         adRequest = new AdRequest.Builder().build();
@@ -167,7 +185,7 @@ public class Setting extends Fragment {
                     btnRatingFeedback.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
+                            submitFeedback();
                         }
                     });
                     rtRating.setScrollable(false);
@@ -224,12 +242,23 @@ public class Setting extends Fragment {
                 dialog.dismiss();
             }
         });
+
         btnFeedbackYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                btnFeedbackYes.setClickable(false);
                 submitFeedback();
             }
+
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == REQUEST_CODE) {
+            btnFeedbackYes.setClickable(true);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     public void submitFeedback(){
@@ -243,12 +272,13 @@ public class Setting extends Fragment {
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, feedback_title);
 
         try{
-            startActivity(Intent.createChooser(emailIntent, "Send Email"));
+            startActivityForResult(Intent.createChooser(emailIntent, "Send Email"), REQUEST_CODE);
         } catch (android.content.ActivityNotFoundException ex){
             Toast.makeText(getActivity(), "Email not installed", Toast.LENGTH_SHORT).show();
         }
-    }
 
+
+    }
     private void QA() {
         btnQA.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -266,7 +296,6 @@ public class Setting extends Fragment {
         String Language = preferences.getString("language", "English");
 
         itemEnglish = view1.findViewById(R.id.item_enlish);
-        itemFrance = view1.findViewById(R.id.item_france);
         itemGermany = view1.findViewById(R.id.item_germany);
         itemChina = view1.findViewById(R.id.item_china);
         itemVietnam = view1.findViewById(R.id.item_vietnam);
@@ -274,32 +303,25 @@ public class Setting extends Fragment {
 
         switch (Language) {
             case "English":
-                txtLanguage.setText("English");
+                txtLanguage.setText(R.string.english);
                 itemEnglish.setChecked(true);
                 break;
-            case "French":
-                txtLanguage.setText("French");
-                itemFrance.setChecked(true);
-                break;
             case "Korean":
-                txtLanguage.setText("Korean");
+                txtLanguage.setText(R.string.korean);
                 itemKorea.setChecked(true);
                 break;
             case "Vietnamese":
-                txtLanguage.setText("Vietnamese");
+                txtLanguage.setText(R.string.vietnamese);
                 itemVietnam.setChecked(true);
                 break;
             case "German":
-                txtLanguage.setText("German");
+                txtLanguage.setText(R.string.german);
                 itemGermany.setChecked(true);
                 break;
             case "Chinese":
-                txtLanguage.setText("Chinese");
+                txtLanguage.setText(R.string.chinese);
                 itemChina.setChecked(true);
                 break;
-            default:
-                txtLanguage.setText("English");
-                itemEnglish.setChecked(true);
         }
 
         btnChangeLanguage.setOnClickListener(new View.OnClickListener() {
@@ -320,36 +342,69 @@ public class Setting extends Fragment {
                 switch (i) {
                     case R.id.item_enlish:
                         editor.putString("language","English");
+                        chooseLanguage(i, editor);
                         txtLanguage.setText("English");
-                        break;
-                    case R.id.item_france:
-                        editor.putString("language","French");
-                        txtLanguage.setText("France");
                         break;
                     case R.id.item_germany:
                         editor.putString("language","German");
-                        txtLanguage.setText("Germany");
+                        chooseLanguage(i, editor);
+                        txtLanguage.setText("German");
                         break;
                     case R.id.item_china:
                         editor.putString("language","Chinese");
-                        txtLanguage.setText("China");
+                        chooseLanguage(i, editor);
+                        txtLanguage.setText("Chinese");
                         break;
                     case R.id.item_korea:
                         editor.putString("language","Korean");
-                        txtLanguage.setText("Korea");
+                        chooseLanguage(i, editor);
+                        txtLanguage.setText("Korean");
                         break;
                     case R.id.item_vietnam:
                         editor.putString("language","Vietnamese");
-                        txtLanguage.setText("Vietnam");
+                        chooseLanguage(i, editor);
+                        txtLanguage.setText("Vietnamese");
                         break;
                 }
-                editor.commit();
+                sheetDialog.dismiss();
             }
         });
         sheetDialog.show();
     }
 
+    private void chooseLanguage(int i, SharedPreferences.Editor editor) {
+        switch (i) {
+            case R.id.item_enlish:
+                locale = new Locale("en");
+                editor.putString("language","English");
+                break;
+            case R.id.item_germany:
+                locale = new Locale("de");
+                editor.putString("language","German");
+                break;
+            case R.id.item_china:
+                locale = new Locale("zh");
+                editor.putString("language", "Chinese");
+                break;
+            case R.id.item_korea:
+                locale = new Locale("ko");
 
+                editor.putString("language","Korean");
+                break;
+            case R.id.item_vietnam:
+                locale = new Locale("vi");
+                editor.putString("language", "Vietnamese");
+                break;
+        }
+        Locale.setDefault(locale);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = locale;
+        res.updateConfiguration(conf, dm);
+        getActivity().recreate();
+        editor.commit();
+    }
 
     private void CopyToClipboard() {
         SharedPreferences clipboard = getActivity().getSharedPreferences("clipboard", Context.MODE_PRIVATE);
@@ -433,7 +488,8 @@ public class Setting extends Fragment {
     }
 
     private void Version() {
-        txtVersion.setText("Version Lite: " + BuildConfig.VERSION_NAME);
+
+        txtVersion.setText( R.string.version + BuildConfig.VERSION_NAME);
     }
 
     private void ORM() {

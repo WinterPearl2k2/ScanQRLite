@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/Scan"
-        android:title="Scan"
+        android:title="@string/menu_scan"
         android:icon="@drawable/ic_qr"/>
     <item android:id="@+id/Create"
-        android:title="Create"
+        android:title="@string/menu_create"
         android:icon="@drawable/ic_create"/>
     <item android:id="@+id/History"
-        android:title="History"
+        android:title="@string/menu_history"
         android:icon="@drawable/ic_history"/>
     <item android:id="@+id/Setting"
-        android:title="Setting"
+        android:title="@string/menu_setting"
         android:icon="@drawable/ic_setting"/>
 </menu>

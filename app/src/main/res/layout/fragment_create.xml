@@ -23,7 +23,7 @@
             android:paddingTop="40dp"
             android:paddingRight="20dp"
             android:paddingBottom="10dp"
-            android:text="Create"
+            android:text="@string/title_create"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold" />

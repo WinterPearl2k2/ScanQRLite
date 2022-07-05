@@ -6,41 +6,27 @@
         android:id="@+id/list_item_language"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <RadioButton
             android:id="@+id/item_enlish"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="English"
-            android:textSize="24sp"
+            android:background="@drawable/cus_item_language"
+            android:button="@android:color/transparent"
             android:fontFamily="@font/agencyb"
-            android:textColor="@color/black"
-            android:textStyle="bold"
             android:letterSpacing="0.03"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
-            android:button="@android:color/transparent"
-            android:background="@drawable/cus_item_language"/>
-
-        <RadioButton
-            android:id="@+id/item_france"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="French"
-            android:textSize="24sp"
-            android:fontFamily="@font/agencyb"
+            android:text="@string/english"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:letterSpacing="0.03"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:button="@android:color/transparent"
-            android:background="@drawable/cus_item_language"/>
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <RadioButton
             android:id="@+id/item_germany"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="German"
+            android:text="@string/german"
             android:textSize="24sp"
             android:fontFamily="@font/agencyb"
             android:textColor="@color/black"
@@ -55,7 +41,7 @@
             android:id="@+id/item_china"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Chinese"
+            android:text="@string/chinese"
             android:textSize="24sp"
             android:fontFamily="@font/agencyb"
             android:textColor="@color/black"
@@ -70,30 +56,31 @@
             android:id="@+id/item_korea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Korean"
-            android:textSize="24sp"
+            android:background="@drawable/cus_item_language"
+            android:button="@android:color/transparent"
             android:fontFamily="@font/agencyb"
-            android:textColor="@color/black"
-            android:textStyle="bold"
             android:letterSpacing="0.03"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
-            android:button="@android:color/transparent"
-            android:background="@drawable/cus_item_language"/>
+            android:text="@string/korean"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
         <RadioButton
             android:id="@+id/item_vietnam"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Vietnamese"
-            android:textSize="24sp"
+            android:background="@drawable/cus_item_language"
+            android:button="@android:color/transparent"
             android:fontFamily="@font/agencyb"
-            android:textColor="@color/black"
-            android:textStyle="bold"
             android:letterSpacing="0.03"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
-            android:button="@android:color/transparent"
-            android:background="@drawable/cus_item_language"/>
+            android:text="@string/vietnamese"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
 
     </RadioGroup>

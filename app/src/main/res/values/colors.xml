@@ -16,4 +16,6 @@
     <color name="color_2">#7D7D7D</color>
     <color name="switch_light">#F3F3F3</color>
     <color name="tutorial">#6D5B18</color>
+    <color name="create">#CECECE</color>
+    <color name="text_create">#33000000</color>
 </resources>

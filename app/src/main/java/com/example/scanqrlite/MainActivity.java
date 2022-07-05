@@ -23,6 +23,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -30,6 +31,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.scanqrlite.adapter.MenuAdapter;
 import com.example.scanqrlite.create.Create;
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     MenuAdapter menuAdapter;
     RelativeLayout layout_menu, layout_permisson;
     Button btn_permisson;
+    Locale locale;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -58,13 +61,48 @@ public class MainActivity extends AppCompatActivity {
                 View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                         | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         super.onCreate(savedInstanceState);
+        Language();
         setContentView(R.layout.activity_main);
         ORM(); // Ánh xạ
         SetUpViewPager();
         EventButtonNavigation();
         PermissionCheck();
     }
+    private void Language(){
+        SharedPreferences sp_language = getSharedPreferences("language", Context.MODE_PRIVATE );
+        String check = sp_language.getString("language", "English");
+        Log.e("AAA", check);
+        switch (check) {
+            case "English":
+                locale = new Locale("en");
+                ChangeLanguage(locale);
+                break;
+            case "German":
+                locale = new Locale("de");
+                ChangeLanguage(locale);
+                break;
+            case "Chinese":
+                locale = new Locale("zh");
+                ChangeLanguage(locale);
+                break;
+            case "Korean":
+                locale = new Locale("ko");
+                ChangeLanguage(locale);
+                break;
+            case "Vietnamese":
+                locale = new Locale("vi");
+                ChangeLanguage(locale);
+                break;
+        }
+    }
+    private void ChangeLanguage(Locale locale) {
+        Locale.setDefault(locale);
+        Configuration config = getBaseContext().getResources().getConfiguration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
 
+    }
     private void EventButtonNavigation() {
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

@@ -8,13 +8,17 @@
     <string name="menu_setting">环境</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">你好空白片段</string>
+    <!-- AdMob ad unit IDs -->
+    <string name="banner_home_footer">ca-app-pub-0664570763252260/3326522424</string>
+    <string name="interstitial_full_screen">ca-app-pub-0664570763252260/1769900428</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 
 <!--    // Tutorial-->
     <string name="title_tutorial">要扫描代码，请将相机对准它</string>
     <string name="tutorial_first">在代码上，避免反射光或阴影。</string>
     <string name="tutorial_second">将手机放置在面向代码而不倾斜的位置</string>
     <string name="allow_permission">允许权限 </string>
-    <string name="warming">警告</string>
+    <string name="warming">警告!</string>
     <string name="notification">扫描条码需要许可摄像头</string>
 
 <!--    // Scan-->
@@ -54,7 +58,6 @@
     <string name="note">笔记</string>
     <!--    //Result_URL-->
     <string name="title_url">网址</string>
-    <string name="url_name">网址</string>
     <string name="goto_url">转到网址</string>
     <!--    // Result_Wifi-->
     <string name="title_wifi">无线上网</string>
@@ -82,29 +85,29 @@
     <string name="vietnamese">V越南语</string>
     <!--    // Question and answer -->
         <string name="question_and_answer">问题和答案</string>
-        <string name="question_1">Why is QR code not working?</string>
-        <string name="content_question_1">Sometimes the QR code contains website links. If the website is not working,
-                only the company that owns the website (and may have created the QR code) can fix that. Unfortunately, we can not do anything in this case</string>
-        <string name="question_2">Can I scan the code into a PDF file</string>
-        <string name="content_question_2">There are yes, steps will as this: Open a PDF file and capture the screen using the screen capture function.
-            Then, scan the screen</string>
-        <string name="question_3">Does the app have an API or similar software</string>
-        <string name="content_question_3">Our QR Scanner can be launched from other websites through the interface setup program</string>
+        <string name="question_1">为什么二维码不起作用？</string>
+        <string name="content_question_1">有时二维码包含网站链接。 如果网站打不开，
+                     只有拥有该网站的公司（并且可能已经创建了二维码）才能解决这个问题。 不幸的是，在这种情况下我们无能为力</string>
+        <string name="question_2">我可以将代码扫描成PDF文件吗</string>
+        <string name="content_question_2">有，步骤如下： 打开一个PDF文件，使用截屏功能截屏。
+                 然后，扫描屏幕</string>
+        <string name="question_3">应用是否有API或类似软件</string>
+        <string name="content_question_3">我们的二维码扫描仪可以通过界面设置程序从其他网站启动</string>
     <!--    // Feedback-->
         <string name="feedback">反馈</string>
-        <string name="dialog_question_feedback">Many questions have been answered in "Question &amp; answer".
-                If possible, take or attach a barcode or screenshot</string>
-        <string name="no">No</string>
-        <string name="yes">Yes</string>
+        <string name="dialog_question_feedback">许多问题已在“问答”中得到解答。
+                     如果可能，请拍摄或附上条形码或屏幕截图</string>
+        <string name="no">否</string>
+        <string name="yes">是</string>
     <!--    // Rate me on CHPlay-->
-        <string name="rate">在 CHPlay 上给我评分</string>
-        <string name="vote">Vote</string>
-        <string name="vote_again">Vote again</string>
-        <string name="feddback_in_rate_me">Feedback</string>
+        <string name="rate">在CHPlay上给我评分</string>
+        <string name="vote">投票</string>
+        <string name="vote_again">再次投票</string>
+        <string name="feddback_in_rate_me">反馈</string>
         <string name="open_chplay">OpenCHPlay</string>
-        <string name="Ratings_to_boost">Ratings to boost your app rankings on the app market</string>
-        <string name="report_bug">Report bugs and let us know what needs improvemnet</string>
-        <string name="thank_you">Thank you for voting for the app</string>
-
-    <string name="version">精简版：1.0</string>
+        <string name="Ratings_to_boost">评级以提升您的应用在应用市场上的排名</string>
+        <string name="report_bug">报告错误并告诉我们需要改进的地方</string>
+        <string name="thank_you">感谢您为应用投票</string>
+        <string name="version">精简版：1.0</string>
+    <string name="ok">好</string>
 </resources>

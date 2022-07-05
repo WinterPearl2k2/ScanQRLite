@@ -19,7 +19,7 @@
             android:id="@+id/btn_feedback_no"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No"
+            android:text="@string/no"
             android:textSize="20sp"
             android:paddingRight="15dp"
             android:paddingBottom="10dp"
@@ -28,18 +28,18 @@
             android:gravity="center"
             android:layout_toLeftOf="@id/btn_feedback_yes"
             />
+
         <TextView
             android:id="@+id/btn_feedback_yes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Yes"
-            android:textSize="20sp"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:paddingLeft="15dp"
             android:paddingRight="10dp"
             android:paddingBottom="10dp"
-            android:paddingLeft="15dp"
+            android:text="@string/yes"
             android:textColor="@color/primary_btn"
-            android:gravity="center"
-            android:layout_alignParentRight="true"
-            />
+            android:textSize="20sp" />
     </RelativeLayout>
 </LinearLayout>

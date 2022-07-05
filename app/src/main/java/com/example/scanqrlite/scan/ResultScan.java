@@ -8,6 +8,8 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.net.wifi.WifiConfiguration;
@@ -42,6 +44,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 
@@ -82,8 +85,9 @@ public class ResultScan extends AppCompatActivity {
         SaveImage();
         GoToURL();
         ConnectToWifi();
-        showAds();
+        showAds();;
     }
+
 
     private void showAds() {
         adRequest = new AdRequest.Builder().build();

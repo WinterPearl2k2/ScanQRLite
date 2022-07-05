@@ -36,7 +36,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Beep"
+                        android:text="@string/beep"
                         android:layout_weight="2"
                         android:textSize="24sp"
                         android:textColor="@color/black"
@@ -64,7 +64,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Vibrate"
+                        android:text="@string/vibrate"
                         android:layout_weight="2"
                         android:textSize="24sp"
                         android:textColor="@color/black"
@@ -91,7 +91,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Auto copy clipboard"
+                        android:text="@string/auto_copy"
                         android:layout_weight="2"
                         android:textSize="24sp"
                         android:textColor="@color/black"
@@ -110,36 +110,39 @@
                         app:track="@drawable/cus_track_switch"/>
                 </LinearLayout>
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/btn_language"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:layout_weight="1">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Change language"
-                        android:layout_weight="3"
-                        android:textSize="24sp"
-                        android:textColor="@color/black"
-                        android:letterSpacing="0.05"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toLeftOf="@+id/txt_language"
                         android:gravity="center_vertical"
-                        android:padding="12dp"/>
+                        android:letterSpacing="0.05"
+                        android:padding="12dp"
+                        android:text="@string/change_language"
+                        android:textColor="@color/black"
+                        android:textSize="24sp" />
                     <TextView
                         android:id="@+id/txt_language"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="English"
-                        android:layout_weight="7"
+                        android:layout_weight="1"
                         android:textSize="24sp"
                         android:fontFamily="@font/agencyb"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:letterSpacing="0.03"
                         android:gravity="center"
+                        android:layout_alignParentRight="true"
                         android:padding="12dp"/>
-                </LinearLayout>
+                </RelativeLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -164,7 +167,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Question &amp; answer"
+                        android:text="@string/question_and_answer"
                         android:layout_weight="2"
                         android:textSize="24sp"
                         android:textColor="@color/black"
@@ -182,7 +185,8 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Feedback"
+                        android:text="@string/feedback"
+                        android:splitMotionEvents="false"
                         android:layout_weight="2"
                         android:textSize="24sp"
                         android:textColor="@color/black"
@@ -200,7 +204,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Rate me on CHPlay"
+                        android:text="@string/rate"
                         android:layout_weight="2"
                         android:textSize="24sp"
                         android:textColor="@color/black"
@@ -218,7 +222,7 @@
                         android:id="@+id/txt_version"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="Version Lite: 1.2"
+                        android:text="@string/version"
                         android:layout_weight="3"
                         android:textSize="24sp"
                         android:textColor="@color/black"
@@ -243,7 +247,7 @@
             android:paddingTop="40dp"
             android:paddingBottom="10dp"
             android:fontFamily="@font/agencyb"
-            android:text="Settings"
+            android:text="@string/title_settings"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold" />

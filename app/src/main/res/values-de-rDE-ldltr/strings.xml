@@ -8,13 +8,18 @@
     <string name="menu_setting">Einstellung</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+<!-- AdMob ad unit IDs -->
+    <string name="banner_home_footer">ca-app-pub-0664570763252260/3326522424</string>
+    <string name="interstitial_full_screen">ca-app-pub-0664570763252260/1769900428</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 
 <!--    // Tutorial-->
     <string name="title_tutorial">Um den Code zu scannen, richten Sie Ihre Kamera darauf</string>
     <string name="tutorial_first">Vermeiden Sie auf dem Code reflektiertes Licht oder Schatten.</string>
     <string name="tutorial_second">Platzieren Sie Ihr Telefon so, dass es auf den Code zeigt, ohne es zu neigen</string>
     <string name="allow_permission">ERLAUBEN </string>
-    <string name="warming">WARNUNG</string>
+    <string name="ok">okay</string>
+    <string name="warming">WARNUNG!</string>
     <string name="notification">Das Scannen von Barcodes erfordert eine Kameraerlaubnis</string>
 
 <!--    // Scan-->
@@ -53,7 +58,6 @@
         <string name="note">Notiz</string>
     <!--    //Result_URL-->
         <string name="title_url">URL</string>
-        <string name="url_name">URL</string>
         <string name="goto_url">GOTO-URL</string>
     <!--    // Result_Wifi-->
         <string name="title_wifi">W-lan</string>
@@ -82,27 +86,28 @@
     <!--    // Question and answer -->
         <string name="question_and_answer">Frage und Antwort</string>
         <string name="question_1">Why is QR code not working?</string>
-        <string name="content_question_1">Sometimes the QR code contains website links. If the website is not working,
-                only the company that owns the website (and may have created the QR code) can fix that. Unfortunately, we can not do anything in this case</string>
-        <string name="question_2">Can I scan the code into a PDF file</string>
-        <string name="content_question_2">There are yes, steps will as this: Open a PDF file and capture the screen using the screen capture function.
-            Then, scan the screen</string>
-        <string name="question_3">Does the app have an API or similar software</string>
-        <string name="content_question_3">Our QR Scanner can be launched from other websites through the interface setup program</string>
+        <string name="content_question_1">Manchmal enthält der QR-Code Website-Links. Wenn die Website nicht funktioniert,
+                     Nur das Unternehmen, dem die Website gehört (und möglicherweise den QR-Code erstellt hat), kann das beheben. Leider können wir in diesem Fall nichts tun.</string>
+        <string name="question_2">Kann ich den Code in eine PDF-Datei scannen</string>
+        <string name="content_question_2">Ja, es gibt Schritte wie diese: Öffnen Sie eine PDF-Datei und erfassen Sie den Bildschirm mit der Bildschirmaufnahmefunktion.
+                 Scannen Sie dann den Bildschirm.</string>
+        <string name="question_3">Verfügt die App über eine API oder ähnliche Software.</string>
+        <string name="content_question_3">Unser QR-Scanner kann von anderen Websites über das Schnittstellen-Setup-Programm gestartet werden.</string>
     <!--    // Feedback-->
         <string name="feedback">Feedback</string>
-        <string name="dialog_question_feedback">Many questions have been answered in "Question &amp; answer".
-                If possible, take or attach a barcode or screenshot</string>
-        <string name="no">No</string>
-        <string name="yes">Yes</string>
+        <string name="dialog_question_feedback">Viele Fragen wurden in "Frage &amp; Antwort" beantwortet.
+                     Wenn möglich, machen oder hängen Sie einen Barcode oder Screenshot an.</string>
+        <string name="no">Nein</string>
+        <string name="yes">Ja</string>
     <!--    // Rate me on CHPlay-->
         <string name="rate">Bewerte mich auf CH Play</string>
-        <string name="vote">Vote</string>
-        <string name="vote_again">Vote again</string>
+        <string name="vote">Abstimmen</string>
+        <string name="vote_again">Stimme noch einmal ab</string>
         <string name="feddback_in_rate_me">Feedback</string>
         <string name="open_chplay">OpenCHPlay</string>
-        <string name="Ratings_to_boost">Ratings to boost your app rankings on the app market</string>
-        <string name="report_bug">Report bugs and let us know what needs improvemnet</string>
-        <string name="thank_you">Thank you for voting for the app</string>
+        <string name="Ratings_to_boost">Bewertungen, um deine App-Rankings auf dem App-Markt zu verbessern</string>
+        <string name="report_bug">Melde Fehler und lass uns wissen, was verbessert werden muss</string>
+        <string name="thank_you">Danke, dass du für die App gestimmt hast</string>
     <string name="version">Ausführung Lite: 1.0</string>
+
 </resources>
