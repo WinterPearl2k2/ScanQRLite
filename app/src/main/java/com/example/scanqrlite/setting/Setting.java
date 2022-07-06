@@ -11,7 +11,6 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 
@@ -80,7 +79,7 @@ public class Setting extends Fragment {
         FeedBack();
         showAds();
         RateOnCHPlay();
-        Version();
+        //Version();
         return view;
 
     }
@@ -146,12 +145,12 @@ public class Setting extends Fragment {
             public void onClick(View view) {
                 if(rtRating.getRating() >= 5f) {
                     imgRating.setImageResource(R.drawable.img_love);
-                    txtTitleRating.setText("Thank you for voting for the app");
+                    txtTitleRating.setText(R.string.thank_you);
                     btnRatingClose.setVisibility(View.VISIBLE);
                     btnRatingOpenChplay.setVisibility(View.VISIBLE);
                     btnRatingFeedback.setVisibility(View.GONE);
                     btnRatingVote.setVisibility(View.GONE);
-                    btnRatingOpenChplay.setText("OpenCHplay");
+                    btnRatingOpenChplay.setText(R.string.open_chplay);
                     btnRatingOpenChplay.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -162,7 +161,7 @@ public class Setting extends Fragment {
                     rtRating.setClickable(false);
                 } else if(rtRating.getRating() > 0f && rtRating.getRating() <= 4f) {
                     imgRating.setImageResource(R.drawable.img_sad);
-                    txtTitleRating.setText("Report bugs and let us know what needs improvement");
+                    txtTitleRating.setText(R.string.report_bug);
                     btnRatingVoteAgain.setVisibility(View.VISIBLE);
                     btnRatingClose.setVisibility(View.GONE);
                     btnRatingVoteAgain.setOnClickListener(new View.OnClickListener() {
@@ -170,7 +169,7 @@ public class Setting extends Fragment {
                         public void onClick(View view) {
                             rtRating.setRating(3f);
                             imgRating.setImageResource(R.drawable.img_smile);
-                            txtTitleRating.setText("Ratings to boost your app rankings on the app market");
+                            txtTitleRating.setText(R.string.Ratings_to_boost);
                             btnRatingVoteAgain.setVisibility(View.GONE);
                             btnRatingClose.setVisibility(View.INVISIBLE);
                             btnRatingVote.setVisibility(View.VISIBLE);
@@ -488,10 +487,9 @@ public class Setting extends Fragment {
         editor.commit();
     }
 
-    private void Version() {
-
-        txtVersion.setText( R.string.version + BuildConfig.VERSION_NAME);
-    }
+//    private void Version() {
+//        txtVersion.setText( R.string.versionssss + " " + BuildConfig.VERSION_NAME);
+//    }
 
     private void ORM() {
         swBeep = view.findViewById(R.id.sw_beep);

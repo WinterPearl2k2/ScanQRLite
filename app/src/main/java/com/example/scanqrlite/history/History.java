@@ -83,9 +83,9 @@ public class History extends Fragment {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
                 switch (position) {
-                    case 0: tab.setText("Scan");
+                    case 0: tab.setText(R.string.title_scan);
                         break;
-                    case 1: tab.setText("Create");
+                    case 1: tab.setText(R.string.title_create);
                         break;
                 }
             }

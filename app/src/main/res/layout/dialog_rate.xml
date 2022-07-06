@@ -141,7 +141,7 @@
                 android:paddingTop="15dp"
                 android:paddingRight="20dp"
                 android:paddingBottom="15dp"
-                android:text="@string/feddback_in_rate_me"
+                android:text="@string/feedback"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"

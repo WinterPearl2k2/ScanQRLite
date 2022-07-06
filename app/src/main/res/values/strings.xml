@@ -27,23 +27,20 @@
     <string name="flash">FLASH</string>
 
     <!--    //Create-->
-    <string name="title_create">Create</string>
     <string name="create_button">CREATE</string>
-    <string name="text_button">Text</string>
-    <string name="url_button">URL</string>
     <string name="wifi_button">Wifi</string>
     <!--    // Create_Text-->
         <string name="content">Content</string>
         <string name="enter_text">Enter text here</string>
         <string name="please_enter_your_content">Please enter your content</string>
     <!--    // Create_URL-->
-        <string name="url">URL</string>
+        <string name="url_result">URL:</string>
         <string name="enter_url">Enter URL here</string>
         <string name="please_enter_your_url">Please enter your url</string>
     <!--    // Create_Wifi-->
-        <string name="network_name">Network name</string>
+        <string name="network_name">"Network name: "</string>
         <string name="enter_network_name"> Enter network name here</string>
-        <string name="password_">Password</string>
+        <string name="password_">Password:</string>
         <string name="enter_password">Enter password here</string>
         <string name="security">Security</string>
         <string name="account_not_be_blank">Account not be blank</string>
@@ -58,21 +55,20 @@
     <!--    //Result-->
     <string name="copy_success">Copy Success</string>
     <string name="save_QR">SAVE QR</string>
+    <string name="save_success">Save Success</string>
     <!--    // Result_Text-->
         <string name="title_text">Text</string>
-        <string name="note">Note</string>
+        <string name="note">Note:</string>
     <!--    //Result_URL-->
-        <string name="title_url">URL</string>
-        <string name="goto_url">GOTO URL</string>
+    <string name="goto_url">GOTO URL</string>
     <!--    // Result_Wifi-->
         <string name="title_wifi">Wifi</string>
         <string name="connect">CONNECT</string>
 
     <!-- History-->
-    <string name="title_history">History</string>
-    <string name="title_scan_hs">Scan</string>
-    <string name="title_create_hs">Create</string>
     <string name="copy_text">Copy Text</string>
+    <string name="title_scan">Scan</string>
+    <string name="title_create">Create</string>
     <string name="search">Search</string>
     <string name="share">Share</string>
 
@@ -109,11 +105,13 @@
         <string name="rate">Rate me on CHPlay</string>
         <string name="vote">Vote</string>
         <string name="vote_again">Vote again</string>
-        <string name="feddback_in_rate_me">Feedback</string>
-        <string name="open_chplay">OpenCHPlay</string>
+    <string name="open_chplay">OpenCHPlay</string>
         <string name="Ratings_to_boost">Ratings to boost your app rankings on the app market.</string>
         <string name="report_bug">Report bugs and let us know what needs improvement.</string>
         <string name="thank_you">Thank you for voting for the app.</string>
-    <string name="version">Version Lite: 1.0</string>
+    <string name="version">"Version Lite: 1.0 "</string>
+    <string name="save_barcode">SAVE BARCODE</string>
+    <string name="product">Product:</string>
+    <string name="url">URL</string>
 
 </resources>

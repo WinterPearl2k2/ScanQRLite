@@ -28,23 +28,20 @@
     <string name="flash">BLITZ</string>
 
 <!--    //Create-->
-    <string name="title_create">Schaffen</string>
     <string name="create_button">SCHAFFEN</string>
-    <string name="text_button">Text</string>
-    <string name="url_button">URL</string>
     <string name="wifi_button">W-lan</string>
     <!--    // Create_Text-->
         <string name="content">Inhalt</string>
         <string name="enter_text">Hier Text eingeben</string>
         <string name="please_enter_your_content">Bitte geben Sie Ihre Inhalte ein</string>
     <!--    // Create_URL-->
-        <string name="url">URL</string>
+        <string name="url_result">URL:</string>
         <string name="enter_url">URL hier eingeben</string>
         <string name="please_enter_your_url">Bitte geben Sie Ihre URL ein</string>
     <!--    // Create_Wifi-->
-        <string name="network_name">Netzwerkname</string>
+        <string name="network_name">Netzwerkname:</string>
         <string name="enter_network_name"> Geben Sie hier den Netzwerknamen ein</string>
-        <string name="password_">Passwort</string>
+        <string name="password_">Passwort:</string>
         <string name="enter_password">Geben Sie hier das Passwort ein</string>
         <string name="security">Sicherheit</string>
         <string name="account_not_be_blank">Konto darf nicht leer sein</string>
@@ -53,20 +50,17 @@
 <!--    //Result-->
     <string name="copy_success">Erfolg Kopieren</string>
     <string name="save_QR">QR SPEICHERN</string>
+    <string name="save_success">Erfolg speichern</string>
     <!--    // Result_Text-->
         <string name="title_text">Text</string>
-        <string name="note">Notiz</string>
+        <string name="note">Notiz:</string>
     <!--    //Result_URL-->
-        <string name="title_url">URL</string>
-        <string name="goto_url">GOTO-URL</string>
+    <string name="goto_url">GOTO-URL</string>
     <!--    // Result_Wifi-->
         <string name="title_wifi">W-lan</string>
         <string name="connect">VERBINDEN</string>
 
 <!-- History-->
-    <string name="title_history">Geschichte</string>
-    <string name="title_scan_hs">Scane</string>
-    <string name="title_create_hs">Schaffen</string>
     <string name="copy_text">Text kopieren</string>
     <string name="search">Suche</string>
     <string name="share">Teilen</string>
@@ -103,11 +97,15 @@
         <string name="rate">Bewerte mich auf CH Play</string>
         <string name="vote">Abstimmen</string>
         <string name="vote_again">Stimme noch einmal ab</string>
-        <string name="feddback_in_rate_me">Feedback</string>
-        <string name="open_chplay">OpenCHPlay</string>
+    <string name="open_chplay">OpenCHPlay</string>
         <string name="Ratings_to_boost">Bewertungen, um deine App-Rankings auf dem App-Markt zu verbessern</string>
         <string name="report_bug">Melde Fehler und lass uns wissen, was verbessert werden muss</string>
         <string name="thank_you">Danke, dass du für die App gestimmt hast</string>
-    <string name="version">Ausführung Lite: 1.0</string>
+    <string name="version">"Ausführung Lite: 1.0 "</string>
+    <string name="title_scan">Scannen</string>
+    <string name="title_create">Schaffen</string>
+    <string name="save_barcode">BARCODE SPEICHERN</string>
+    <string name="product">Produkt:</string>
+    <string name="url">URL</string>
 
 </resources>
