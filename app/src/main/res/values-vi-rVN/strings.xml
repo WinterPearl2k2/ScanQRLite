@@ -26,23 +26,20 @@
     <string name="flash">ĐÈN PIN</string>
 
 <!--    //Create-->
-    <string name="title_create">Tạo</string>
     <string name="create_button">TẠO</string>
-    <string name="text_button">Văn bản</string>
-    <string name="url_button">Liên kết</string>
     <string name="wifi_button">Wifi</string>
     <!--    // Create_Text-->
         <string name="content">Nội dung</string>
         <string name="enter_text">Nhập văn bản ở đây</string>
         <string name="please_enter_your_content">Vui lòng nhập nội dung của bạn</string>
     <!--    // Create_URL-->
-        <string name="url">Liên kết </string>
+        <string name="url_result">Liên kết:</string>
         <string name="enter_url">Nhập liên kết ở đây</string>
         <string name="please_enter_your_url">Vui lòng nhập liên kết của bạn</string>
     <!--    // Create_Wifi-->
-        <string name="network_name">Tên mạng</string>
+        <string name="network_name">Tên mạng:</string>
         <string name="enter_network_name"> Vui lòng nhập tên mạng của bạn</string>
-        <string name="password_">Mật khẩu</string>
+        <string name="password_">Mật khẩu:</string>
         <string name="enter_password">Nhập mật khẩu ở đây</string>
         <string name="security">Bảo mật</string>
         <string name="account_not_be_blank">Tài khoản không được để trống</string>
@@ -51,20 +48,17 @@
 <!--    //Result-->
     <string name="copy_success">Sao chép thành công</string>
     <string name="save_QR">LƯU QR</string>
+    <string name="save_success">Lưu thành công</string>
     <!--    // Result_Text-->
     <string name="title_text">Văn bản</string>
-    <string name="note">Ghi chú</string>
+    <string name="note">Ghi chú:</string>
     <!--    //Result_URL-->
-    <string name="title_url">Liên kết</string>
     <string name="goto_url">ĐI ĐẾN LIÊN KẾT</string>
     <!--    // Result_Wifi-->
     <string name="title_wifi">Wifi</string>
     <string name="connect">KẾT NỐI</string>
 
 <!-- History-->
-    <string name="title_history">Lịch sử</string>
-    <string name="title_scan_hs">Quét mã</string>
-    <string name="title_create_hs">Tạo mã</string>
     <string name="copy_text">Sao chép văn bản</string>
     <string name="search">Tìm kiếm</string>
     <string name="share">Chia sẻ</string>
@@ -78,9 +72,9 @@
     <string name="english">Tiếng Anh</string>
     <string name="french">Tiếng Pháp</string>
     <string name="german">Tiếng Đức</string>
-    <string name="chinese">Tiếng Trung Quốc</string>
-    <string name="korean">Tiếng Hàn Quốc</string>
-    <string name="vietnamese">Tiếng Việt Nam</string>
+    <string name="chinese">"Tiếng Trung "</string>
+    <string name="korean">"Tiếng Hàn "</string>
+    <string name="vietnamese">"Tiếng Việt "</string>
     <!--    // Question and answer -->
         <string name="question_and_answer">Câu hỏi và trả lời</string>
         <string name = "question_1"> Tại sao mã QR không hoạt động? </string>
@@ -99,14 +93,18 @@
         <string name = "yes"> Có </string>
     <!--    // Rate me on CHPlay-->
         <string name="rate">Đánh giá trên CHPlay</string>
-        <string name="vote">Vote</string>
-        <string name="vote_again">Vote again</string>
-        <string name="feddback_in_rate_me">Feedback</string>
-        <string name="open_chplay">Đi tới CHPlay</string>
+        <string name="vote">Đánh giá</string>
+        <string name="vote_again">Đánh giá lại</string>
+    <string name="open_chplay">Đi tới CHPlay</string>
         <string name = "Ratings_to_boost"> Xếp hạng để tăng thứ hạng ứng dụng của bạn trên chợ ứng dụng </string>
         <string name = "report_bug"> Báo cáo lỗi và cho chúng tôi biết những gì cần cải thiện </string>
         <string name = "thank_you"> Cảm ơn bạn đã bỏ phiếu cho ứng dụng </string>
 
-    <string name="version">Phiên bản: 1.0</string>
+    <string name="version">"Phiên bản: 1.0"</string>
     <string name="ok">Đồng ý</string>
+    <string name="title_scan">Quét</string>
+    <string name="title_create">Tạo</string>
+    <string name="save_barcode">LƯU MÃ VẠCH</string>
+    <string name="product">Sản phẩm:</string>
+    <string name="url">Liên kết</string>
 </resources>

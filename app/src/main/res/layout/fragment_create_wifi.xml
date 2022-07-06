@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="12dp"
                 android:paddingTop="12dp"
-                android:text="Network name:"
+                android:text="@string/network_name"
                 android:textColor="@color/color_2"
                 android:textSize="20sp" />
 
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:gravity="top"
-                android:hint="Enter network name here"
+                android:hint="@string/enter_network_name"
                 android:inputType="text"
                 android:maxHeight="250dp"
                 android:maxLines="1"
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="12dp"
                 android:paddingTop="12dp"
-                android:text="Password:"
+                android:text="@string/password_"
                 android:textColor="@color/color_2"
                 android:textSize="20sp" />
 
@@ -77,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:gravity="top"
-                android:hint="Enter password here"
+                android:hint="@string/enter_password"
                 android:inputType="text"
                 android:minHeight="136dp"
                 android:paddingLeft="12dp"
@@ -96,7 +96,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/agencyr"
-            android:text="Security"
+            android:text="@string/security"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -166,7 +166,7 @@
             android:elevation="0dp"
             android:letterSpacing="0.05"
             android:minWidth="160dp"
-            android:text="Create"
+            android:text="@string/create_button"
             android:textColor="@color/black20"
             android:stateListAnimator="@null"
             android:textFontWeight="900"

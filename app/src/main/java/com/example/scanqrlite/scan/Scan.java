@@ -222,7 +222,7 @@ public class Scan extends Fragment {
         if(requestCode == 102) {
             btnGallery.setEnabled(true);
             if(data == null || data.getData() == null) {
-                Log.e("TAG", "The uri is null, probably the user cancelled the image selection process using the back button.");
+                Log.e("TAG", "The uri is null, probably the user Fcancelled the image selection process using the back button.");
                 return;
             }
 

@@ -17,7 +17,7 @@
         android:paddingTop="40dp"
         android:paddingRight="20dp"
         android:paddingBottom="10dp"
-        android:text="History"
+        android:text="@string/menu_history"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -36,13 +36,13 @@
             android:id="@+id/tab_scan"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Scan" />
+            android:text="@string/title_scan" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab_create"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Create" />
+            android:text="@string/title_create" />
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager2.widget.ViewPager2

@@ -27,23 +27,20 @@
     <string name="flash"> 플래시</string>
 
     <!--    //Create-->
-        <string name="title_create">만들기</string>
-        <string name="create_button">만들기</string>
-        <string name="text_button">텍스트</string>
-        <string name="url_button">URL</string>
-        <string name="wifi_button">와이파이</string>
+    <string name="create_button">만들기</string>
+    <string name="wifi_button">와이파이</string>
     <!--    // Create_Text-->
         <string name="content">콘텐츠</string>
         <string name="enter_text">여기에 텍스트 입력</string>
         <string name="please_enter_your_content">콘텐츠를 입력하세요</string>
     <!--    // Create_URL-->
-        <string name="url">URL</string>
+        <string name="url_result">URL:</string>
         <string name="enter_url">여기에 URL 입력</string>
         <string name="please_enter_your_url">URL을 입력하세요</string>
     <!--    // Create_Wifi-->
-        <string name="network_name">네트워크 이름</string>
+        <string name="network_name">네트워크 이름:</string>
         <string name="enter_network_name"> 여기에 네트워크 이름 입력</string>
-        <string name="password_">비밀번호</string>
+        <string name="password_">비밀번호:</string>
         <string name="enter_password">여기에 비밀번호 입력</string>
         <string name="security">보안</string>
         <string name="account_not_be_blank">계정은 비워둘 수 없습니다.</string>
@@ -52,20 +49,17 @@
 <!--    //Result-->
     <string name="copy_success">복사 성공</string>
     <string name="save_QR">QR 저장</string>
+    <string name="save_success">Save Success</string>
     <!--    // Result_Text-->
         <string name="title_text">텍스트</string>
-        <string name="note">참고</string>
+        <string name="note">참고:</string>
     <!--    //Result_URL-->
-        <string name="title_url">URL</string>
-        <string name="goto_url">URL로 이동</string>
+    <string name="goto_url">URL로 이동</string>
     <!--    // Result_Wifi-->
         <string name="title_wifi">와이파이</string>
         <string name="connect">연결</string>
 
 <!-- History-->
-    <string name="title_history">기록</string>
-    <string name="title_scan_hs">스캔</string>
-    <string name="title_create_hs">만들기</string>
     <string name="copy_text">텍스트 복사</string>
     <string name="search">검색</string>
     <string name="share">공유</string>
@@ -102,13 +96,17 @@
         <string name="rate">CHPlay에서 나를 평가</string>
         <string name="vote">투표</string>
         <string name="vote_again">다시 투표</string>
-        <string name="feddback_in_rate_me">피드백</string>
-        <string name="open_chplay">OpenCHPlay</string>
+    <string name="open_chplay">OpenCHPlay</string>
         <string name="Ratings_to_boost">앱 시장에서 앱 순위를 높이기 위한 평가</string>
         <string name="report_bug">버그를 보고하고 개선이 필요한 사항을 알려주세요.</string>
         <string name="thank_you">앱에 투표해 주셔서 감사합니다.</string>
 
-        <string name="version">버전 라이트: 1.0</string>
+        <string name="version">"버전 라이트: 1.0"</string>
     <string name="ok">오케이</string>
+    <string name="title_scan">주사</string>
+    <string name="title_create">만들다</string>
+    <string name="save_barcode">바코드 저장</string>
+    <string name="product">제품:</string>
+    <string name="url">URL</string>
 
 </resources>

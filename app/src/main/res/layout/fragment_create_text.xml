@@ -58,7 +58,7 @@
             android:elevation="0dp"
             android:letterSpacing="0.05"
             android:minWidth="160dp"
-            android:text="Create"
+            android:text="@string/create_button"
             android:textColor="@color/black20"
             android:stateListAnimator="@null"
             android:textFontWeight="900"

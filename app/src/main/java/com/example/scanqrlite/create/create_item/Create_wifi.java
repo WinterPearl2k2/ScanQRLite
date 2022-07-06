@@ -183,7 +183,7 @@ public class Create_wifi extends Fragment {
             edtPass.setError("Password please enter more than 8 characters");
         if(checkIsEmpty == 3) {
             edtSSID.setError("Account not be blank");
-            edtPass.setError("Password please enter more than 8 characters");
+            edtPass.setError("Password please enter more than 1 characters");
         }
     }
 

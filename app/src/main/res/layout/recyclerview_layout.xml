@@ -41,7 +41,7 @@
                 android:id="@+id/title_history_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="URL"
+                android:text="@string/url_result"
                 android:textColor="@color/black"
                 android:textSize="25sp"
                 android:lineHeight="30dp"/>

@@ -27,23 +27,20 @@
     <string name="flash">闪光</string>
 
 <!--    //Create-->
-    <string name="title_create">创造</string>
     <string name="create_button">创造</string>
-    <string name="text_button">文本</string>
-    <string name="url_button">网址</string>
     <string name="wifi_button">无线上网</string>
     <!--    // Create_Text-->
         <string name="content">内容</string>
         <string name="enter_text">在此输入文字</string>
         <string name="please_enter_your_content">请输入您的内容</string>
     <!--    // Create_URL-->
-        <string name="url">网址</string>
+        <string name="url_result">网址:</string>
         <string name="enter_url">在此处输入网址</string>
         <string name="please_enter_your_url">请输入您的网址</string>
     <!--    // Create_Wifi-->
-        <string name="network_name">网络名字</string>
+        <string name="network_name">"网络名字: "</string>
         <string name="enter_network_name"> 在此处输入网络名称</string>
-        <string name="password_">密码</string>
+        <string name="password_">密码:</string>
         <string name="enter_password">在此输入密码</string>
         <string name="security">安全</string>
         <string name="account_not_be_blank">帐号不能为空</string>
@@ -53,20 +50,17 @@
 <!--    //Result-->
     <string name="copy_success">复制成功</string>
     <string name="save_QR">保存二维码</string>
+    <string name="save_success">保存成功</string>
     <!--    // Result_Text-->
     <string name="title_text">文本</string>
     <string name="note">笔记</string>
     <!--    //Result_URL-->
-    <string name="title_url">网址</string>
     <string name="goto_url">转到网址</string>
     <!--    // Result_Wifi-->
     <string name="title_wifi">无线上网</string>
     <string name="connect">连接</string>
 
 <!-- History-->
-    <string name="title_history">历史</string>
-    <string name="title_scan_hs">扫描</string>
-    <string name="title_create_hs">创造</string>
     <string name="copy_text">复制文本</string>
     <string name="search">搜索</string>
     <string name="share">分享</string>
@@ -103,11 +97,15 @@
         <string name="rate">在CHPlay上给我评分</string>
         <string name="vote">投票</string>
         <string name="vote_again">再次投票</string>
-        <string name="feddback_in_rate_me">反馈</string>
-        <string name="open_chplay">OpenCHPlay</string>
+    <string name="open_chplay">OpenCHPlay</string>
         <string name="Ratings_to_boost">评级以提升您的应用在应用市场上的排名</string>
         <string name="report_bug">报告错误并告诉我们需要改进的地方</string>
         <string name="thank_you">感谢您为应用投票</string>
         <string name="version">精简版：1.0</string>
     <string name="ok">好</string>
+    <string name="title_scan">扫描</string>
+    <string name="title_create">创造</string>
+    <string name="save_barcode">保存条码</string>
+    <string name="product">产品:</string>
+    <string name="url">网址</string>
 </resources>

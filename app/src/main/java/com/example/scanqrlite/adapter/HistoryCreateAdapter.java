@@ -165,7 +165,7 @@ public class HistoryCreateAdapter extends RecyclerView.Adapter<HistoryCreateAdap
         ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clipData = ClipData.newPlainText("label", content);
         clipboardManager.setPrimaryClip(clipData);
-        Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, R.string.copy_success, Toast.LENGTH_SHORT).show();
     }
 
     private Bitmap CreateImage(String content) throws WriterException {

@@ -8,8 +8,6 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.net.wifi.WifiConfiguration;
@@ -41,11 +39,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
 import java.util.Random;
 
 public class ResultScan extends AppCompatActivity {
@@ -232,7 +227,7 @@ public class ResultScan extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                Toast.makeText(ResultScan.this, "Success", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ResultScan.this, R.string.save_success, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -279,7 +274,7 @@ public class ResultScan extends AppCompatActivity {
         ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clipData = ClipData.newPlainText("label", content);
         clipboardManager.setPrimaryClip(clipData);
-        Toast.makeText(ResultScan.this, " Coppy Success", Toast.LENGTH_SHORT).show();
+        Toast.makeText(ResultScan.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -301,15 +296,15 @@ public class ResultScan extends AppCompatActivity {
         if(type.equals("QRcode")) {
             switch (title) {
                 case "Text":
-                    txtTitleActionbar.setText("Text");
+                    txtTitleActionbar.setText(R.string.title_text);
                     txtContent.setText(content);
-                    txtTitle.setText("Note:");
+                    txtTitle.setText(R.string.note);
                     btnSave.setVisibility(View.VISIBLE);
                     createQR(content);
                     break;
                 case "Wifi":
-                    txtTitleActionbar.setText("Wifi");
-                    txtTitle.setText("Network name:");
+                    txtTitleActionbar.setText(R.string.title_wifi);
+                    txtTitle.setText(R.string.network_name);
                     btnSave.setVisibility(View.VISIBLE);
                     btnWifi.setVisibility(View.VISIBLE);
                     if(intent.getStringExtra("P").length() != 0) {
@@ -322,20 +317,20 @@ public class ResultScan extends AppCompatActivity {
                     T = intent.getStringExtra("T");
                     txtContent.setText(S);
                     txtContentSecurity.setText(T);
-                    createQR(content);
+                    createQR(content );
                     break;
                 case "URL":
-                    txtTitleActionbar.setText("URL");
+                    txtTitleActionbar.setText(R.string.url_result);
                     txtContent.setText(content);
-                    txtTitle.setText("URL:");
+                    txtTitle.setText(R.string.url_result);
                     btnSave.setVisibility(View.VISIBLE);
                     btnURL.setVisibility(View.VISIBLE);
                     createQR(content);
                     break;
                 default:
-                    txtTitleActionbar.setText("Text");
+                    txtTitleActionbar.setText(R.string.title_text);
                     txtContent.setText(content);
-                    txtTitle.setText("Note:");
+                    txtTitle.setText(R.string.note);
                     btnSave.setVisibility(View.VISIBLE);
                     createQR(content);
                     break;
@@ -343,18 +338,18 @@ public class ResultScan extends AppCompatActivity {
         } else if(type.equals("Barcode")){
             switch (title) {
                 case "Product":
-                    txtTitleActionbar.setText("Product");
-                    txtTitle.setText("Product:");
+                    txtTitleActionbar.setText(R.string.product);
+                    txtTitle.setText(R.string.product);
                     break;
                 case "Text":
-                    txtTitleActionbar.setText("Text");
-                    txtTitle.setText("Note:");
+                    txtTitleActionbar.setText(R.string.title_text);
+                    txtTitle.setText(R.string.note);
                     break;
             }
             txtContent.setText(content);
             btnSave.setVisibility(View.VISIBLE);
             createQR(content);
-            txtBtnSave.setText("Save barcode");
+            txtBtnSave.setText(R.string.save_barcode);
         }
     }
 
