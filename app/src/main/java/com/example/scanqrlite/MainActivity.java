@@ -55,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
     Locale locale;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         Language();
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
@@ -69,37 +68,7 @@ public class MainActivity extends AppCompatActivity {
         EventButtonNavigation();
         PermissionCheck();
     }
-    private void Language(){
-        SharedPreferences sp_language = getSharedPreferences("language", Context.MODE_PRIVATE );
-        String check = sp_language.getString("language", "English");
-        switch (check) {
-            case "English":
-                locale = new Locale("en");
-                break;
-            case "German":
-                locale = new Locale("de");
-                break;
-            case "Chinese":
-                locale = new Locale("zh");
-                break;
-            case "Korean":
-                locale = new Locale("ko");
-                break;
-            case "Vietnamese":
-                locale = new Locale("vi");
-                break;
-        }
-        ChangeLanguage(locale);
-    }
-    private void ChangeLanguage(Locale locale) {
-        Locale.setDefault(locale);
-        Resources res = getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        Configuration conf = res.getConfiguration();
-        conf.locale = locale;
-        res.updateConfiguration(conf, dm);
 
-    }
     private void EventButtonNavigation() {
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -148,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
                         navigationView.getMenu().findItem(R.id.Scan).setChecked(true);
                         break;
                 }
+                Language();
             }
         });
     }
@@ -276,5 +246,43 @@ public class MainActivity extends AppCompatActivity {
         layout_menu = findViewById(R.id.layout_menu);
         layout_permisson = findViewById(R.id.layout_permission);
         btn_permisson = findViewById(R.id.btn_permisson);
+    }
+    private void Language(){
+        SharedPreferences sp_language = getSharedPreferences("language", Context.MODE_PRIVATE );
+        String check = sp_language.getString("language", "English");
+        Log.e("TAG@:",check);
+        switch (check) {
+            case "English":
+                locale = new Locale("en");
+                ChangeLanguage(locale);
+                break;
+            case "German":
+                locale = new Locale("de");
+                ChangeLanguage(locale);
+                break;
+            case "Chinese":
+                locale = new Locale("zh");
+                ChangeLanguage(locale);
+                break;
+            case "Korean":
+                locale = new Locale("ko");
+                ChangeLanguage(locale);
+                break;
+            case "Vietnamese":
+                locale = new Locale("vi");
+                ChangeLanguage(locale);
+                break;
+        }
+
+    }
+
+    private void ChangeLanguage(Locale locale) {
+        Locale.setDefault(locale);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = locale;
+        res.updateConfiguration(conf, dm);
+
     }
 }

@@ -66,17 +66,15 @@ public class Create_wifi extends Fragment {
                     case R.id.btn_wep: security = "WEP";
                         nothing = false;
                         edtPass.setEnabled(true);
-                        layoutPass.setVisibility(View.VISIBLE);
                         break;
                     case R.id.btn_wpa: security = "WPA";
                         nothing = false;
                         edtPass.setEnabled(true);
-                        layoutPass.setVisibility(View.VISIBLE);
                         break;
                     case R.id.btn_nothing: security = "nopass";
                         nothing = true;
-                        layoutPass.setVisibility(View.GONE);
                         edtPass.setEnabled(false);
+                        edtPass.setError(null);
                         hihi.setFocusable(true);
                         hihi.requestFocusFromTouch();
                         break;

@@ -11,12 +11,12 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 
 import android.text.Html;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,8 +59,8 @@ public class Setting extends Fragment {
     private ImageView imgRating;
     View view;
     AdView adsViewSetting;
-    AdRequest adRequest;
     Locale locale;
+    AdRequest adRequest;
     AdLoader adLoader;
 
 
@@ -291,9 +291,10 @@ public class Setting extends Fragment {
 
     private void ChangeLanguage() {
         BottomSheetDialog sheetDialog = new BottomSheetDialog(getActivity());
-        SharedPreferences preferences = getActivity().getSharedPreferences("language", Context.MODE_PRIVATE);
+        SharedPreferences preferences = getContext().getSharedPreferences("language", Context.MODE_PRIVATE);
         View view1 = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_language, null);
         String Language = preferences.getString("language", "English");
+        Log.e("TAG1:",Language);
 
 
         itemEnglish = view1.findViewById(R.id.item_enlish);
@@ -325,10 +326,11 @@ public class Setting extends Fragment {
                 break;
         }
 
+
         btnChangeLanguage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CheckLanguage(preferences, sheetDialog, view1);
+                CheckLanguage(preferences, sheetDialog, view1);Log.e("TAG",txtLanguage.getText().toString());
             }
         });
     }
@@ -343,60 +345,39 @@ public class Setting extends Fragment {
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 switch (i) {
                     case R.id.item_enlish:
-//                        editor.putString("language","English");
-                        chooseLanguage(i, editor);
+                        editor.putString("language","English");
+                        locale = new Locale("en");
                         txtLanguage.setText("English");
                         break;
                     case R.id.item_germany:
-//                        editor.putString("language","German");
-                        chooseLanguage(i, editor);
+                        editor.putString("language","German");
+                        locale = new Locale("de");
                         txtLanguage.setText("German");
                         break;
                     case R.id.item_china:
-//                        editor.putString("language","Chinese");
-                        chooseLanguage(i, editor);
+                        editor.putString("language","Chinese");
+                        locale = new Locale("zh");
                         txtLanguage.setText("Chinese");
                         break;
                     case R.id.item_korea:
-//                        editor.putString("language","Korean");
-                        chooseLanguage(i, editor);
+                        editor.putString("language","Korean");
+                        locale = new Locale("ko");
                         txtLanguage.setText("Korean");
                         break;
                     case R.id.item_vietnam:
-//                        editor.putString("language","Vietnamese");
-                        chooseLanguage(i, editor);
+                        editor.putString("language","Vietnamese");
+                        locale = new Locale("vi");
                         txtLanguage.setText("Vietnamese");
                         break;
                 }
+                changeLanguage(locale);
+                editor.commit();
                 sheetDialog.dismiss();
             }
         });
-    }
 
-    private void chooseLanguage(int i, SharedPreferences.Editor editor) {
-        switch (i) {
-            case R.id.item_enlish:
-                locale = new Locale("en");
-                editor.putString("language","English");
-                break;
-            case R.id.item_germany:
-                locale = new Locale("de");
-                editor.putString("language","German");
-                break;
-            case R.id.item_china:
-                locale = new Locale("zh");
-                editor.putString("language", "Chinese");
-                break;
-            case R.id.item_korea:
-                locale = new Locale("ko");
-                editor.putString("language","Korean");
-                break;
-            case R.id.item_vietnam:
-                locale = new Locale("vi");
-                editor.putString("language", "Vietnamese");
-                break;
-        }
-        editor.commit();
+    }
+    private void changeLanguage(Locale locale) {
         Locale.setDefault(locale);
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
@@ -404,7 +385,6 @@ public class Setting extends Fragment {
         conf.locale = locale;
         res.updateConfiguration(conf, dm);
         getActivity().recreate();
-//        startActivity(new Intent(getActivity(),getActivity().getClass()));
     }
 
     private void CopyToClipboard() {
