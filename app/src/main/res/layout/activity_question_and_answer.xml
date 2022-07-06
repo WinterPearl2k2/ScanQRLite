@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:background="@color/background_fragment"
-    tools:context=".setting.settingitem.Nooooo">
+    tools:context=".setting.settingitem.">
 
     <LinearLayout
         android:id="@+id/title_QA"
@@ -38,7 +38,7 @@
             android:paddingTop="40dp"
             android:paddingBottom="10dp"
             android:fontFamily="@font/agencyb"
-            android:text="Question &amp; Answer"
+            android:text="@string/question_and_answer"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -79,7 +79,7 @@
                         android:layout_weight="1.5"
                         android:fontFamily="@font/agencyb"
                         android:padding="10dp"
-                        android:text="Why is Qr code not working?"
+                        android:text="@string/question_1"
                         android:textColor="@color/black"
                         android:textSize="22sp"
                         android:textStyle="bold" />
@@ -103,7 +103,7 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/cus_item_qa"
                     android:paddingTop="5dp"
-                    android:text="Sometimes the QR code contains website links. If the website is not working, only the company that owns the website (and may have created the QR code) can fix that. Unfortunately, we can not do anything in this case."
+                    android:text="@string/content_question_1"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="gone" />
@@ -133,7 +133,7 @@
                         android:layout_weight="1.5"
                         android:fontFamily="@font/agencyb"
                         android:padding="10dp"
-                        android:text="Can I scan the code into a PDF file?"
+                        android:text="@string/question_2"
                         android:textColor="@color/black"
                         android:textSize="22sp"
                         android:textStyle="bold" />
@@ -157,7 +157,7 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/cus_item_qa"
                     android:paddingTop="5dp"
-                    android:text="There are yes, steps will as this:\nOpen a PDF file and capture the screen using the screen capture function.\nThen, scan the screen."
+                    android:text="@string/content_question_2"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="gone" />
@@ -187,7 +187,7 @@
                         android:layout_weight="1.5"
                         android:fontFamily="@font/agencyb"
                         android:padding="10dp"
-                        android:text="Does the app have an API or similar software?"
+                        android:text="@string/question_3"
                         android:textColor="@color/black"
                         android:textSize="22sp"
                         android:textStyle="bold" />
@@ -211,7 +211,7 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/cus_item_qa"
                     android:paddingTop="5dp"
-                    android:text="Our QR Scanner can be launched from other websites through the interface setup program."
+                    android:text="@string/content_question_3"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:visibility="gone" />

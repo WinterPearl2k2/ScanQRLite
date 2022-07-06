@@ -17,11 +17,12 @@
     <string name="tutorial_first">On the code, avoid reflected light or shadow.</string>
     <string name="tutorial_second">Place your phone in such a way that it faces the code without tilting</string>
     <string name="allow_permission">ALLOW PERMISSION </string>
+    <string name="ok">OKE</string>
     <string name="warming">WARNING!</string>
     <string name="notification">Scan barcode need permission Camera</string>
 
     <!--    // Scan-->
-    <string name="focus">focus QR / barcode into area</string>
+    <string name="focus">focus QR/barcode into area</string>
     <string name="gallery">GALLERY</string>
     <string name="flash">FLASH</string>
 
@@ -32,21 +33,21 @@
     <string name="url_button">URL</string>
     <string name="wifi_button">Wifi</string>
     <!--    // Create_Text-->
-    <string name="content">Content</string>
-    <string name="enter_text">Enter text here</string>
-    <string name="please_enter_your_content">Please enter your content</string>
+        <string name="content">Content</string>
+        <string name="enter_text">Enter text here</string>
+        <string name="please_enter_your_content">Please enter your content</string>
     <!--    // Create_URL-->
-    <string name="url">URL</string>
-    <string name="enter_url">Enter URL here</string>
-    <string name="please_enter_your_url">Please enter your url</string>
+        <string name="url">URL</string>
+        <string name="enter_url">Enter URL here</string>
+        <string name="please_enter_your_url">Please enter your url</string>
     <!--    // Create_Wifi-->
-    <string name="network_name">Network name</string>
-    <string name="enter_network_name"> Enter network name here</string>
-    <string name="password_">Password</string>
-    <string name="enter_password">Enter password here</string>
-    <string name="security">Security</string>
-    <string name="account_not_be_blank">Account not be blank</string>
-    <string name="password_please_enter_more_than_8_character">Password please enter more than 8 character</string>
+        <string name="network_name">Network name</string>
+        <string name="enter_network_name"> Enter network name here</string>
+        <string name="password_">Password</string>
+        <string name="enter_password">Enter password here</string>
+        <string name="security">Security</string>
+        <string name="account_not_be_blank">Account not be blank</string>
+        <string name="password_please_enter_more_than_8_character">Password please enter more than 8 character</string>
 
     <string-array name="strings_type_internet_dropdown">
         <item>WPA/ WPA2</item>
@@ -58,14 +59,14 @@
     <string name="copy_success">Copy Success</string>
     <string name="save_QR">SAVE QR</string>
     <!--    // Result_Text-->
-    <string name="title_text">Text</string>
-    <string name="note">Note</string>
+        <string name="title_text">Text</string>
+        <string name="note">Note</string>
     <!--    //Result_URL-->
-    <string name="title_url">URL</string>
-    <string name="goto_url">GOTO URL</string>
+        <string name="title_url">URL</string>
+        <string name="goto_url">GOTO URL</string>
     <!--    // Result_Wifi-->
-    <string name="title_wifi">Wifi</string>
-    <string name="connect">CONNECT</string>
+        <string name="title_wifi">Wifi</string>
+        <string name="connect">CONNECT</string>
 
     <!-- History-->
     <string name="title_history">History</string>
@@ -81,38 +82,38 @@
     <string name="vibrate">Vibrate</string>
     <string name="auto_copy">Auto copy clipboard</string>
     <!--    // Change language-->
-    <string name="change_language">Change Language</string>
-    <string name="english">English</string>
-    <string name="french">French</string>
-    <string name="german">German</string>
-    <string name="chinese">Chinese</string>
-    <string name="korean">Korean</string>
-    <string name="vietnamese">Vietnamese</string>
+        <string name="change_language">Change Language</string>
+        <string name="english">English</string>
+        <string name="french">French</string>
+        <string name="german">German</string>
+        <string name="chinese">Chinese</string>
+        <string name="korean">Korean</string>
+        <string name="vietnamese">Vietnamese</string>
     <!--    // Question and answer -->
-    <string name="question_and_answer">Question &amp; answer</string>
-    <string name="question_1">Why is QR code not working?</string>
-    <string name="content_question_1">Sometimes the QR code contains website links. If the website is not working,
-            only the company that owns the website (and may have created the QR code) can fix that. Unfortunately, we can not do anything in this case</string>
-    <string name="question_2">Can I scan the code into a PDF file</string>
-    <string name="content_question_2">There are yes, steps will as this: Open a PDF file and capture the screen using the screen capture function.
-            Then, scan the screen</string>
-    <string name="question_3">Does the app have an API or similar software</string>
-    <string name="content_question_3">Our QR Scanner can be launched from other websites through the interface setup program</string>
+        <string name="question_and_answer">Question &amp; answer</string>
+        <string name="question_1">Why is QR code not working?</string>
+        <string name="content_question_1">Sometimes the QR code contains website links. If the website is not working,
+                only the company that owns the website (and may have created the QR code) can fix that. Unfortunately, we can not do anything in this case.</string>
+        <string name="question_2">Can I scan the code into a PDF file?</string>
+        <string name="content_question_2">There are yes, steps will as this: Open a PDF file and capture the screen using the screen capture function.
+                Then, scan the screen.</string>
+        <string name="question_3">Does the app have an API or similar software?</string>
+        <string name="content_question_3">Our QR Scanner can be launched from other websites through the interface setup program.</string>
     <!--    // Feedback-->
-    <string name="feedback">Feedback</string>
-    <string name="dialog_question_feedback">Many questions have been answered in "Question &amp; answer".
-            If possible, take or attach a barcode or screenshot</string>
-    <string name="no">No</string>
-    <string name="yes">Yes</string>
+        <string name="feedback">Feedback</string>
+        <string name="dialog_question_feedback">Many questions have been answered in "Question &amp; answer".
+                If possible, take or attach a barcode or screenshot.</string>
+        <string name="no">No</string>
+        <string name="yes">Yes</string>
     <!--    // Rate me on CHPlay-->
-    <string name="rate">Rate me on CHPlay</string>
-    <string name="vote">Vote</string>
-    <string name="vote_again">Vote again</string>
-    <string name="feddback_in_rate_me">Feedback</string>
-    <string name="open_chplay">OpenCHPlay</string>
-    <string name="Ratings_to_boost">Ratings to boost your app rankings on the app market</string>
-    <string name="report_bug">Report bugs and let us know what needs improvement</string>
-    <string name="thank_you">Thank you for voting for the app</string>
-
+        <string name="rate">Rate me on CHPlay</string>
+        <string name="vote">Vote</string>
+        <string name="vote_again">Vote again</string>
+        <string name="feddback_in_rate_me">Feedback</string>
+        <string name="open_chplay">OpenCHPlay</string>
+        <string name="Ratings_to_boost">Ratings to boost your app rankings on the app market.</string>
+        <string name="report_bug">Report bugs and let us know what needs improvement.</string>
+        <string name="thank_you">Thank you for voting for the app.</string>
     <string name="version">Version Lite: 1.0</string>
+
 </resources>

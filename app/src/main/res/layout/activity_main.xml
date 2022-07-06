@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/txt_need_per"
             android:gravity="center"
-            android:text="Warring!"
+            android:text="@string/warming"
             android:textColor="@color/black"
             android:textSize="32sp"
             android:textStyle="bold" />
@@ -63,7 +63,7 @@
             android:layout_above="@+id/img_permisson"
             android:layout_marginBottom="118dp"
             android:gravity="center"
-            android:text="Scan barcode need permission Camera" />
+            android:text="@string/notification" />
 
         <ImageView
             android:id="@+id/img_permisson"
@@ -76,17 +76,17 @@
             android:id="@+id/btn_permisson"
             android:layout_width="320dp"
             android:layout_height="48dp"
-            android:text="Allow Permission"
-            android:textAllCaps="true"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:fontFamily="@font/agencyb"
-            android:letterSpacing="0.1"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="147dp"
             android:background="@drawable/cus_btn_permission"
-            android:stateListAnimator="@null"/>
+            android:fontFamily="@font/agencyb"
+            android:letterSpacing="0.1"
+            android:stateListAnimator="@null"
+            android:text="@string/allow_permission"
+            android:textAllCaps="true"
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
 </RelativeLayout>

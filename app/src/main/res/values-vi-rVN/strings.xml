@@ -8,13 +8,16 @@
     <string name="menu_setting">Cài đặt</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">haha</string>
-
+<!-- AdMob ad unit IDs -->
+    <string name="banner_home_footer">ca-app-pub-0664570763252260/3326522424</string>
+    <string name="interstitial_full_screen">ca-app-pub-0664570763252260/1769900428</string>
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 <!--    // Tutorial-->
     <string name="title_tutorial">Để quét mã, hãy hướng máy ảnh của bạn vào nó</string>
     <string name="tutorial_first">Trên mã, tránh ánh sáng phản chiếu hoặc bóng tối.</string>
     <string name="tutorial_second">Đặt điện thoại của bạn hướng thẳng  với mã và không bị nghiêng hoặc lệch</string>
     <string name="allow_permission">CHO PHÉP </string>
-    <string name="warming">CẢNH BÁO</string>
+    <string name="warming">CẢNH BÁO!</string>
     <string name="notification">Quét mã vạch cần máy ảnh cho phép</string>
 
 <!--    // Scan-->
@@ -53,7 +56,6 @@
     <string name="note">Ghi chú</string>
     <!--    //Result_URL-->
     <string name="title_url">Liên kết</string>
-    <string name="url_name">Liên kết</string>
     <string name="goto_url">ĐI ĐẾN LIÊN KẾT</string>
     <!--    // Result_Wifi-->
     <string name="title_wifi">Wifi</string>
@@ -81,29 +83,30 @@
     <string name="vietnamese">Tiếng Việt Nam</string>
     <!--    // Question and answer -->
         <string name="question_and_answer">Câu hỏi và trả lời</string>
-        <string name="question_1">Why is QR code not working?</string>
-        <string name="content_question_1">Sometimes the QR code contains website links. If the website is not working,
-                only the company that owns the website (and may have created the QR code) can fix that. Unfortunately, we can not do anything in this case</string>
-        <string name="question_2">Can I scan the code into a PDF file</string>
-        <string name="content_question_2">There are yes, steps will as this: Open a PDF file and capture the screen using the screen capture function.
-        Then, scan the screen</string>
-        <string name="question_3">Does the app have an API or similar software</string>
-        <string name="content_question_3">Our QR Scanner can be launched from other websites through the interface setup program</string>
+        <string name = "question_1"> Tại sao mã QR không hoạt động? </string>
+        <string name = "content_question_1"> Đôi khi mã QR chứa các liên kết trang web. Nếu trang web không hoạt động,
+                     chỉ công ty sở hữu trang web (và có thể đã tạo mã QR) mới có thể khắc phục điều đó. Rất tiếc, chúng tôi không thể làm gì trong trường hợp này. </string>
+        <string name = "question_2"> Tôi có thể quét mã vào tệp PDF không? </string>
+        <string name = "content_question_2"> Có, các bước sẽ như sau: Mở tệp PDF và chụp màn hình bằng chức năng chụp màn hình.
+             Sau đó, quét màn hình. </string>
+        <string name = "question_3"> Ứng dụng có API hoặc phần mềm tương tự không? </string>
+        <string name = "content_question_3"> Máy quét QR của chúng tôi có thể được khởi chạy từ các trang web khác thông qua chương trình thiết lập giao diện. </string>
     <!--    // Feedback-->
         <string name="feedback">Phản hồi</string>
-        <string name="dialog_question_feedback">Many questions have been answered in "Question &amp; answer".
-                If possible, take or attach a barcode or screenshot</string>
-        <string name="no">No</string>
-        <string name="yes">Yes</string>
+        <string name = "dialog_question_feedback"> Nhiều câu hỏi đã được trả lời trong câu hỏi và câu trả lời".
+                     Nếu có thể, hãy chụp hoặc đính kèm mã vạch hoặc ảnh chụp màn hình. </string>
+        <string name = "no"> Không </string>
+        <string name = "yes"> Có </string>
     <!--    // Rate me on CHPlay-->
         <string name="rate">Đánh giá trên CHPlay</string>
         <string name="vote">Vote</string>
         <string name="vote_again">Vote again</string>
         <string name="feddback_in_rate_me">Feedback</string>
-        <string name="open_chplay">OpenCHPlay</string>
-        <string name="Ratings_to_boost">Ratings to boost your app rankings on the app market</string>
-        <string name="report_bug">Report bugs and let us know what needs improvemnet</string>
-        <string name="thank_you">Thank you for voting for the app</string>
+        <string name="open_chplay">Đi tới CHPlay</string>
+        <string name = "Ratings_to_boost"> Xếp hạng để tăng thứ hạng ứng dụng của bạn trên chợ ứng dụng </string>
+        <string name = "report_bug"> Báo cáo lỗi và cho chúng tôi biết những gì cần cải thiện </string>
+        <string name = "thank_you"> Cảm ơn bạn đã bỏ phiếu cho ứng dụng </string>
 
     <string name="version">Phiên bản: 1.0</string>
+    <string name="ok">Đồng ý</string>
 </resources>

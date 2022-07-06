@@ -18,7 +18,7 @@
         android:layout_marginTop="33dp"
         android:layout_marginRight="50dp"
         android:layout_marginBottom="20dp"
-        android:text="To scan the code, point your camera at it "
+        android:text="@string/title_tutorial"
         android:textColor="@color/normal_btn"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -40,7 +40,7 @@
             android:fontFamily="@font/agencyr"
             android:gravity="center_vertical"
             android:padding="5dp"
-            android:text="1. On the code, avoid reflected light or shadow."
+            android:text="@string/tutorial_first"
             android:textAllCaps="false"
             android:textColor="@color/normal_btn"
             android:textSize="18sp" />
@@ -52,7 +52,7 @@
             android:layout_below="@+id/txt_tutorial1"
             android:gravity="center_vertical"
             android:padding="5dp"
-            android:text="2. Place your phone in such away that it faces the code without tilting"
+            android:text="@string/tutorial_second"
             android:textAllCaps="false"
             android:textColor="@color/normal_btn"
             android:textSize="18sp" />

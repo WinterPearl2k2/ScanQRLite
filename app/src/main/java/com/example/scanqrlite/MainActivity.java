@@ -23,6 +23,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -30,6 +31,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.example.scanqrlite.adapter.MenuAdapter;
 import com.example.scanqrlite.create.Create;
@@ -50,8 +52,11 @@ public class MainActivity extends AppCompatActivity {
     MenuAdapter menuAdapter;
     RelativeLayout layout_menu, layout_permisson;
     Button btn_permisson;
+    Locale locale;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Language();
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         getWindow().getDecorView().setSystemUiVisibility(
@@ -64,7 +69,37 @@ public class MainActivity extends AppCompatActivity {
         EventButtonNavigation();
         PermissionCheck();
     }
+    private void Language(){
+        SharedPreferences sp_language = getSharedPreferences("language", Context.MODE_PRIVATE );
+        String check = sp_language.getString("language", "English");
+        switch (check) {
+            case "English":
+                locale = new Locale("en");
+                break;
+            case "German":
+                locale = new Locale("de");
+                break;
+            case "Chinese":
+                locale = new Locale("zh");
+                break;
+            case "Korean":
+                locale = new Locale("ko");
+                break;
+            case "Vietnamese":
+                locale = new Locale("vi");
+                break;
+        }
+        ChangeLanguage(locale);
+    }
+    private void ChangeLanguage(Locale locale) {
+        Locale.setDefault(locale);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = locale;
+        res.updateConfiguration(conf, dm);
 
+    }
     private void EventButtonNavigation() {
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
