@@ -53,7 +53,6 @@
                 android:id="@+id/btn_text"
                 android:layout_width="85dp"
                 android:layout_height="wrap_content"
-
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="35dp"
                 android:layout_marginBottom="10dp"
@@ -68,7 +67,8 @@
                 android:paddingBottom="10dp"
                 android:padding="10dp"
                 android:text="@string/title_text"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textColor="@color/black"/>
 
             <RadioButton
                 android:id="@+id/btn_url"
@@ -87,6 +87,7 @@
                 android:text="@string/url"
                 android:padding="10dp"
                 android:textSize="16sp"
+                android:textColor="@color/black"
                 android:elevation="2dp"/>
 
             <RadioButton
@@ -107,6 +108,7 @@
                 android:text="@string/title_wifi"
                 android:padding="10dp"
                 android:textSize="16sp"
+                android:textColor="@color/black"
                 android:elevation="2dp"/>
         </RadioGroup>
 

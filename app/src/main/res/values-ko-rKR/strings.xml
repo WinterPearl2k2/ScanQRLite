@@ -101,7 +101,7 @@
         <string name="report_bug">버그를 보고하고 개선이 필요한 사항을 알려주세요.</string>
         <string name="thank_you">앱에 투표해 주셔서 감사합니다.</string>
 
-        <string name="version">"버전 라이트: 1.0"</string>
+        <string name="version">"버전 라이트: "</string>
     <string name="ok">오케이</string>
     <string name="title_scan">주사</string>
     <string name="title_create">만들다</string>

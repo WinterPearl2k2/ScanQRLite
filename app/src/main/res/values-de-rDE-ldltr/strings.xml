@@ -101,7 +101,7 @@
         <string name="Ratings_to_boost">Bewertungen, um deine App-Rankings auf dem App-Markt zu verbessern</string>
         <string name="report_bug">Melde Fehler und lass uns wissen, was verbessert werden muss</string>
         <string name="thank_you">Danke, dass du für die App gestimmt hast</string>
-    <string name="version">"Ausführung Lite: 1.0 "</string>
+    <string name="version">"Ausführung Lite: "</string>
     <string name="title_scan">Scannen</string>
     <string name="title_create">Schaffen</string>
     <string name="save_barcode">BARCODE SPEICHERN</string>

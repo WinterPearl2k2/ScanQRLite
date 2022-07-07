@@ -3,21 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable-v24/cus_item_qa.xml" value="1.0" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/background_img.xml" value="0.1935" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/btn_flah_off.xml" value="0.205" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/btn_flah_on.xml" value="0.205" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_btn_create.xml" value="0.1705" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_btn_create_alow.xml" value="0.17" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_btn_permission.xml" value="0.22" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_btn_qa.xml" value="0.1615" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_btn_scan.xml" value="0.17" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_btn_scan_checked.xml" value="0.128" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_btn_security.xml" value="0.1695" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_checked_bottom.xml" value="0.121" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_create_btn.xml" value="0.1705" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_cursor.xml" value="0.1695" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_dialog.xml" value="0.12" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_ic_qr.xml" value="0.12" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_ic_scan.xml" value="0.121" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_item_language.xml" value="0.22" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_item_setting.xml" value="0.22" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_list_setting.xml" value="0.1685" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_rdb_create.xml" value="0.17" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_thumb_switch.xml" value="0.1695" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_thumb_swtich.xml" value="0.12" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_track_switch.xml" value="0.1695" />
@@ -28,6 +34,7 @@
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/ic_btn_gallery.xml" value="0.205" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/ic_btn_permission2.xml" value="0.22" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/ic_button.xml" value="0.203" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/ic_copy.xml" value="0.1705" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/ic_create_text_yellow.xml" value="0.1705" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/ic_create_url_while.xml" value="0.1705" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/ic_create_wifi_while.xml" value="0.1705" />
@@ -40,9 +47,10 @@
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/switch_thumb_false.xml" value="0.12" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/switch_thumb_true.xml" value="0.12" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/activity_kaka.xml" value="0.16145833333333334" />
-        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/activity_main.xml" value="0.3333333333333333" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/activity_main.xml" value="0.10400000000000001" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/activity_permission.xml" value="0.176" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/activity_qa.xml" value="0.25" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/activity_question_and_answer.xml" value="0.25052083333333336" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/activity_result_scan.xml" value="0.25" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/activity_test.xml" value="0.25" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/dialog_bottom_language.xml" value="0.24895833333333334" />
@@ -50,9 +58,9 @@
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/dialog_language.xml" value="0.16145833333333334" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/dialog_rate.xml" value="0.176" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_2.xml" value="0.2359375" />
-        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_create.xml" value="0.6" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_create.xml" value="0.4" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_create__text.xml" value="0.16145833333333334" />
-        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_create_text.xml" value="0.16145833333333334" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_create_text.xml" value="0.5042881646655232" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_create_url.xml" value="0.16145833333333334" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_create_wifi.xml" value="0.26884422110552764" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_hihi.xml" value="0.16145833333333334" />
@@ -61,12 +69,13 @@
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_history_scan.xml" value="0.264" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_q_a.xml" value="0.25" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_question_and_answer.xml" value="0.264" />
-        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_result_generator.xml" value="0.2" />
-        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_scan.xml" value="0.264" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_result_generator.xml" value="0.4329608938547486" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_scan.xml" value="0.3783783783783784" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/fragment_setting.xml" value="0.26243781094527363" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/popup_filter_layout.xml" value="0.2234251968503937" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/popup_menu.xml" value="0.1171875" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/recyclerview_layout.xml" value="0.4" />
+        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/layout/tutorial.xml" value="0.8" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.10989583333333333" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/menu/menu_popup_item.xml" value="0.16041666666666668" />
         <entry key="..\:/Lap trinh/ScanQRLite2/app/src/main/res/drawable/ic.xml" value="0.1935" />
@@ -91,10 +100,6 @@
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_create.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_create_text.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_create_url.xml" value="0.5311203319502075" />
-        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_create_wifi.xml" value="0.5" />
-        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_history.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_history_create.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_history_scan.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_question_and_answer.xml" value="0.23822463768115942" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_result_generator.xml" value="0.22" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_scan.xml" value="0.23596014492753623" />

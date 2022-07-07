@@ -276,8 +276,10 @@ public class Scan extends Fragment {
         imageAnalysis.setAnalyzer(cameraExecutor, analyzer);
 
         Camera camera = processCameraProvider.bindToLifecycle(getActivity(), cameraSelector, preview, imageCapture, imageAnalysis);
+
         FlashSwitch(camera);
     }
+
 
     private void scanbarcodegalerry(InputImage image) {
 //        @SuppressLint("UnsafeOptInUsageError") Image image1 = image.getImage();

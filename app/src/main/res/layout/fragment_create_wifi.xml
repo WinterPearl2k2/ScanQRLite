@@ -39,6 +39,7 @@
                 android:background="@null"
                 android:gravity="top"
                 android:hint="@string/enter_network_name"
+                android:textColorHint="@color/black20"
                 android:inputType="text"
                 android:maxHeight="250dp"
                 android:maxLines="1"
@@ -47,7 +48,9 @@
                 android:paddingTop="0dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="12dp"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/cus_cursor"/>
 
         </LinearLayout>
 
@@ -78,13 +81,16 @@
                 android:background="@null"
                 android:gravity="top"
                 android:hint="@string/enter_password"
+                android:textColorHint="@color/black20"
                 android:inputType="text"
                 android:minHeight="136dp"
                 android:paddingLeft="12dp"
                 android:paddingTop="0dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="12dp"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/cus_cursor"/>
 
         </LinearLayout>
 
@@ -121,6 +127,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:text="WPA/WPA2"
+                android:textColor="@color/black"
                 android:textSize="20sp" />
 
             <RadioButton
@@ -136,6 +143,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:text="WEP"
+                android:textColor="@color/black"
                 android:textSize="20sp" />
 
             <RadioButton
@@ -151,6 +159,7 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:text="NOTHING"
+                android:textColor="@color/black"
                 android:textSize="20sp" />
         </RadioGroup>
 

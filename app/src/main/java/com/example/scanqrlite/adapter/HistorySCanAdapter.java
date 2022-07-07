@@ -127,6 +127,7 @@ public class HistorySCanAdapter extends RecyclerView.Adapter<HistorySCanAdapter.
                         .addItem(new PowerMenuItem("Copy Text", R.drawable.ic_copy))
                         .addItem(new PowerMenuItem("Search", R.drawable.ic_search))
                         .addItem(new PowerMenuItem("Share", R.drawable.ic_share))
+                        .setBackgroundColorResource(R.color.white)
                         .setAutoDismiss(true)
                         .setLifecycleOwner(lifecycleOwner)
                         .setMenuShadow(10f)

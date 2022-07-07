@@ -49,6 +49,16 @@
                 android:background="#80000000"/>
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/img_csan_frame"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="30dp"
+                android:text="@string/focus"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
                 android:id="@+id/frame_mid"
                 android:layout_width="279dp"
                 android:layout_height="279dp"

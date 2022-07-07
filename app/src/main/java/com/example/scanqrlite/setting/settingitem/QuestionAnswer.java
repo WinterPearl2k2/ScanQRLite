@@ -8,6 +8,7 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.scanqrlite.R;
@@ -16,7 +17,7 @@ public class QuestionAnswer extends AppCompatActivity {
     LinearLayout layoutBack;
     ImageButton back;
     TextView txtQA1, txtQA2, txtQA3;
-    LinearLayout btnQA1, btnQA2, btnQA3;
+    RelativeLayout btnQA1, btnQA2, btnQA3;
     ImageView imgQA1, imgQA2, imgQA3;
     boolean check1 = true, check2 = true, check3 = true;
 
@@ -57,30 +58,24 @@ public class QuestionAnswer extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(check3) {
-                    txtQA3.setVisibility(View.VISIBLE);
-                    imgQA3.setImageResource(R.drawable.ic_down);
-                    check3 = false;
+                    check3 = openContent(txtQA3, imgQA3);
                 } else {
-                    txtQA3.setVisibility(View.GONE);
-                    imgQA3.setImageResource(R.drawable.ic_top);
-                    check3 = true;
+                    check3 = closeContent(txtQA3, imgQA3);
                 }
             }
         });
-        imgQA3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(check3) {
-                    txtQA3.setVisibility(View.VISIBLE);
-                    imgQA3.setImageResource(R.drawable.ic_down);
-                    check3 = false;
-                } else {
-                    txtQA3.setVisibility(View.GONE);
-                    imgQA3.setImageResource(R.drawable.ic_top);
-                    check3 = true;
-                }
-            }
-        });
+    }
+
+    private boolean openContent(TextView txtQA, ImageView imgQA) {
+        txtQA.setVisibility(View.VISIBLE);
+        imgQA.setImageResource(R.drawable.ic_down);
+        return false;
+    }
+
+    private boolean closeContent(TextView txtQA, ImageView imgQA) {
+        txtQA.setVisibility(View.GONE);
+        imgQA.setImageResource(R.drawable.ic_top);
+        return true;
     }
 
     private void HandlerClickQA2() {
@@ -88,28 +83,9 @@ public class QuestionAnswer extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(check2) {
-                    txtQA2.setVisibility(View.VISIBLE);
-                    imgQA2.setImageResource(R.drawable.ic_down);
-                    check2 = false;
+                    check2 = openContent(txtQA2, imgQA2);
                 } else {
-                    txtQA2.setVisibility(View.GONE);
-                    imgQA2.setImageResource(R.drawable.ic_top);
-                    check2 = true;
-                }
-            }
-        });
-        imgQA2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(check2) {
-                    txtQA2.setVisibility(View.VISIBLE);
-                    imgQA2.setImageResource(R.drawable.ic_down);
-                    check2 = false;
-                } else {
-                    txtQA2.setVisibility(View.GONE);
-                    imgQA2.setImageResource(R.drawable.ic_top);
-                    check2 = true;
+                    check2 = closeContent(txtQA2, imgQA2);
                 }
             }
         });
@@ -120,27 +96,9 @@ public class QuestionAnswer extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(check1) {
-                    txtQA1.setVisibility(View.VISIBLE);
-                    imgQA1.setImageResource(R.drawable.ic_down);
-                    check1 = false;
+                    check1 = openContent(txtQA1, imgQA1);
                 } else {
-                    txtQA1.setVisibility(View.GONE);
-                    imgQA1.setImageResource(R.drawable.ic_top);
-                    check1 = true;
-                }
-            }
-        });
-        imgQA1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(check1) {
-                    txtQA1.setVisibility(View.VISIBLE);
-                    imgQA1.setImageResource(R.drawable.ic_down);
-                    check1 = false;
-                } else {
-                    txtQA1.setVisibility(View.GONE);
-                    imgQA1.setImageResource(R.drawable.ic_top);
-                    check1 = true;
+                    check1 = closeContent(txtQA1, imgQA1);
                 }
             }
         });

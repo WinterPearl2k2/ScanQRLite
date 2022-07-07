@@ -36,6 +36,7 @@
                 android:background="@null"
                 android:gravity="top"
                 android:hint="@string/enter_url"
+                android:textColorHint="@color/black20"
                 android:inputType="text"
                 android:maxHeight="250dp"
                 android:minHeight="136dp"
@@ -43,7 +44,9 @@
                 android:paddingTop="0dp"
                 android:paddingRight="12dp"
                 android:paddingBottom="12dp"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/cus_cursor"/>
 
         </LinearLayout>
 

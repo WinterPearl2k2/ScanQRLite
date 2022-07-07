@@ -100,7 +100,7 @@
         <string name = "report_bug"> Báo cáo lỗi và cho chúng tôi biết những gì cần cải thiện </string>
         <string name = "thank_you"> Cảm ơn bạn đã bỏ phiếu cho ứng dụng </string>
 
-    <string name="version">"Phiên bản: 1.0"</string>
+    <string name="version">"Phiên bản: "</string>
     <string name="ok">Đồng ý</string>
     <string name="title_scan">Quét</string>
     <string name="title_create">Tạo</string>

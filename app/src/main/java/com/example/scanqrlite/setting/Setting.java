@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 
+import android.os.Vibrator;
 import android.text.Html;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -61,11 +64,6 @@ public class Setting extends Fragment {
     AdView adsViewSetting;
     Locale locale;
     AdRequest adRequest;
-    AdLoader adLoader;
-
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -80,7 +78,7 @@ public class Setting extends Fragment {
         FeedBack();
         showAds();
         RateOnCHPlay();
-        //Version();
+        Version();
         return view;
 
     }
@@ -464,13 +462,20 @@ public class Setting extends Fragment {
         } else {
             mSwitch.setChecked(true);
             editor.putBoolean(name, true);
+            if(name.equals("vibrate")) {
+                Vibrator v = (Vibrator) getContext().getSystemService(Context.VIBRATOR_SERVICE);
+                v.vibrate(300);
+            } else if (name.equals("beep")) {
+                final ToneGenerator tg = new ToneGenerator(AudioManager.STREAM_NOTIFICATION, 500);
+                tg.startTone(ToneGenerator.TONE_PROP_BEEP);
+            }
         }
         editor.commit();
     }
 
-//    private void Version() {
-//        txtVersion.setText( R.string.versionssss + " " + BuildConfig.VERSION_NAME);
-//    }
+    private void Version() {
+        txtVersion.setText( getText(R.string.version) + BuildConfig.VERSION_NAME);
+    }
 
     private void ORM() {
         swBeep = view.findViewById(R.id.sw_beep);
