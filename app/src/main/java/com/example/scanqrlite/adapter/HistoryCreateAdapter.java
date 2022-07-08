@@ -104,9 +104,9 @@ public class HistoryCreateAdapter extends RecyclerView.Adapter<HistoryCreateAdap
             @Override
             public void onClick(View view) {
                 PowerMenu powerMenu = new PowerMenu.Builder(context)
-                        .addItem(new PowerMenuItem("Copy Text", R.drawable.ic_copy))
-                        .addItem(new PowerMenuItem("Search", R.drawable.ic_search))
-                        .addItem(new PowerMenuItem("Share", R.drawable.ic_share))
+                        .addItem(new PowerMenuItem(context.getText(R.string.copy_text), R.drawable.ic_copy))
+                        .addItem(new PowerMenuItem(context.getText(R.string.search), R.drawable.ic_search))
+                        .addItem(new PowerMenuItem(context.getText(R.string.share), R.drawable.ic_share))
                         .setAutoDismiss(true)
                         .setLifecycleOwner(lifecycleOwner)
                         .setMenuShadow(10f)

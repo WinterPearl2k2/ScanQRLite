@@ -35,7 +35,7 @@ public class Create_Url extends Fragment {
     }
 
     private void createURL() {
-        CheckCreate checkCreate = new CheckCreate(edtInput, btnCreate, "Please enter your url", getActivity(), "URL");
+        CheckCreate checkCreate = new CheckCreate(edtInput, btnCreate, getString(R.string.please_enter_your_url), getActivity(),getString(R.string.url));
         checkCreate.create();
     }
 

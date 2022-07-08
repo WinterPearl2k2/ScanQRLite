@@ -80,7 +80,7 @@ public class Setting extends Fragment {
         FeedBack();
         showAds();
         RateOnCHPlay();
-        //Version();
+        Version();
         return view;
 
     }
@@ -168,7 +168,7 @@ public class Setting extends Fragment {
                     btnRatingVoteAgain.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            rtRating.setRating(3f);
+                            rtRating.setRating(rtRating.getRating());
                             imgRating.setImageResource(R.drawable.img_smile);
                             txtTitleRating.setText(R.string.Ratings_to_boost);
                             btnRatingVoteAgain.setVisibility(View.GONE);
@@ -231,10 +231,7 @@ public class Setting extends Fragment {
 
     private void HandleFeedback(Dialog dialog) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            txtContentFeedback.setText(Html.fromHtml(
-                    "<p>Many questions have been answered in \"Question & Answer\"." +
-                            "<br>If possible, take or attach a barcode or screenshot.</p>"
-                    , Html.FROM_HTML_MODE_COMPACT));
+            txtContentFeedback.setText(R.string.dialog_question_feedback_1);
         }
         btnFeedbackNo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -249,7 +246,6 @@ public class Setting extends Fragment {
                 btnFeedbackYes.setClickable(false);
                 submitFeedback();
             }
-
         });
     }
 
@@ -265,16 +261,14 @@ public class Setting extends Fragment {
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
 //        emailIntent.setType("text/email");
         String EmailList = "nnhuquynh2603@gmail.com";
-
-        String feedback_title = " Scan QR Lite Feedback ";
-        emailIntent.setData(Uri.parse("mailto:" + EmailList + "?subject=" + feedback_title));
+        emailIntent.setData(Uri.parse("mailto:" + EmailList + "?subject=" + getString(R.string.feedback_title)));
         emailIntent.putExtra(Intent.EXTRA_EMAIL, EmailList);
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, feedback_title);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, R.string.feedback_title);
 
         try{
-            startActivityForResult(Intent.createChooser(emailIntent, "Send Email"), REQUEST_CODE);
+            startActivityForResult(Intent.createChooser(emailIntent, getString(R.string.send_email)), REQUEST_CODE);
         } catch (android.content.ActivityNotFoundException ex){
-            Toast.makeText(getActivity(), "Email not installed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getString(R.string.email_not_installed), Toast.LENGTH_SHORT).show();
         }
 
 
@@ -468,9 +462,9 @@ public class Setting extends Fragment {
         editor.commit();
     }
 
-//    private void Version() {
-//        txtVersion.setText( R.string.versionssss + " " + BuildConfig.VERSION_NAME);
-//    }
+    private void Version() {
+        txtVersion.setText( getString(R.string.version) + " " + BuildConfig.VERSION_NAME);
+    }
 
     private void ORM() {
         swBeep = view.findViewById(R.id.sw_beep);

@@ -226,11 +226,42 @@ public class ResultScan extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
                 Toast.makeText(ResultScan.this, R.string.save_success, Toast.LENGTH_SHORT).show();
             }
         });
     }
+//    public void btn_save_qr(Bitmap bitmap) throws IOException {
+//        boolean saved;
+//        FileOutputStream outputStream = new FileOutputStream(file);
+//
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)  {
+//            ContentResolver resolver = context.getContentResolver();
+//            ContentValues contentValues = new ContentValues();
+//            contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, "QR");
+//            contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/png");
+//            contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, "DCIM/" + Environment.DIRECTORY_DCIM);
+//            Uri imageUri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+//            fos = resolver.openOutputStream(imageUri);
+//        } else {
+//            String imagesDir = Environment.getExternalStoragePublicDirectory(
+//                    Environment.DIRECTORY_DCIM).toString() + File.separator + Environment.DIRECTORY_DCIM;
+//
+//            File file = new File(imagesDir);
+//
+//            if (!file.exists()) {
+//                file.mkdir();
+//            }
+//
+//            File image = new File(imagesDir, "QR" + ".png");
+//            fos = new FileOutputStream(image);
+//
+//        }
+//
+//        saved = bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+//        outputStream.flush();
+//        fos.close();
+//        Toast.makeText(context, "Save successfully", Toast.LENGTH_SHORT).show();
+//    }
 
     private void ShareToOthersApp() {
         btnShare.setOnClickListener(new View.OnClickListener() {
@@ -320,7 +351,7 @@ public class ResultScan extends AppCompatActivity {
                     createQR(content );
                     break;
                 case "URL":
-                    txtTitleActionbar.setText(R.string.url_result);
+                    txtTitleActionbar.setText(R.string.url);
                     txtContent.setText(content);
                     txtTitle.setText(R.string.url_result);
                     btnSave.setVisibility(View.VISIBLE);
@@ -328,7 +359,7 @@ public class ResultScan extends AppCompatActivity {
                     createQR(content);
                     break;
                 default:
-                    txtTitleActionbar.setText(R.string.title_text);
+                    txtTitleActionbar .setText(R.string.title_text);
                     txtContent.setText(content);
                     txtTitle.setText(R.string.note);
                     btnSave.setVisibility(View.VISIBLE);
@@ -338,7 +369,7 @@ public class ResultScan extends AppCompatActivity {
         } else if(type.equals("Barcode")){
             switch (title) {
                 case "Product":
-                    txtTitleActionbar.setText(R.string.product);
+                    txtTitleActionbar.setText(R.string.title_product);
                     txtTitle.setText(R.string.product);
                     break;
                 case "Text":

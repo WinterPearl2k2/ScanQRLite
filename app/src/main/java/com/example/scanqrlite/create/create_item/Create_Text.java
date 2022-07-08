@@ -46,7 +46,7 @@ public class Create_Text extends Fragment {
     }
 
     private void createText() {
-        CheckCreate checkCreate = new CheckCreate(edtInput, btnCreate, "Please enter your content", getActivity(), "Text");
+        CheckCreate checkCreate = new CheckCreate(edtInput, btnCreate, getString(R.string.please_enter_your_content), getActivity(), getString(R.string.title_text));
         checkCreate.create();
     }
 

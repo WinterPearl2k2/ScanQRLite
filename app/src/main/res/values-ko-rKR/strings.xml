@@ -88,8 +88,8 @@
         <string name="content_question_3">인터페이스 설정 프로그램을 통해 다른 웹사이트에서 QR 스캐너를 실행할 수 있습니다.</string>
     <!--    // Feedback-->
         <string name="feedback">피드백</string>
-        <string name="dialog_question_feedback">"질문 및 답변"에 많은 질문에 대한 답변이 있습니다.
-                     가능하면 바코드나 스크린샷을 찍거나 첨부하세요.</string>
+        <string name="dialog_question_feedback_1">"많은 질문에 대한 질의응답이 이루어졌습니다.\n가능하면 바코드나 스크린샷을 찍거나 첨부하세요."</string>
+
         <string name="no">아니요</string>
         <string name="yes">예</string>
     <!--    // Rate me on CHPlay-->
@@ -101,12 +101,16 @@
         <string name="report_bug">버그를 보고하고 개선이 필요한 사항을 알려주세요.</string>
         <string name="thank_you">앱에 투표해 주셔서 감사합니다.</string>
 
-        <string name="version">"버전 라이트: 1.0"</string>
+        <string name="version">"버전 라이트: "</string>
     <string name="ok">오케이</string>
     <string name="title_scan">주사</string>
     <string name="title_create">만들다</string>
     <string name="save_barcode">바코드 저장</string>
     <string name="product">제품:</string>
     <string name="url">URL</string>
+    <string name="feedback_title">QR Lite 피드백 스캔</string>
+    <string name="send_email">이메일을 보내</string>
+    <string name="title_product">제품</string>
+    <string name="email_not_installed">이메일이 설치되지 않았습니다.</string>
 
 </resources>

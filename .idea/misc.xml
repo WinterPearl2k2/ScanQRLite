@@ -79,6 +79,7 @@
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/background_button_edit_text_while.xml" value="0.215" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/background_conner_tutorial.xml" value="0.215" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/background_conner_while.xml" value="0.215" />
+        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/cus_dialog.xml" value="0.241" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/ic_create_text_while.xml" value="0.215" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/ic_setting.xml" value="0.1" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/ic_union.xml" value="0.2835" />
@@ -91,7 +92,7 @@
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_create.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_create_text.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_create_url.xml" value="0.5311203319502075" />
-        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_create_wifi.xml" value="0.5" />
+        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_create_wifi.xml" value="0.33" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_history.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_history_create.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_history_scan.xml" value="0.36666666666666664" />

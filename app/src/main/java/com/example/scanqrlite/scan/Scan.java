@@ -392,31 +392,31 @@ public class Scan extends Fragment {
                 switch (bar) {
                     case Barcode.FORMAT_CODE_128:
                         typeScan = "Code_128";
-                        title = "Text";
+                        title = getString(R.string.title_text);
                         break;
                     case 2:
                         typeScan = "Code_39";
-                        title = "Text";
+                        title = getString(R.string.title_text);
                         break;
                     case 32:
                         typeScan = "EAN_13";
-                        title = "Product";
+                        title = getString(R.string.title_product);
                         break;
                     case 64:
                         typeScan = "EAN_8";
-                        title = "Product";
+                        title = getString(R.string.title_product);
                         break;
                     case 128:
                         typeScan = "Code_2of5";
-                        title = "Product";
+                        title = getString(R.string.title_product);
                         break;
                     case 512:
                         typeScan = "UPC_A";
-                        title = "Product";
+                        title = getString(R.string.title_product);
                         break;
                     case 1024:
                         typeScan = "UPC_E";
-                        title = "Product";
+                        title = getString(R.string.title_product);
                         break;
                     default:
                         return;

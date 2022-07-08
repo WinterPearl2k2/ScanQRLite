@@ -124,9 +124,9 @@ public class HistorySCanAdapter extends RecyclerView.Adapter<HistorySCanAdapter.
             @Override
             public void onClick(View view) {
                 PowerMenu powerMenu = new PowerMenu.Builder(context)
-                        .addItem(new PowerMenuItem("Copy Text", R.drawable.ic_copy))
-                        .addItem(new PowerMenuItem("Search", R.drawable.ic_search))
-                        .addItem(new PowerMenuItem("Share", R.drawable.ic_share))
+                        .addItem(new PowerMenuItem(context.getText(R.string.copy_text), R.drawable.ic_copy))
+                        .addItem(new PowerMenuItem(context.getText(R.string.search), R.drawable.ic_search))
+                        .addItem(new PowerMenuItem(context.getText(R.string.share), R.drawable.ic_share))
                         .setAutoDismiss(true)
                         .setLifecycleOwner(lifecycleOwner)
                         .setMenuShadow(10f)
@@ -185,7 +185,7 @@ public class HistorySCanAdapter extends RecyclerView.Adapter<HistorySCanAdapter.
         ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clipData = ClipData.newPlainText("label", content);
         clipboardManager.setPrimaryClip(clipData);
-        Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, R.string.copy_success, Toast.LENGTH_SHORT).show();
     }
 
     private Bitmap CreateImage(String result, String content) throws WriterException {

@@ -106,7 +106,7 @@ public class Create_wifi extends Fragment {
                 btnCreate.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        edtSSID.setError("Account not be blank");
+                        edtSSID.setError(getText(R.string.account_not_be_blank));
                     }
                 });
             } else {
@@ -178,12 +178,12 @@ public class Create_wifi extends Fragment {
 
     private void notifyError(int checkIsEmpty) {
         if(checkIsEmpty == 1)
-            edtSSID.setError("Account not be blank");
+            edtSSID.setError(getText(R.string.account_not_be_blank));
         if(checkIsEmpty == 2)
-            edtPass.setError("Password please enter more than 8 characters");
+            edtPass.setError(getText(R.string.password_please_enter_more_than_8_character));
         if(checkIsEmpty == 3) {
-            edtSSID.setError("Account not be blank");
-            edtPass.setError("Password please enter more than 8 characters");
+            edtSSID.setError(getText(R.string.account_not_be_blank));
+            edtPass.setError(getText(R.string.password_please_enter_more_than_8_character));
         }
     }
 
@@ -207,7 +207,7 @@ public class Create_wifi extends Fragment {
         intent.putExtra("type", "QRcode");
         intent.putExtra("type_barcode", "QRcode");
         DateTime dateTime = new DateTime();
-        HistoryCreateItem createItem = new HistoryCreateItem("Wifi",SSID, dateTime.getDateTime(), content);
+        HistoryCreateItem createItem = new HistoryCreateItem(getString(R.string.title_wifi),SSID, dateTime.getDateTime(), content);
         createItem.setPassword(password);
         createItem.setSecurity(security);
         CreateDatabase.getInstance(getActivity()).createItemDAO().insertItem(createItem);
