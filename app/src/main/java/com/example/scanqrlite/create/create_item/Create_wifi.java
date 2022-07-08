@@ -1,7 +1,5 @@
 package com.example.scanqrlite.create.create_item;
 
-import static android.content.Context.INPUT_METHOD_SERVICE;
-
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -13,14 +11,12 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.ScrollView;
-import android.widget.Toast;
+import android.widget.RelativeLayout;
 
 import com.example.scanqrlite.CloseKeyBoard;
 import com.example.scanqrlite.DateTime;
@@ -39,14 +35,14 @@ public class Create_wifi extends Fragment {
     String password;
     String security;
     String content;
-    ScrollView hihi;
+    RelativeLayout fragmentCreateWifi;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_create_wifi, container, false);
         ORM(view);
-        hihi = view.findViewById(R.id.hihi9);
+        fragmentCreateWifi = view.findViewById(R.id.fragment_create_wifi);
         view.setOnTouchListener(new CloseKeyBoard(getActivity()));
         create();
         return view;
@@ -75,8 +71,8 @@ public class Create_wifi extends Fragment {
                         nothing = true;
                         edtPass.setEnabled(false);
                         edtPass.setError(null);
-                        hihi.setFocusable(true);
-                        hihi.requestFocusFromTouch();
+                        fragmentCreateWifi.setFocusable(true);
+                        fragmentCreateWifi.requestFocusFromTouch();
                         break;
                 }
                 clickNothing(nothing);
