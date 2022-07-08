@@ -2,12 +2,17 @@ package com.example.scanqrlite.scan;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.net.wifi.WifiConfiguration;
@@ -16,6 +21,7 @@ import android.net.wifi.WifiNetworkSuggestion;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -36,11 +42,14 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 public class ResultScan extends AppCompatActivity {
@@ -201,33 +210,52 @@ public class ResultScan extends AppCompatActivity {
             }
         });
     }
+    OutputStream fos;
 
     private void SaveImage() {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String root = Environment.getExternalStoragePublicDirectory(
-                        Environment.DIRECTORY_PICTURES).toString();
-                File mFile = new File(root + "/save_images");
-                mFile.mkdirs();
-
+//                String root = Environment.getExternalStoragePublicDirectory(
+//                        Environment.DIRECTORY_PICTURES).toString() + File.separator;
+//                File mFile = new File(root + "/save_images");
+//                mFile.mkdirs();
+//
+//                Random generator = new Random();
+//                int n = 10000;
+//                n = generator.nextInt(n);
+//                String mName = "Image-" + n + ".jpg";
+//                File file = new File(mFile, mName);
+//                if(file.exists()) file.delete();
+//
+//                try {
+//                    FileOutputStream outputStream = new FileOutputStream(file);
+//                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
+//                    outputStream.flush();
+//                    outputStream.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+////                }
+//                OutputStream fos;
                 Random generator = new Random();
                 int n = 10000;
                 n = generator.nextInt(n);
                 String mName = "Image-" + n + ".jpg";
-                File file = new File(mFile, mName);
-                if(file.exists()) file.delete();
-
                 try {
-                    FileOutputStream outputStream = new FileOutputStream(file);
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
-                    outputStream.flush();
-                    outputStream.close();
-                } catch (IOException e) {
+                    OutputStream fos;
+                    ContentResolver resolver = ResultScan.this.getContentResolver();
+                    ContentValues contentValues = new ContentValues();
+                    contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, mName);
+                    contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg");
+                    Uri imageUri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+                    fos = resolver.openOutputStream(imageUri);
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                    fos.close();
+                    Toast.makeText(ResultScan.this, getText(R.string.save_success), Toast.LENGTH_LONG).show();
+
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-                Toast.makeText(ResultScan.this, R.string.save_success, Toast.LENGTH_SHORT).show();
             }
         });
     }
