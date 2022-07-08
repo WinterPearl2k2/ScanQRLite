@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                         viewPager2.setCurrentItem(3, false);
                         break;
                 }
+                Language();
                 return false;
             }
         });
@@ -118,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
                         navigationView.getMenu().findItem(R.id.Scan).setChecked(true);
                         break;
                 }
-                Language();
             }
         });
     }

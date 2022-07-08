@@ -22,7 +22,7 @@
     <string name="notification">Scan barcode need permission Camera</string>
 
     <!--    // Scan-->
-    <string name="focus">focus QR/barcode into area</string>
+    <string name="focus">Focus QR/barcode into area</string>
     <string name="gallery">GALLERY</string>
     <string name="flash">FLASH</string>
 
@@ -88,8 +88,7 @@
     <!--    // Question and answer -->
         <string name="question_and_answer">Question &amp; answer</string>
         <string name="question_1">Why is QR code not working?</string>
-        <string name="content_question_1">Sometimes the QR code contains website links. If the website is not working,
-                only the company that owns the website (and may have created the QR code) can fix that. Unfortunately, we can not do anything in this case.</string>
+        <string name="content_question_1">Sometimes the QR code contains website links. If the website is not working,only the company that owns the website (and may have created the QR code) can fix that. Unfortunately, we can not do anything in this case.</string>
         <string name="question_2">Can I scan the code into a PDF file?</string>
         <string name="content_question_2">There are yes, steps will as this: Open a PDF file and capture the screen using the screen capture function.
                 Then, scan the screen.</string>
@@ -97,8 +96,7 @@
         <string name="content_question_3">Our QR Scanner can be launched from other websites through the interface setup program.</string>
     <!--    // Feedback-->
         <string name="feedback">Feedback</string>
-        <string name="dialog_question_feedback">Many questions have been answered in "Question &amp; answer".
-                If possible, take or attach a barcode or screenshot.</string>
+        <string name="dialog_question_feedback_1">"Many questions have been answered in Question &amp; answer.\nIf possible, take or attach a barcode or screenshot."</string>
         <string name="no">No</string>
         <string name="yes">Yes</string>
     <!--    // Rate me on CHPlay-->
@@ -110,8 +108,12 @@
         <string name="report_bug">Report bugs and let us know what needs improvement.</string>
         <string name="thank_you">Thank you for voting for the app.</string>
     <string name="version">"Version Lite: "</string>
-    <string name="save_barcode">SAVE BARCODE</string>
+    <string name="save_barcode">SAVE BARCODE</string>>
+    <string name="title_product">Product</string>
     <string name="product">Product:</string>
     <string name="url">URL</string>
+    <string name="feedback_title">Scan QR Lite Feedback</string>
+    <string name="send_email">Send Email</string>
+    <string name="email_not_installed">Email not installed</string>
 
 </resources>

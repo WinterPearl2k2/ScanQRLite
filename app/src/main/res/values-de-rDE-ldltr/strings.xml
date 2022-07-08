@@ -81,16 +81,15 @@
         <string name="question_and_answer">Frage und Antwort</string>
         <string name="question_1">Why is QR code not working?</string>
         <string name="content_question_1">Manchmal enthält der QR-Code Website-Links. Wenn die Website nicht funktioniert,
-                     Nur das Unternehmen, dem die Website gehört (und möglicherweise den QR-Code erstellt hat), kann das beheben. Leider können wir in diesem Fall nichts tun.</string>
+            Nur das Unternehmen, dem die Website gehört (und möglicherweise den QR-Code erstellt hat), kann das beheben. Leider können wir in diesem Fall nichts tun.</string>
         <string name="question_2">Kann ich den Code in eine PDF-Datei scannen</string>
         <string name="content_question_2">Ja, es gibt Schritte wie diese: Öffnen Sie eine PDF-Datei und erfassen Sie den Bildschirm mit der Bildschirmaufnahmefunktion.
-                 Scannen Sie dann den Bildschirm.</string>
+            Scannen Sie dann den Bildschirm.</string>
         <string name="question_3">Verfügt die App über eine API oder ähnliche Software.</string>
         <string name="content_question_3">Unser QR-Scanner kann von anderen Websites über das Schnittstellen-Setup-Programm gestartet werden.</string>
     <!--    // Feedback-->
         <string name="feedback">Feedback</string>
-        <string name="dialog_question_feedback">Viele Fragen wurden in "Frage &amp; Antwort" beantwortet.
-                     Wenn möglich, machen oder hängen Sie einen Barcode oder Screenshot an.</string>
+        <string name="dialog_question_feedback_1">"Viele Fragen wurden in Frage und Antwort beantwortet.\nWenn möglich, erstellen oder fügen Sie einen Barcode oder Screenshot bei."</string>
         <string name="no">Nein</string>
         <string name="yes">Ja</string>
     <!--    // Rate me on CHPlay-->
@@ -107,5 +106,9 @@
     <string name="save_barcode">BARCODE SPEICHERN</string>
     <string name="product">Produkt:</string>
     <string name="url">URL</string>
+    <string name="feedback_title">QR Lite-Feedback scannen</string>
+    <string name="send_email">E-Mail senden</string>
+    <string name="title_product">Produkt</string>
+    <string name="email_not_installed">" E-Mail nicht installiert"</string>
 
 </resources>

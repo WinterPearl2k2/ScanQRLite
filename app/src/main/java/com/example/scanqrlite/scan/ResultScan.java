@@ -1,5 +1,6 @@
 package com.example.scanqrlite.scan;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
@@ -216,48 +217,56 @@ public class ResultScan extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                String root = Environment.getExternalStoragePublicDirectory(
-//                        Environment.DIRECTORY_PICTURES).toString() + File.separator;
-//                File mFile = new File(root + "/save_images");
-//                mFile.mkdirs();
-//
-//                Random generator = new Random();
-//                int n = 10000;
-//                n = generator.nextInt(n);
-//                String mName = "Image-" + n + ".jpg";
-//                File file = new File(mFile, mName);
-//                if(file.exists()) file.delete();
-//
-//                try {
-//                    FileOutputStream outputStream = new FileOutputStream(file);
-//                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-//                    outputStream.flush();
-//                    outputStream.close();
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-////                }
-//                OutputStream fos;
                 Random generator = new Random();
                 int n = 10000;
                 n = generator.nextInt(n);
                 String mName = "Image-" + n + ".jpg";
                 try {
-                    OutputStream fos;
-                    ContentResolver resolver = ResultScan.this.getContentResolver();
-                    ContentValues contentValues = new ContentValues();
-                    contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, mName);
-                    contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg");
-                    Uri imageUri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
-                    fos = resolver.openOutputStream(imageUri);
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-                    fos.close();
-                    Toast.makeText(ResultScan.this, getText(R.string.save_success), Toast.LENGTH_LONG).show();
+                    if (ActivityCompat.checkSelfPermission(ResultScan.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != (PackageManager.PERMISSION_GRANTED)) {
+                        ActivityCompat.requestPermissions(ResultScan.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                    } else {
 
+                        OutputStream fos;
+                        ContentResolver resolver = ResultScan.this.getContentResolver();
+                        ContentValues contentValues = new ContentValues();
+                        contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, mName);
+                        contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg");
+                        Uri imageUri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+                        fos = resolver.openOutputStream(imageUri);
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                        Objects.requireNonNull(fos);
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                Toast.makeText(ResultScan.this, getText(R.string.save_success), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == 1 && ActivityCompat.checkSelfPermission(ResultScan.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED)) {
+            Random generator = new Random();
+            int n = 10000;
+            n = generator.nextInt(n);
+            String mName = "Image-" + n + ".jpg";
+            OutputStream fos;
+            ContentResolver resolver = ResultScan.this.getContentResolver();
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, mName);
+            contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg");
+            Uri imageUri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+            try {
+                fos = resolver.openOutputStream(imageUri);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                Objects.requireNonNull(fos);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            Toast.makeText(ResultScan.this, getText(R.string.save_success), Toast.LENGTH_LONG).show();
+        }
     }
 
     private void ShareToOthersApp() {
@@ -348,7 +357,7 @@ public class ResultScan extends AppCompatActivity {
                     createQR(content );
                     break;
                 case "URL":
-                    txtTitleActionbar.setText(R.string.url_result);
+                    txtTitleActionbar.setText(R.string.url);
                     txtContent.setText(content);
                     txtTitle.setText(R.string.url_result);
                     btnSave.setVisibility(View.VISIBLE);
@@ -356,7 +365,7 @@ public class ResultScan extends AppCompatActivity {
                     createQR(content);
                     break;
                 default:
-                    txtTitleActionbar.setText(R.string.title_text);
+                    txtTitleActionbar .setText(R.string.title_text);
                     txtContent.setText(content);
                     txtTitle.setText(R.string.note);
                     btnSave.setVisibility(View.VISIBLE);
@@ -366,7 +375,7 @@ public class ResultScan extends AppCompatActivity {
         } else if(type.equals("Barcode")){
             switch (title) {
                 case "Product":
-                    txtTitleActionbar.setText(R.string.product);
+                    txtTitleActionbar.setText(R.string.title_product);
                     txtTitle.setText(R.string.product);
                     break;
                 case "Text":

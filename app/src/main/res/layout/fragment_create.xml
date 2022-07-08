@@ -51,7 +51,7 @@
 
             <RadioButton
                 android:id="@+id/btn_text"
-                android:layout_width="85dp"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="35dp"
@@ -59,7 +59,7 @@
                 android:background="@drawable/cus_rdb_create"
                 android:button="@android:color/transparent"
                 android:drawableTop="@drawable/ic_text"
-                android:elevation="2dp"
+                android:elevation="4dp"
                 android:gravity="center"
                 android:paddingLeft="25dp"
                 android:paddingTop="10dp"
@@ -72,7 +72,7 @@
 
             <RadioButton
                 android:id="@+id/btn_url"
-                android:layout_width="85dp"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
@@ -92,7 +92,7 @@
 
             <RadioButton
                 android:id="@+id/btn_wifi"
-                android:layout_width="85dp"
+                android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
