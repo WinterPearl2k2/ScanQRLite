@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.util.Log;
 import android.view.ContentInfo;
 import android.view.LayoutInflater;
@@ -160,7 +161,10 @@ public class HistorySCanAdapter extends RecyclerView.Adapter<HistorySCanAdapter.
                         })
                         .setInitializeRule(Lifecycle.Event.ON_CREATE, 0)
                         .build();
-                powerMenu.showAsDropDown(view, -450,-100);
+                if(Build.VERSION.SDK_INT == Build.VERSION_CODES.Q)
+                    powerMenu.showAsDropDown(view);
+                else
+                    powerMenu.showAsDropDown(view, -450,-100);
             }
         });
 

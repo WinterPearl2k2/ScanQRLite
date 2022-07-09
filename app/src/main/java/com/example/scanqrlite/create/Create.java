@@ -2,6 +2,7 @@ package com.example.scanqrlite.create;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 
+import com.example.scanqrlite.Language;
 import com.example.scanqrlite.R;
 import com.example.scanqrlite.create.create_item.Create_Text;
 import com.example.scanqrlite.create.create_item.Create_Url;
@@ -27,11 +29,14 @@ public class Create extends Fragment {
     FrameLayout createLayout;
     AdView adsViewCreate;
     AdRequest adRequest;
+    Language language;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        language = new Language(getContext());
+        language.Language();
         View view = inflater.inflate(R.layout.fragment_create, container, false);
         ORM(view);
         SwitchView();
@@ -115,6 +120,7 @@ public class Create extends Fragment {
         FragmentManager fragmentManager = getChildFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.create_Layout, fragment2);
+        language.Language();
         fragmentTransaction.commit();
     }
 

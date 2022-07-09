@@ -180,10 +180,6 @@ public class Scan extends Fragment {
 
     private void ORM() {
         previewView = view.findViewById(R.id.cameraPreviewView);
-//        getActivity().getWindow().getDecorView().setSystemUiVisibility(
-//                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-//                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-
         cameraExecutor = Executors.newSingleThreadExecutor();
         cameraProviderFuture = ProcessCameraProvider.getInstance(requireActivity());
         analyzer = new ImageAnalysis.Analyzer() {
@@ -282,9 +278,6 @@ public class Scan extends Fragment {
 
 
     private void scanbarcodegalerry(InputImage image) {
-//        @SuppressLint("UnsafeOptInUsageError") Image image1 = image.getImage();
-//        assert image1 != null;
-//        InputImage inputImage = InputImage.fromMediaImage(image1, image.getImageInfo().getRotationDegrees());
         BarcodeScannerOptions options = new BarcodeScannerOptions.Builder()
                 .setBarcodeFormats(Barcode.FORMAT_QR_CODE,
                         Barcode.FORMAT_AZTEC,
@@ -298,7 +291,11 @@ public class Scan extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<List<Barcode>>() {
                     @Override
                     public void onSuccess(List<Barcode> barcodes) {
-                        readerBarcodeData(barcodes);
+                        if (!barcodes.isEmpty()) {
+                            if (!readerBarcodeData(barcodes))
+                                Toast.makeText(getContext(), "QR code/Barcodes not found", Toast.LENGTH_SHORT).show();
+                        } else
+                            Toast.makeText(getContext(), "QR code/Barcodes not found", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -322,8 +319,6 @@ public class Scan extends Fragment {
                     public void onSuccess(List<Barcode> barcodes) {
                         if(!checkTutorial)
                             readerBarcodeData(barcodes);
-                        // Task completed successfully
-                        // ...
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -341,7 +336,7 @@ public class Scan extends Fragment {
                 });
     }
 
-    private void readerBarcodeData(List<Barcode> barcodes) {
+    private boolean readerBarcodeData(List<Barcode> barcodes) {
         for (Barcode barcode: barcodes) {
 
             String rawValue = barcode.getRawValue();
@@ -350,7 +345,7 @@ public class Scan extends Fragment {
             int bar = barcode.getFormat();
 
             Intent intent = new Intent(getActivity(), ResultScan.class);
-            if(bar == 256) {
+            if(bar == barcode.FORMAT_QR_CODE) {
                 switch (valueType) {
                     case Barcode.TYPE_WIFI:
                         SSID = barcode.getWifi().getSsid();
@@ -367,7 +362,6 @@ public class Scan extends Fragment {
                         intent.putExtra("P", password);
                         intent.putExtra("T", security);
                         checkWifi = true;
-
                         break;
                     case Barcode.TYPE_URL:
                         String url = barcode.getUrl().getUrl();
@@ -382,7 +376,7 @@ public class Scan extends Fragment {
                         title = "Text";
                         break;
                     default:
-                        return;
+                        return false;
                 }
                 type = "QRcode";
                 typeScan = "QRcode";
@@ -396,32 +390,32 @@ public class Scan extends Fragment {
                         typeScan = "Code_128";
                         title = getString(R.string.title_text);
                         break;
-                    case 2:
+                    case Barcode.FORMAT_CODE_39:
                         typeScan = "Code_39";
                         title = getString(R.string.title_text);
                         break;
-                    case 32:
+                    case Barcode.FORMAT_EAN_13:
                         typeScan = "EAN_13";
                         title = getString(R.string.title_product);
                         break;
-                    case 64:
+                    case Barcode.FORMAT_EAN_8:
                         typeScan = "EAN_8";
                         title = getString(R.string.title_product);
                         break;
-                    case 128:
+                    case Barcode.FORMAT_ITF:
                         typeScan = "Code_2of5";
                         title = getString(R.string.title_product);
                         break;
-                    case 512:
+                    case Barcode.FORMAT_UPC_A:
                         typeScan = "UPC_A";
                         title = getString(R.string.title_product);
                         break;
-                    case 1024:
+                    case Barcode.FORMAT_UPC_E:
                         typeScan = "UPC_E";
                         title = getString(R.string.title_product);
                         break;
                     default:
-                        return;
+                        return false;
                 }
                 type = "Barcode";
                 intent.putExtra("type", type);
@@ -431,6 +425,7 @@ public class Scan extends Fragment {
                 content = rawValue;
                 result = rawValue;
             }
+
 
             DateTime dateTime = new DateTime();
             HistoryScanItem historyScanItem = new HistoryScanItem(title, content, dateTime.getDateTime(), result);
@@ -446,7 +441,9 @@ public class Scan extends Fragment {
             startActivity(intent);
             break;
         }
+        return true;
     }
+
     public void Beep(){
         SharedPreferences beep;
         beep = getContext().getSharedPreferences("beep",0);

@@ -11,7 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.scanqrlite.Language;
 import com.example.scanqrlite.R;
+import com.example.scanqrlite.TextColorStatusbar;
 
 public class QuestionAnswer extends AppCompatActivity {
     LinearLayout layoutBack;
@@ -20,9 +22,13 @@ public class QuestionAnswer extends AppCompatActivity {
     RelativeLayout btnQA1, btnQA2, btnQA3;
     ImageView imgQA1, imgQA2, imgQA3;
     boolean check1 = true, check2 = true, check3 = true;
+    TextColorStatusbar textColorStatusbar;
+    Language language;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        language = new Language(this);
+        language.Language();
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         getWindow().getDecorView().setSystemUiVisibility(
@@ -118,5 +124,7 @@ public class QuestionAnswer extends AppCompatActivity {
 
         back = findViewById(R.id.btn_back);
         layoutBack = findViewById(R.id.btn_layout_back);
+        textColorStatusbar = new TextColorStatusbar(QuestionAnswer.this);
+        textColorStatusbar.changeColor(2);
     }
 }

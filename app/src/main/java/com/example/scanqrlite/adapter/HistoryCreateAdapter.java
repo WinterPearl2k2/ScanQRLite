@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -108,6 +109,7 @@ public class HistoryCreateAdapter extends RecyclerView.Adapter<HistoryCreateAdap
                         .addItem(new PowerMenuItem(context.getText(R.string.search), R.drawable.ic_search))
                         .addItem(new PowerMenuItem(context.getText(R.string.share), R.drawable.ic_share))
                         .setAutoDismiss(true)
+
                         .setLifecycleOwner(lifecycleOwner)
                         .setMenuShadow(10f)
                         .setMenuRadius(10f)
@@ -140,7 +142,10 @@ public class HistoryCreateAdapter extends RecyclerView.Adapter<HistoryCreateAdap
                         })
                         .setInitializeRule(Lifecycle.Event.ON_CREATE, 0)
                         .build();
-                    powerMenu.showAsDropDown(view, -450,-100);
+                    if(Build.VERSION.SDK_INT == Build.VERSION_CODES.Q)
+                        powerMenu.showAsDropDown(view);
+                    else
+                        powerMenu.showAsDropDown(view, -450,-100);
             }
         });
 

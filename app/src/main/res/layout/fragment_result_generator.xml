@@ -13,9 +13,10 @@
         android:id="@+id/btn_back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:layout_alignParentTop="true"
         android:background="@color/background_fragment"
-        android:layout_alignParentTop="true">
+        android:layout_marginTop="20dp"
+        android:padding="10dp">
 
         <ImageView
             android:id="@+id/btn_back_layout"
@@ -227,7 +228,6 @@
                     android:id="@+id/image_text"
                     android:layout_width="188dp"
                     android:layout_height="188dp"
-                    android:padding="10dp"
                     android:background="@color/white"
                     android:layout_gravity="center" />
 

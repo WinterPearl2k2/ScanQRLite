@@ -27,6 +27,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -52,11 +53,13 @@ public class MainActivity extends AppCompatActivity {
     MenuAdapter menuAdapter;
     RelativeLayout layout_menu, layout_permisson;
     Button btn_permisson;
-    Locale locale;
+    Language language;
+    TextColorStatusbar textColorStatusbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Language();
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        language = new Language(this);
+        language.Language();
         if(getSupportActionBar() != null)
             getSupportActionBar().hide();
         getWindow().getDecorView().setSystemUiVisibility(
@@ -88,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                         viewPager2.setCurrentItem(3, false);
                         break;
                 }
-                Language();
+                language.Language();
                 return false;
             }
         });
@@ -102,23 +105,31 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
+                int typeColor;
                 switch (position) {
                     case 0:
                         navigationView.getMenu().findItem(R.id.Scan).setChecked(true);
+                        typeColor = 1;
                         break;
                     case 1:
                         navigationView.getMenu().findItem(R.id.Create).setChecked(true);
+                        typeColor = 2;
                         break;
                     case 2:
                         navigationView.getMenu().findItem(R.id.History).setChecked(true);
+                        typeColor = 2;
                         break;
                     case 3:
                         navigationView.getMenu().findItem(R.id.Setting).setChecked(true);
+                        typeColor = 2;
                         break;
                     default:
                         navigationView.getMenu().findItem(R.id.Scan).setChecked(true);
+                        typeColor = 1;
                         break;
                 }
+                textColorStatusbar.changeColor(typeColor);
+                language.Language();
             }
         });
     }
@@ -247,43 +258,6 @@ public class MainActivity extends AppCompatActivity {
         layout_menu = findViewById(R.id.layout_menu);
         layout_permisson = findViewById(R.id.layout_permission);
         btn_permisson = findViewById(R.id.btn_permisson);
-    }
-    private void Language(){
-        SharedPreferences sp_language = getSharedPreferences("language", Context.MODE_PRIVATE );
-        String check = sp_language.getString("language", "English");
-        Log.e("TAG@:",check);
-        switch (check) {
-            case "English":
-                locale = new Locale("en");
-                ChangeLanguage(locale);
-                break;
-            case "German":
-                locale = new Locale("de");
-                ChangeLanguage(locale);
-                break;
-            case "Chinese":
-                locale = new Locale("zh");
-                ChangeLanguage(locale);
-                break;
-            case "Korean":
-                locale = new Locale("ko");
-                ChangeLanguage(locale);
-                break;
-            case "Vietnamese":
-                locale = new Locale("vi");
-                ChangeLanguage(locale);
-                break;
-        }
-
-    }
-
-    private void ChangeLanguage(Locale locale) {
-        Locale.setDefault(locale);
-        Resources res = getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        Configuration conf = res.getConfiguration();
-        conf.locale = locale;
-        res.updateConfiguration(conf, dm);
-
+        textColorStatusbar = new TextColorStatusbar(MainActivity.this);
     }
 }

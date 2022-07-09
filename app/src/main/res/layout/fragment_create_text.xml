@@ -39,6 +39,7 @@
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:gravity="top"
+                    android:inputType="textCapSentences"
                     android:hint="@string/enter_text"
                     android:textColorHint="@color/black20"
                     android:maxHeight="250dp"

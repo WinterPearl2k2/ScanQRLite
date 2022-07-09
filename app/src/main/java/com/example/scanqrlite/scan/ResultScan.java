@@ -1,6 +1,7 @@
 package com.example.scanqrlite.scan;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
@@ -33,7 +34,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.scanqrlite.Language;
 import com.example.scanqrlite.R;
+import com.example.scanqrlite.TextColorStatusbar;
+import com.example.scanqrlite.setting.settingitem.QuestionAnswer;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.zxing.BarcodeFormat;
@@ -66,14 +70,15 @@ public class ResultScan extends AppCompatActivity {
     WifiManager manager;
     private AdView adsViewResult;
     AdRequest adRequest;
+    Language language;
+    TextColorStatusbar textColorStatusbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        language = new Language(this);
+        language.Language();
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            getWindow().setStatusBarColor(getColor(R.color.color_2));
-        }
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_result_scan);
         setContentView(R.layout.fragment_result_generator);
@@ -204,42 +209,29 @@ public class ResultScan extends AppCompatActivity {
                 if(content.startsWith("http://") || content.startsWith("https://")) {
                     intent.setData(Uri.parse(content));
                 } else {
-                    intent.setData(Uri.parse("https://www.google.com/search?q=" +
-                            content));
+                    content = "https://" + content;
+                    intent.setData(Uri.parse(content));
                 }
                 startActivity(intent);
             }
         });
     }
-    OutputStream fos;
 
     private void SaveImage() {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Random generator = new Random();
-                int n = 10000;
-                n = generator.nextInt(n);
-                String mName = "Image-" + n + ".jpg";
-                try {
-                    if (ActivityCompat.checkSelfPermission(ResultScan.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != (PackageManager.PERMISSION_GRANTED)) {
-                        ActivityCompat.requestPermissions(ResultScan.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                if(ActivityCompat.checkSelfPermission(ResultScan.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != (PackageManager.PERMISSION_GRANTED)) {
+                    if(getFromPer(ResultScan.this, "ALLOWED")) {
+                        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        Uri uri = Uri.fromParts("package", getPackageName(), null);
+                        intent.setData(uri);
+                        startActivityForResult(intent, 201);
                     } else {
-
-                        OutputStream fos;
-                        ContentResolver resolver = ResultScan.this.getContentResolver();
-                        ContentValues contentValues = new ContentValues();
-                        contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, mName);
-                        contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg");
-                        Uri imageUri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
-                        fos = resolver.openOutputStream(imageUri);
-                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-                        Objects.requireNonNull(fos);
+                        ActivityCompat.requestPermissions(ResultScan.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                Toast.makeText(ResultScan.this, getText(R.string.save_success), Toast.LENGTH_LONG).show();
+                } else
+                    saveIMG();
             }
         });
     }
@@ -247,25 +239,62 @@ public class ResultScan extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(requestCode == 1 && ActivityCompat.checkSelfPermission(ResultScan.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED)) {
-            Random generator = new Random();
-            int n = 10000;
-            n = generator.nextInt(n);
-            String mName = "Image-" + n + ".jpg";
-            OutputStream fos;
-            ContentResolver resolver = ResultScan.this.getContentResolver();
-            ContentValues contentValues = new ContentValues();
-            contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, mName);
-            contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg");
-            Uri imageUri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
-            try {
-                fos = resolver.openOutputStream(imageUri);
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-                Objects.requireNonNull(fos);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+        switch (requestCode) {
+            case 1: {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    saveIMG();
+                    break;
+                }
+                String perStorage = permissions[0];
+                if(grantResults[0] == PackageManager.PERMISSION_DENIED) {
+                    boolean show = ActivityCompat.shouldShowRequestPermissionRationale(this, perStorage);
+                    if(!show) {
+                        saveToPreferences(this, "ALLOWED", true);
+                    }
+                }
             }
+        }
+    }
+
+    private boolean getFromPer(ResultScan resultScan, String allowed) {
+        SharedPreferences mPrefs = getSharedPreferences("storage", MODE_PRIVATE);
+        return (mPrefs.getBoolean(allowed, false));
+    }
+
+    public static void saveToPreferences(Context context, String key, Boolean allowed) {
+        SharedPreferences mPrefs = context.getSharedPreferences("storage", MODE_PRIVATE);
+        SharedPreferences.Editor prefersEditor = mPrefs.edit();
+        prefersEditor.putBoolean(key, allowed);
+        prefersEditor.commit();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 201 &&
+                ActivityCompat.checkSelfPermission(ResultScan.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == (PackageManager.PERMISSION_GRANTED)) {
+            saveIMG();
+        }
+    }
+
+    private void saveIMG() {
+        Random generator = new Random();
+        int n = 10000;
+        n = generator.nextInt(n);
+        String mName = "Image-" + n + ".jpg";
+        OutputStream fos;
+        ContentResolver resolver = ResultScan.this.getContentResolver();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, mName);
+        contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg");
+        Uri imageUri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+        try {
+            fos = resolver.openOutputStream(imageUri);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            Objects.requireNonNull(fos);
             Toast.makeText(ResultScan.this, getText(R.string.save_success), Toast.LENGTH_LONG).show();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
@@ -407,7 +436,7 @@ public class ResultScan extends AppCompatActivity {
         int sizeHeight = 264;
 
         Hashtable hints = new Hashtable();
-        hints.put(EncodeHintType.MARGIN, 0);
+        hints.put(EncodeHintType.MARGIN, 1);
         hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
 
         BitMatrix matrix = null;
@@ -488,5 +517,7 @@ public class ResultScan extends AppCompatActivity {
         txtTitle = findViewById(R.id.title_5);
         txtBtnSave = findViewById(R.id.txt_btn_save);
         adsViewResult = findViewById(R.id.adsViewResult);
+        textColorStatusbar = new TextColorStatusbar(ResultScan.this);
+        textColorStatusbar.changeColor(2);
     }
 }
