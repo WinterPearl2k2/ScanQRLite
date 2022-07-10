@@ -39,12 +39,13 @@
 
     <com.willy.ratingbar.ScaleRatingBar
         android:id="@+id/rt_rating"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/img_rating"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="0dp"
         android:numStars="5"
         app:srb_drawableEmpty="@drawable/ic_star_off"
         app:srb_drawableFilled="@drawable/ic_star_on"
