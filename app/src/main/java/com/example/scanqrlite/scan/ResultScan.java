@@ -343,21 +343,6 @@ public class ResultScan extends AppCompatActivity {
         Toast.makeText(ResultScan.this, R.string.copy_success, Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        doCopy();
-    }
-
-    public void doCopy(){
-        SharedPreferences coppy ;
-        coppy = getSharedPreferences("clipboard",0 );
-        boolean check = coppy.getBoolean("clipboard",false);
-        if(check==true){
-            copyTextToClipboard(content);
-        }
-    }
-
     private void CheckLayout(String title, String type) {
         if(type.equals("QRcode")) {
             switch (title) {

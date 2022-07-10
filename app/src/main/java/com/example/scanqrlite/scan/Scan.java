@@ -2,6 +2,8 @@ package com.example.scanqrlite.scan;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -44,6 +46,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.scanqrlite.DateTime;
+import com.example.scanqrlite.Language;
 import com.example.scanqrlite.R;
 import com.example.scanqrlite.history.History_Menu.HistoryScanItem;
 import com.example.scanqrlite.history.History_Menu.database.ScanDatabase;
@@ -92,11 +95,9 @@ public class Scan extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_scan, container, false);
         ORM(); //Ánh xạ
         ScanByGallery();
-//        Tutorial();
         showAds();
         return view;
     }
@@ -291,11 +292,13 @@ public class Scan extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<List<Barcode>>() {
                     @Override
                     public void onSuccess(List<Barcode> barcodes) {
+                        Language language = new Language(getContext());
+                        language.Language();
                         if (!barcodes.isEmpty()) {
                             if (!readerBarcodeData(barcodes))
-                                Toast.makeText(getContext(), "QR code/Barcodes not found", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), getResources().getString(R.string.cant_scan), Toast.LENGTH_SHORT).show();
                         } else
-                            Toast.makeText(getContext(), "QR code/Barcodes not found", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), getResources().getString(R.string.cant_scan), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -427,6 +430,10 @@ public class Scan extends Fragment {
             }
 
 
+            //Coppy content to clipboard
+            if(doCopy())
+                copyTextToClipboard(rawValue);
+
             DateTime dateTime = new DateTime();
             HistoryScanItem historyScanItem = new HistoryScanItem(title, content, dateTime.getDateTime(), result);
             historyScanItem.setTypeScan(typeScan);
@@ -442,6 +449,23 @@ public class Scan extends Fragment {
             break;
         }
         return true;
+    }
+
+    public boolean doCopy(){
+        SharedPreferences coppy ;
+        coppy = getActivity().getSharedPreferences("clipboard",0 );
+        boolean check = coppy.getBoolean("clipboard",false);
+        if(check){
+            return true;
+        }
+        return false;
+    }
+
+    private void copyTextToClipboard(String content) {
+        ClipboardManager clipboardManager = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clipData = ClipData.newPlainText("label", content);
+        clipboardManager.setPrimaryClip(clipData);
+        Toast.makeText(getContext(), R.string.copy_success, Toast.LENGTH_SHORT).show();
     }
 
     public void Beep(){

@@ -76,7 +76,7 @@
     <string name="german">德语</string>
     <string name="chinese">中国人</string>
     <string name="korean">韩国人</string>
-    <string name="vietnamese">V越南语</string>
+    <string name="vietnamese">越南语</string>
     <!--    // Question and answer -->
         <string name="question_and_answer">问题和答案</string>
         <string name="question_1">为什么二维码不起作用？</string>
@@ -111,4 +111,5 @@
     <string name="send_email">发送电子邮件</string>
     <string name="title_product">产品</string>
     <string name="email_not_installed">未安装电子邮件</string>
+    <string name="cant_scan">未找到二维码/条形码</string>
 </resources>

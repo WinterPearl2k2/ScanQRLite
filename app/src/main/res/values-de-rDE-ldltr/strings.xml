@@ -110,5 +110,6 @@
     <string name="send_email">E-Mail senden</string>
     <string name="title_product">Produkt</string>
     <string name="email_not_installed">" E-Mail nicht installiert"</string>
+    <string name="cant_scan">QR-Code/Barcode nicht gefunden</string>
 
 </resources>
