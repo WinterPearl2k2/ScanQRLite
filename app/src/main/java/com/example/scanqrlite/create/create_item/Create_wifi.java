@@ -71,7 +71,6 @@ public class Create_wifi extends Fragment {
                         nothing = true;
                         edtPass.setEnabled(false);
                         edtPass.setError(null);
-                        fragmentCreateWifi.setFocusable(true);
                         fragmentCreateWifi.requestFocusFromTouch();
                         break;
                 }

@@ -31,7 +31,7 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:weightSum="10"
-                    android:background="@drawable/cus_item_setting"
+                    android:background="@drawable/cus_list_item_top"
                     android:layout_weight="1">
                     <TextView
                         android:layout_width="match_parent"
@@ -162,7 +162,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
-                    android:background="@drawable/cus_item_setting"
+                    android:background="@drawable/cus_list_item_top"
                     android:layout_weight="1">
                     <TextView
                         android:layout_width="match_parent"
