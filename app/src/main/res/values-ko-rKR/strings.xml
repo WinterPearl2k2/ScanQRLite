@@ -30,7 +30,7 @@
     <string name="create_button">만들기</string>
     <string name="wifi_button">와이파이</string>
     <!--    // Create_Text-->
-        <string name="content">콘텐츠</string>
+        <string name="content">콘텐츠:</string>
         <string name="enter_text">여기에 텍스트 입력</string>
         <string name="please_enter_your_content">콘텐츠를 입력하세요</string>
     <!--    // Create_URL-->
@@ -49,7 +49,7 @@
 <!--    //Result-->
     <string name="copy_success">복사 성공</string>
     <string name="save_QR">QR 저장</string>
-    <string name="save_success">Save Success</string>
+    <string name="save_success">성공을 구하다</string>
     <!--    // Result_Text-->
         <string name="title_text">텍스트</string>
         <string name="note">참고:</string>
@@ -88,7 +88,7 @@
         <string name="content_question_3">인터페이스 설정 프로그램을 통해 다른 웹사이트에서 QR 스캐너를 실행할 수 있습니다.</string>
     <!--    // Feedback-->
         <string name="feedback">피드백</string>
-        <string name="dialog_question_feedback_1">"많은 질문에 대한 질의응답이 이루어졌습니다.\n가능하면 바코드나 스크린샷을 찍거나 첨부하세요."</string>
+        <string name="dialog_question_feedback_1">"많은 질문에 대한 질의응답이 이루어졌습니다.\n가능하면 바코드나 스크린샷을 찍거나 첨부하세요.\n"</string>
 
         <string name="no">아니요</string>
         <string name="yes">예</string>
@@ -113,5 +113,6 @@
     <string name="title_product">제품</string>
     <string name="email_not_installed">이메일이 설치되지 않았습니다.</string>
     <string name="cant_scan">QR 코드/바코드를 찾을 수 없음</string>
+    <string name="security_result">보안:</string>
 
 </resources>

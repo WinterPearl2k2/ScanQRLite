@@ -23,7 +23,6 @@
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_ic_scan.xml" value="0.121" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_item_language.xml" value="0.22" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_item_setting.xml" value="0.22" />
-        <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_list_item_top.xml" value="0.267" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_list_setting.xml" value="0.1685" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_rdb_create.xml" value="0.17" />
         <entry key="..\:/Lap trinh/ScanQRLite/app/src/main/res/drawable/cus_thumb_switch.xml" value="0.1695" />
@@ -90,10 +89,19 @@
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/background_button_edit_text_while.xml" value="0.215" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/background_conner_tutorial.xml" value="0.215" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/background_conner_while.xml" value="0.215" />
+        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/background_conner_yellow.xml" value="0.241" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/cus_dialog.xml" value="0.241" />
+        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/cus_item_language.xml" value="0.241" />
+        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/cus_item_setting.xml" value="0.241" />
+        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/cus_list_item_top.xml" value="0.241" />
+        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/cus_list_setting.xml" value="0.241" />
+        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/cus_thumb_switch.xml" value="0.241" />
+        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/cus_track_switch.xml" value="0.241" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/ic_create_text_while.xml" value="0.215" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/ic_setting.xml" value="0.1" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/ic_union.xml" value="0.2835" />
+        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/switch_thumb_false.xml" value="0.241" />
+        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/drawable/switch_thumb_true.xml" value="0.241" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/activity_question_and_answer.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/activity_result_scan.xml" value="0.36666666666666664" />
@@ -108,14 +116,15 @@
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_history_create.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_history_scan.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_question_and_answer.xml" value="0.23822463768115942" />
-        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_result_generator.xml" value="0.22" />
+        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_result_generator.xml" value="0.4490216271884655" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_scan.xml" value="0.23596014492753623" />
-        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_setting.xml" value="0.23596014492753623" />
+        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/fragment_setting.xml" value="0.5" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/popup_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/recyclerview_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/layout/tutorial.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="..\:/Users/Win10/AndroidStudioProjects/ScanQRLite/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.241" />
       </map>
     </option>
   </component>

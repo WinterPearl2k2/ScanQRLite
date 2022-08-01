@@ -29,7 +29,7 @@
     <string name="create_button">TẠO</string>
     <string name="wifi_button">Wifi</string>
     <!--    // Create_Text-->
-        <string name="content">Nội dung</string>
+        <string name="content">Nội dung:</string>
         <string name="enter_text">Nhập văn bản ở đây</string>
         <string name="please_enter_your_content">Vui lòng nhập nội dung của bạn</string>
     <!--    // Create_URL-->
@@ -87,7 +87,7 @@
         <string name = "content_question_3"> Máy quét QR của chúng tôi có thể được khởi chạy từ các trang web khác thông qua chương trình thiết lập giao diện. </string>
     <!--    // Feedback-->
         <string name="feedback">Phản hồi</string>
-        <string name = "dialog_question_feedback_1">"Nhiều câu hỏi đã được trả lời trong câu hỏi và câu trả lời.\nNếu có thể, hãy chụp hoặc đính kèm mã vạch hoặc ảnh chụp màn hình."</string>
+        <string name = "dialog_question_feedback_1">"Nhiều câu hỏi đã được trả lời trong câu hỏi và câu trả lời.\nNếu có thể, hãy chụp hoặc đính kèm mã vạch hoặc ảnh chụp màn hình.\n"</string>
         <string name = "no"> Không </string>
         <string name = "yes"> Có </string>
     <!--    // Rate me on CHPlay-->
@@ -111,4 +111,5 @@
     <string name="title_product">Sản phẩm</string>
     <string name="email_not_installed">Email chưa được cài đặt</string>
     <string name="cant_scan">Mã QR / mã vạch không được tìm thấy</string>
+    <string name="security_result">Bảo mật:</string>
 </resources>

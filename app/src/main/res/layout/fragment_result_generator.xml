@@ -124,7 +124,7 @@
                             android:id="@+id/title_security"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/security"
+                            android:text="@string/security_result"
                             android:textColor="#A9A9A9"
                             android:textSize="16sp" />
 
@@ -148,9 +148,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
-                ads:cardBackgroundColor="@android:color/transparent"
                 ads:adSize="BANNER"
-                ads:adUnitId="@string/banner_ad_unit_id"></com.google.android.gms.ads.AdView>
+                ads:adUnitId="@string/banner_ad_unit_id"
+                ads:cardBackgroundColor="@android:color/transparent"></com.google.android.gms.ads.AdView>
 
             <LinearLayout
                 android:id="@+id/frame_btn_feature"

@@ -373,7 +373,7 @@ public class ResultScan extends AppCompatActivity {
                 case "URL":
                     txtTitleActionbar.setText(R.string.url);
                     txtContent.setText(content);
-                    txtTitle.setText(R.string.url);
+                    txtTitle.setText(R.string.url_result);
                     btnSave.setVisibility(View.VISIBLE);
                     btnURL.setVisibility(View.VISIBLE);
                     createQR(content);

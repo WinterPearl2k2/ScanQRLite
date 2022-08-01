@@ -403,7 +403,7 @@ public class Setting extends Fragment {
 
     public void Vibrate() {
         SharedPreferences vibrite = getActivity().getSharedPreferences("vibrate", Context.MODE_PRIVATE);
-        boolean check = vibrite.getBoolean("vabrate", false);
+        boolean check = vibrite.getBoolean("vibrate", false);
         if(check) {
             swVibrite.setChecked(true);
         } else {

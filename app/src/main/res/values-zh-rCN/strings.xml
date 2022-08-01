@@ -30,7 +30,7 @@
     <string name="create_button">创造</string>
     <string name="wifi_button">无线上网</string>
     <!--    // Create_Text-->
-        <string name="content">内容</string>
+        <string name="content">内容:</string>
         <string name="enter_text">在此输入文字</string>
         <string name="please_enter_your_content">请输入您的内容</string>
     <!--    // Create_URL-->
@@ -89,7 +89,7 @@
         <string name="content_question_3">我们的二维码扫描仪可以通过界面设置程序从其他网站启动</string>
     <!--    // Feedback-->
         <string name="feedback">反馈</string>
-        <string name="dialog_question_feedback_1">许多问题在问答中得到了解答.\n如果可能，请拍摄或附上条形码或屏幕截图。</string>
+        <string name="dialog_question_feedback_1">许多问题在问答中得到了解答.\n如果可能，请拍摄或附上条形码或屏幕截图.\n</string>
         <string name="no">否</string>
         <string name="yes">是</string>
     <!--    // Rate me on CHPlay-->
@@ -112,4 +112,5 @@
     <string name="title_product">产品</string>
     <string name="email_not_installed">未安装电子邮件</string>
     <string name="cant_scan">未找到二维码/条形码</string>
+    <string name="security_result">安全:</string>
 </resources>

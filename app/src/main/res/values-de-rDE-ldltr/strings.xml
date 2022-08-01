@@ -31,7 +31,7 @@
     <string name="create_button">SCHAFFEN</string>
     <string name="wifi_button">W-lan</string>
     <!--    // Create_Text-->
-        <string name="content">Inhalt</string>
+        <string name="content">Inhalt:</string>
         <string name="enter_text">Hier Text eingeben</string>
         <string name="please_enter_your_content">Bitte geben Sie Ihre Inhalte ein</string>
     <!--    // Create_URL-->
@@ -89,7 +89,7 @@
         <string name="content_question_3">Unser QR-Scanner kann von anderen Websites über das Schnittstellen-Setup-Programm gestartet werden.</string>
     <!--    // Feedback-->
         <string name="feedback">Feedback</string>
-        <string name="dialog_question_feedback_1">"Viele Fragen wurden in Frage und Antwort beantwortet.\nWenn möglich, erstellen oder fügen Sie einen Barcode oder Screenshot bei."</string>
+        <string name="dialog_question_feedback_1">"Viele Fragen wurden in Frage und Antwort beantwortet.\nWenn möglich, erstellen oder fügen Sie einen Barcode oder Screenshot bei.\n"</string>
         <string name="no">Nein</string>
         <string name="yes">Ja</string>
     <!--    // Rate me on CHPlay-->
@@ -111,5 +111,6 @@
     <string name="title_product">Produkt</string>
     <string name="email_not_installed">" E-Mail nicht installiert"</string>
     <string name="cant_scan">QR-Code/Barcode nicht gefunden</string>
+    <string name="security_result">Sicherheit:</string>
 
 </resources>

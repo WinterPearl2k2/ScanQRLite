@@ -30,7 +30,7 @@
     <string name="create_button">CREATE</string>
     <string name="wifi_button">Wifi</string>
     <!--    // Create_Text-->
-        <string name="content">Content</string>
+        <string name="content">Content:</string>
         <string name="enter_text">Enter text here</string>
         <string name="please_enter_your_content">Please enter your content</string>
     <!--    // Create_URL-->
@@ -96,7 +96,7 @@
         <string name="content_question_3">Our QR Scanner can be launched from other websites through the interface setup program.</string>
     <!--    // Feedback-->
         <string name="feedback">Feedback</string>
-        <string name="dialog_question_feedback_1">"Many questions have been answered in Question &amp; answer.\nIf possible, take or attach a barcode or screenshot."</string>
+        <string name="dialog_question_feedback_1">"Many questions have been answered in Question &amp; answer.\nIf possible, take or attach a barcode or screenshot.\n"</string>
         <string name="no">No</string>
         <string name="yes">Yes</string>
     <!--    // Rate me on CHPlay-->
@@ -116,4 +116,5 @@
     <string name="send_email">Send Email</string>
     <string name="email_not_installed">Email not installed</string>
     <string name="cant_scan">QR code/Barcodes not found</string>
+    <string name="security_result">Security:</string>
 </resources>
